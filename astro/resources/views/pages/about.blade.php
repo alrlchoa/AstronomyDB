@@ -83,7 +83,8 @@
                     About Page
                 </div>
                 <p>
-                    This is a test page.
+                    {{$data['fullname']}} <br />
+                    {{$data['course']}}
                 </p>
             </div>
         </div>
