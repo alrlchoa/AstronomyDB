@@ -80,7 +80,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    About Page
+                    About Frog
                 </div>
                 <p>
                     {{$data['fullname']}} <br />
