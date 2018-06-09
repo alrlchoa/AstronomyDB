@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/contact', 'PagesController@getContact');
+Route::get('/team', 'PagesController@getTeam');
 
 Route::get('/about', 'PagesController@getAbout');
 
