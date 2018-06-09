@@ -81,6 +81,9 @@
                 <div class="title m-b-md">
                     Astronomy
                 </div>
+                <p>
+                    If you guys are seeing this, you've done right.
+                </p>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
