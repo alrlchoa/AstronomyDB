@@ -1,0 +1,21 @@
+{
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "researcher",
+      "type": "hasMany",
+      "class": "App\\Researcher"
+    }
+  ],
+  "validations": [
+    {
+      "field": "name",
+      "rules": "required|unique:institutions|max:40"
+    }
+  ]
+}

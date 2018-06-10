@@ -20,3 +20,5 @@ Route::get('/team', 'PagesController@getTeam');
 Route::get('/about', 'PagesController@getAbout');
 
 Route::get('/', 'PagesController@getIndex');
+
+Route::resource('admin/institutions', 'Admin\\InstitutionsController');
