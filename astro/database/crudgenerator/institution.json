@@ -7,9 +7,9 @@
   ],
   "relationships": [
     {
-      "name": "researcher",
+      "name": "researcherFellowship",
       "type": "hasMany",
-      "class": "App\\Researcher"
+      "class": "App\\ResearcherFellowship"
     }
   ],
   "validations": [
