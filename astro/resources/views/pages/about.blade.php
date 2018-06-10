@@ -1,4 +1,4 @@
-@extends('logreg')
+@extends('main')
 
 @section('title','- About')
 
