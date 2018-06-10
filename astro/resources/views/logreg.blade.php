@@ -2,7 +2,7 @@
 <html lang="en">
 
     <head>
-    @include('partials\_head')
+    @include('partials._head')
     <link rel="stylesheet" href="https://getbootstrap.com/docs/4.1/examples/sign-in/signin.css">
     </head>
     
@@ -13,6 +13,6 @@
             @yield('signin')
         </form>
         </div>
-        @include('partials\_scripts')
+        @include('partials._scripts')
     </body>
 </html>
