@@ -22,8 +22,8 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
               <div class="dropdown-menu" aria-labelledby="dropdown07">
-                <a class="dropdown-item" href="#">Log In</a>
-                <a class="dropdown-item" href="#">Register</a>
+                <a class="dropdown-item" href="/login">Log In</a>
+                <a class="dropdown-item" href="/register">Register</a>
                 <hr>
                 <a class="dropdown-item" href="#">Sign Out</a>
               </div>
