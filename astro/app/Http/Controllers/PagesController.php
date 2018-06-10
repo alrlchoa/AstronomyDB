@@ -9,19 +9,18 @@ class PagesController extends Controller {
     }
 
     public function getAbout(){
-        $gname = 'DROP';
-        $ggname = 'TABLES';
-        $course = 'CPSC 304';
-        $full = $gname . " " . $ggname;
-
-        $data = [];
-        $data['course'] = $course;
-        $data['fullname'] = $full;
-
-        return view('pages/about')->withData($data);
+        return view('pages/about');
     }
 
-    public function getContact(){
-        return view('pages/contact');
+    public function getTeam(){
+        return view('pages/team');
+    }
+
+    public function getLogin(){
+        return view('pages/login');
+    }
+
+    public function getRegister(){
+        return view('pages/register');
     }
 }
