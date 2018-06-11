@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/register','PagesController@getRegister');
-
-Route::get('/login','PagesController@getLogin');
 
 Route::get('/team', 'PagesController@getTeam');
 
 Route::get('/about', 'PagesController@getAbout');
 
 Route::get('/', 'PagesController@getIndex');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
