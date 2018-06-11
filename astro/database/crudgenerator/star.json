@@ -1,0 +1,34 @@
+{
+  "fields": [
+    {
+      "name": "spectral_brightness_id",
+      "type": "integer#unsigned"
+    }
+  ],
+  "foreign_keys": [
+    {
+      "column": "id",
+      "references": "id",
+      "on": "celestial_bodies",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "spectral_brightness_id",
+      "references": "id",
+      "on": "spectral_brightnesses",
+      "onDelete": "set null"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "comet",
+      "type": "belongsToMany",
+      "class": "App\\Comet"
+    },
+    {
+      "name": "planet",
+      "type": "belongsToMany",
+      "class": "App\\Planet"
+    }
+  ]
+}
