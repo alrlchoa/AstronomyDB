@@ -27,7 +27,7 @@ class Institution extends Model
      */
     protected $fillable = ['name'];
 
-    public function researcherFellowship()
+    public function researcherfellowship()
     {
         return $this->hasMany('App\ResearcherFellowship');
     }

@@ -7,7 +7,7 @@
   ],
   "relationships": [
     {
-      "name": "researcherFellowship",
+      "name": "researcherfellowship",
       "type": "hasMany",
       "class": "App\\ResearcherFellowship"
     }
