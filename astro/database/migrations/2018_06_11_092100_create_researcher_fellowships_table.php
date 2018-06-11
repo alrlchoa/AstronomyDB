@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateReasercherFellowshipsTable extends Migration
+class CreateResearcherFellowshipsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateReasercherFellowshipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reasercher_fellowships', function (Blueprint $table) {
+        Schema::create('researcher_fellowships', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('institution_id')->unsigned();
@@ -28,6 +28,6 @@ class CreateReasercherFellowshipsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('reasercher_fellowships');
+        Schema::drop('researcher_fellowships');
     }
 }

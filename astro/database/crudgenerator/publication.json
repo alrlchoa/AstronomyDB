@@ -21,9 +21,9 @@
       "class": "App\\CelestialBody"
     },
     {
-      "name": "researcher",
+      "name": "researcherfellowship",
       "type": "belongsToMany",
-      "class": "App\\Researcher"
+      "class": "App\\ResearcherFellowship"
     }
   ],
   "validations": [

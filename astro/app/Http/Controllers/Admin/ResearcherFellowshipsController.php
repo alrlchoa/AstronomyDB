@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\ReasercherFellowship;
+use App\ResearcherFellowship;
 use Illuminate\Http\Request;
 
-class ReasercherFellowshipController extends Controller
+class ResearcherFellowshipsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,13 +21,13 @@ class ReasercherFellowshipController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $reasercherfellowship = ReasercherFellowship::where('institution_id', 'LIKE', "%$keyword%")
+            $researcherfellowships = ResearcherFellowship::where('institution_id', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $reasercherfellowship = ReasercherFellowship::latest()->paginate($perPage);
+            $researcherfellowships = ResearcherFellowship::latest()->paginate($perPage);
         }
 
-        return view('admin.reasercher-fellowship.index', compact('reasercherfellowship'));
+        return view('admin.researcher-fellowships.index', compact('researcherfellowships'));
     }
 
     /**
@@ -37,7 +37,7 @@ class ReasercherFellowshipController extends Controller
      */
     public function create()
     {
-        return view('admin.reasercher-fellowship.create');
+        return view('admin.researcher-fellowships.create');
     }
 
     /**
@@ -52,9 +52,9 @@ class ReasercherFellowshipController extends Controller
         
         $requestData = $request->all();
         
-        ReasercherFellowship::create($requestData);
+        ResearcherFellowship::create($requestData);
 
-        return redirect('admin/reasercher-fellowship')->with('flash_message', 'ReasercherFellowship added!');
+        return redirect('admin/researcher-fellowships')->with('flash_message', 'ResearcherFellowship added!');
     }
 
     /**
@@ -66,9 +66,9 @@ class ReasercherFellowshipController extends Controller
      */
     public function show($id)
     {
-        $reasercherfellowship = ReasercherFellowship::findOrFail($id);
+        $researcherfellowship = ResearcherFellowship::findOrFail($id);
 
-        return view('admin.reasercher-fellowship.show', compact('reasercherfellowship'));
+        return view('admin.researcher-fellowships.show', compact('researcherfellowship'));
     }
 
     /**
@@ -80,9 +80,9 @@ class ReasercherFellowshipController extends Controller
      */
     public function edit($id)
     {
-        $reasercherfellowship = ReasercherFellowship::findOrFail($id);
+        $researcherfellowship = ResearcherFellowship::findOrFail($id);
 
-        return view('admin.reasercher-fellowship.edit', compact('reasercherfellowship'));
+        return view('admin.researcher-fellowships.edit', compact('researcherfellowship'));
     }
 
     /**
@@ -98,10 +98,10 @@ class ReasercherFellowshipController extends Controller
         
         $requestData = $request->all();
         
-        $reasercherfellowship = ReasercherFellowship::findOrFail($id);
-        $reasercherfellowship->update($requestData);
+        $researcherfellowship = ResearcherFellowship::findOrFail($id);
+        $researcherfellowship->update($requestData);
 
-        return redirect('admin/reasercher-fellowship')->with('flash_message', 'ReasercherFellowship updated!');
+        return redirect('admin/researcher-fellowships')->with('flash_message', 'ResearcherFellowship updated!');
     }
 
     /**
@@ -113,8 +113,8 @@ class ReasercherFellowshipController extends Controller
      */
     public function destroy($id)
     {
-        ReasercherFellowship::destroy($id);
+        ResearcherFellowship::destroy($id);
 
-        return redirect('admin/reasercher-fellowship')->with('flash_message', 'ReasercherFellowship deleted!');
+        return redirect('admin/researcher-fellowships')->with('flash_message', 'ResearcherFellowship deleted!');
     }
 }

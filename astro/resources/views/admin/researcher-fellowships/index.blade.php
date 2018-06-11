@@ -7,13 +7,13 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Reasercherfellowship</div>
+                    <div class="card-header">Researcherfellowships</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/reasercher-fellowship/create') }}" class="btn btn-success btn-sm" title="Add New ReasercherFellowship">
+                        <a href="{{ url('/admin/researcher-fellowships/create') }}" class="btn btn-success btn-sm" title="Add New ResearcherFellowship">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
-                        {!! Form::open(['method' => 'GET', 'url' => '/admin/reasercher-fellowship', 'class' => 'form-inline my-2 my-lg-0 float-right', 'role' => 'search'])  !!}
+                        {!! Form::open(['method' => 'GET', 'url' => '/admin/researcher-fellowships', 'class' => 'form-inline my-2 my-lg-0 float-right', 'role' => 'search'])  !!}
                         <div class="input-group">
                             <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
                             <span class="input-group-append">
@@ -34,22 +34,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($reasercherfellowship as $item)
+                                @foreach($researcherfellowships as $item)
                                     <tr>
                                         <td>{{ $loop->iteration or $item->id }}</td>
                                         <td>{{ $item->institution_id }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/reasercher-fellowship/' . $item->id) }}" title="View ReasercherFellowship"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/reasercher-fellowship/' . $item->id . '/edit') }}" title="Edit ReasercherFellowship"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/researcher-fellowships/' . $item->id) }}" title="View ResearcherFellowship"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/admin/researcher-fellowships/' . $item->id . '/edit') }}" title="Edit ResearcherFellowship"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
-                                                'url' => ['/admin/reasercher-fellowship', $item->id],
+                                                'url' => ['/admin/researcher-fellowships', $item->id],
                                                 'style' => 'display:inline'
                                             ]) !!}
                                                 {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-sm',
-                                                        'title' => 'Delete ReasercherFellowship',
+                                                        'title' => 'Delete ResearcherFellowship',
                                                         'onclick'=>'return confirm("Confirm delete?")'
                                                 )) !!}
                                             {!! Form::close() !!}
@@ -58,7 +58,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $reasercherfellowship->appends(['search' => Request::get('search')])->render() !!} </div>
+                            <div class="pagination-wrapper"> {!! $researcherfellowships->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
 
                     </div>

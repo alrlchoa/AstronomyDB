@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Publication extends Model
+class Astronomer extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'publications';
+    protected $table = 'astronomers';
 
     /**
     * The database primary key value.
@@ -25,19 +25,15 @@ class Publication extends Model
      *
      * @var array
      */
-    protected $fillable = ['doi', 'date_of_publication'];
+    protected $fillable = ['username', 'password', 'first_name', 'last_name'];
 
-    public function publication()
+    public function researcher()
     {
-        return $this->belongsToMany('App\Publication');
+        return $this->hasOne('App\ResearcherFellowship');
     }
     public function celestialbody()
     {
         return $this->belongsToMany('App\CelestialBody');
-    }
-    public function researcherfellowship()
-    {
-        return $this->belongsToMany('App\ResearcherFellowship');
     }
     
 }

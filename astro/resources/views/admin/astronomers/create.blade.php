@@ -7,9 +7,9 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Edit ReasercherFellowship #{{ $reasercherfellowship->id }}</div>
+                    <div class="card-header">Create New Astronomer</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/reasercher-fellowship') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/astronomers') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
@@ -21,14 +21,9 @@
                             </ul>
                         @endif
 
-                        {!! Form::model($reasercherfellowship, [
-                            'method' => 'PATCH',
-                            'url' => ['/admin/reasercher-fellowship', $reasercherfellowship->id],
-                            'class' => 'form-horizontal',
-                            'files' => true
-                        ]) !!}
+                        {!! Form::open(['url' => '/admin/astronomers', 'class' => 'form-horizontal', 'files' => true]) !!}
 
-                        @include ('admin.reasercher-fellowship.form', ['submitButtonText' => 'Update'])
+                        @include ('admin.astronomers.form')
 
                         {!! Form::close() !!}
 
