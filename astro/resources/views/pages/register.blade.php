@@ -12,7 +12,7 @@
             <input type="password" id="inputConfPassword" class="form-control" placeholder="Confirm Password" required>
             <div class="btn-group btn-toggle"> 
                 <button class="btn btn-default" data-toggle="collapse" data-target="#Institution">Hide</button>
-                <button class="btn btn-primary active" data-toggle="collapse" data-target="#Institution">Show</button>
+                <button class="btn btn-secondary active" data-toggle="collapse" data-target="#Institution">Show</button>
             </div>
             <br />
             <div class="well collapse" id="Institution">
