@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCelestialBodiesTable extends Migration
+class CreateCometsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,11 @@ class CreateCelestialBodiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('celestial_bodies', function (Blueprint $table) {
+        Schema::create('comets', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->float('right_ascension', 8, 3);
-            $table->float('declination', 8, 3);
-            $table->string('name')->nullable();
-            $table->boolean('verified')->default(false);
+            $table->float('speed')->nullable();
+            $table->foreign('id')->references('id')->on('celestial_bodies')->onDelete('cascade')->onUpdate('cascade');
             });
     }
 
@@ -29,6 +27,6 @@ class CreateCelestialBodiesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('celestial_bodies');
+        Schema::drop('comets');
     }
 }

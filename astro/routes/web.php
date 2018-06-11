@@ -23,3 +23,4 @@ Route::get('/', 'PagesController@getIndex');
 
 Route::resource('admin/institutions', 'Admin\\InstitutionsController');
 Route::resource('admin/celestial-bodies', 'Admin\\CelestialBodiesController');
+Route::resource('admin/comets', 'Admin\\CometsController');

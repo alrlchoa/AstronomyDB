@@ -1,0 +1,29 @@
+{
+  "fields": [
+    {
+      "name": "speed",
+      "type": "float"
+    }
+  ],
+  "foreign_keys": [
+    {
+      "column": "id",
+      "references": "id",
+      "on": "celestial_bodies",
+      "onDelete": "cascade"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "star",
+      "type": "belongsToMany",
+      "class": "App\\Star"
+    }
+  ],
+  "validations": [
+    {
+      "field": "velocity",
+      "rules": "min:0"
+    }
+  ]
+}

@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2135c974-2bc2-4d4b-ab7b-b485b6c29865" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/astro/database/crudgenerator/comet.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/astro/app/Institution.php" beforeDir="false" afterPath="$PROJECT_DIR$/astro/app/Institution.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/astro/database/crudgenerator/celestialbody.json" beforeDir="false" afterPath="$PROJECT_DIR$/astro/database/crudgenerator/celestialbody.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/astro/database/crudgenerator/institution.json" beforeDir="false" afterPath="$PROJECT_DIR$/astro/database/crudgenerator/institution.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/astro/database/migrations/2018_06_11_042751_create_celestial_bodies_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/astro/database/migrations/2018_06_11_042751_create_celestial_bodies_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/astro/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/astro/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,20 +19,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/astro/routes/web.php">
+      <file leaf-file-name="celestialbody.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/astro/database/crudgenerator/celestialbody.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="23" column="71" selection-start-line="23" selection-start-column="71" selection-end-line="23" selection-end-column="71" />
+            <state relative-caret-position="270">
+              <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="celestialbody.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/astro/database/crudgenerator/celestialbody.json">
+      <file leaf-file-name="comet.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/astro/database/crudgenerator/comet.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+            <state relative-caret-position="180">
+              <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2018_06_11_045035_create_comets_table.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/astro/database/migrations/2018_06_11_045035_create_comets_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -41,17 +49,17 @@
       <file leaf-file-name="2018_06_11_042751_create_celestial_bodies_table.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/astro/database/migrations/2018_06_11_042751_create_celestial_bodies_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+            <state relative-caret-position="210">
+              <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CelestialBodiesController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CelestialBodiesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/astro/app/Http/Controllers/Admin/CelestialBodiesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+            <state relative-caret-position="140">
+              <caret line="102" column="44" selection-start-line="102" selection-start-column="44" selection-end-line="102" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -125,8 +133,9 @@
         <option value="$PROJECT_DIR$/astro/app/Institution.php" />
         <option value="$PROJECT_DIR$/astro/database/crudgenerator/institution.json" />
         <option value="$PROJECT_DIR$/astro/database/crudgenerator/celestialbody.json" />
-        <option value="$PROJECT_DIR$/astro/database/migrations/2018_06_11_042751_create_celestial_bodies_table.php" />
         <option value="$PROJECT_DIR$/astro/app/Http/Controllers/Admin/CelestialBodiesController.php" />
+        <option value="$PROJECT_DIR$/astro/database/crudgenerator/comet.json" />
+        <option value="$PROJECT_DIR$/astro/database/migrations/2018_06_11_042751_create_celestial_bodies_table.php" />
       </list>
     </option>
   </component>
@@ -221,10 +230,10 @@
       <path value="$PROJECT_DIR$/astro/vendor/appzcoder/crud-generator" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="812" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="722" />
+    <option name="width" value="718" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -249,36 +258,6 @@
               <item name="AstronomyDB" type="b2602c69:ProjectViewProjectNode" />
               <item name="AstronomyDB" type="462c0819:PsiDirectoryNode" />
               <item name="astro" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AstronomyDB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AstronomyDB" type="462c0819:PsiDirectoryNode" />
-              <item name="astro" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AstronomyDB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AstronomyDB" type="462c0819:PsiDirectoryNode" />
-              <item name="astro" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AstronomyDB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AstronomyDB" type="462c0819:PsiDirectoryNode" />
-              <item name="astro" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AstronomyDB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AstronomyDB" type="462c0819:PsiDirectoryNode" />
-              <item name="astro" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -294,27 +273,6 @@
               <item name="astro" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
               <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AstronomyDB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AstronomyDB" type="462c0819:PsiDirectoryNode" />
-              <item name="astro" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AstronomyDB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AstronomyDB" type="462c0819:PsiDirectoryNode" />
-              <item name="astro" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AstronomyDB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AstronomyDB" type="462c0819:PsiDirectoryNode" />
-              <item name="astro" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AstronomyDB" type="b2602c69:ProjectViewProjectNode" />
@@ -360,15 +318,15 @@
       <workItem from="1528661497233" duration="423000" />
       <workItem from="1528662019652" duration="5853000" />
       <workItem from="1528674342113" duration="585000" />
-      <workItem from="1528691172438" duration="874000" />
+      <workItem from="1528691172438" duration="1518000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10179000" />
+    <option name="totallyTimeSpent" value="10823000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="812" extended-state="6" />
+    <frame x="722" y="0" width="718" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -377,7 +335,7 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28402779" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2534819" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
@@ -399,16 +357,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/astro/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="176" column="18" selection-start-line="176" selection-start-column="18" selection-end-line="176" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/astro/app/Http/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/astro/config/crudgenerator.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -625,24 +573,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/astro/database/migrations/2018_06_11_042751_create_celestial_bodies_table.php">
+    <entry file="file://$PROJECT_DIR$/astro/app/Http/Controllers/Admin/CelestialBodiesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+        <state relative-caret-position="140">
+          <caret line="102" column="44" selection-start-line="102" selection-start-column="44" selection-end-line="102" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/astro/database/crudgenerator/celestialbody.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+        <state relative-caret-position="270">
+          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/astro/app/Http/Controllers/Admin/CelestialBodiesController.php">
+    <entry file="file://$PROJECT_DIR$/astro/database/crudgenerator/comet.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+        <state relative-caret-position="180">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/astro/database/migrations/2018_06_11_042751_create_celestial_bodies_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/astro/database/migrations/2018_06_11_045035_create_comets_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
         </state>
       </provider>
     </entry>
