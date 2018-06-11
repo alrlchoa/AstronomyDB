@@ -1,0 +1,39 @@
+{
+  "fields": [
+    {
+      "name": "doi",
+      "type": "string"
+    },
+    {
+      "name": "date_of_publication",
+      "type": "date"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "publication",
+      "type": "belongsToMany",
+      "class": "App\\Publication"
+    },
+    {
+      "name": "celestialbody",
+      "type": "belongsToMany",
+      "class": "App\\CelestialBody"
+    },
+    {
+      "name": "researcher",
+      "type": "belongsToMany",
+      "class": "App\\Researcher"
+    }
+  ],
+  "validations": [
+    {
+      "field": "doi",
+      "rules": "required|max:20"
+    },
+    {
+      "field": "date_of_publication",
+      "rules": "required"
+    }
+  ]
+}
