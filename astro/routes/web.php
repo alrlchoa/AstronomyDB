@@ -30,3 +30,4 @@ Route::resource('admin/planets', 'Admin\\PlanetsController');
 Route::resource('admin/moons', 'Admin\\MoonsController');
 Route::resource('admin/galaxies', 'Admin\\GalaxiesController');
 Route::resource('admin/publications', 'Admin\\PublicationsController');
+Route::resource('admin/reasercher-fellowship', 'Admin\\ReasercherFellowshipController');
