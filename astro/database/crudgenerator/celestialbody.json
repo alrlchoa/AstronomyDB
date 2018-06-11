@@ -1,0 +1,71 @@
+{
+  "fields": [
+    {
+      "name": "right_ascension",
+      "type": "float"
+    },
+    {
+      "name": "declination",
+      "type": "float"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "verified",
+      "type": "boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "astronomer",
+      "type": "belongsToMany",
+      "class": "App\\Astronomer"
+    },
+    {
+      "name": "publication",
+      "type": "belongsToMany",
+      "class": "App\\Publication"
+    },
+    {
+      "name": "comet",
+      "type": "hasOne",
+      "class": "App\\Comet"
+    },
+    {
+      "name": "star",
+      "type": "hasOne",
+      "class": "App\\Star"
+    },
+    {
+      "name": "planet",
+      "type": "hasOne",
+      "class": "App\\Planet"
+    },
+    {
+      "name": "moon",
+      "type": "hasOne",
+      "class": "App\\Moon"
+    },
+    {
+      "name": "galaxy",
+      "type": "hasOne",
+      "class": "App\\Galaxy"
+    }
+  ],
+  "validations": [
+    {
+      "field": "right_ascension",
+      "rules": "required|unique:celestial_bodies"
+    },
+    {
+      "field": "declination",
+      "rules": "required|unique:celestial_bodies"
+    },
+    {
+      "field": "name",
+      "rules": "max:40"
+    }
+  ]
+}

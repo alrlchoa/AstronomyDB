@@ -20,3 +20,17 @@ Route::get('/', 'PagesController@getIndex');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('admin/institutions', 'Admin\\InstitutionsController');
+Route::resource('admin/celestial-bodies', 'Admin\\CelestialBodiesController');
+Route::resource('admin/comets', 'Admin\\CometsController');
+Route::resource('admin/spectral-brightnesses', 'Admin\\SpectralBrightnessesController');
+Route::resource('admin/stars', 'Admin\\StarsController');
+Route::resource('admin/planets', 'Admin\\PlanetsController');
+Route::resource('admin/moons', 'Admin\\MoonsController');
+Route::resource('admin/galaxies', 'Admin\\GalaxiesController');
+Route::resource('admin/publications', 'Admin\\PublicationsController');
+Route::resource('admin/researcher-fellowship', 'Admin\\ResearcherFellowshipController');
+Route::resource('admin/astronomers', 'Admin\\AstronomersController');
+Route::resource('admin/astronomers', 'Admin\\AstronomersController');
+Route::resource('admin/researcher-fellowships', 'Admin\\ResearcherFellowshipsController');

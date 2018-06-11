@@ -1,0 +1,58 @@
+{
+  "fields": [
+    {
+      "name": "planet_id",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "orbital_period",
+      "type": "float"
+    },
+    {
+      "name": "radius",
+      "type": "float"
+    }
+  ],
+  "foreign_keys": [
+    {
+      "column": "id",
+      "references": "id",
+      "on": "celestial_bodies",
+      "onDelete": "cascade",
+      "onUpdate": "cascade"
+    },
+    {
+      "column": "planet_id",
+      "references": "id",
+      "on": "planets",
+      "onDelete": "cascade",
+      "onUpdate": "cascade"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "planet",
+      "type": "belongsTo",
+      "class": "App\\Planet"
+    },
+    {
+      "name": "celestialbody",
+      "type": "belongsTo",
+      "class": "App\\CelestialBody"
+    }
+  ],
+  "validations": [
+    {
+      "field": "orbital_period",
+      "rules": "min:0"
+    },
+    {
+      "field": "radius",
+      "rules": "min:0"
+    },
+    {
+      "field": "planet_id",
+      "rules": "required"
+    }
+  ]
+}

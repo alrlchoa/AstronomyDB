@@ -1,0 +1,50 @@
+{
+  "fields": [
+    {
+      "name": "username",
+      "type": "string"
+    },
+    {
+      "name": "password",
+      "type": "string"
+    },
+    {
+      "name": "first_name",
+      "type": "string"
+    },
+    {
+      "name": "last_name",
+      "type": "string"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "researcherfellowship",
+      "type": "hasOne",
+      "class": "App\\ResearcherFellowship"
+    },
+    {
+      "name": "celestialbody",
+      "type": "belongsToMany",
+      "class": "App\\CelestialBody"
+    }
+  ],
+  "validations": [
+    {
+      "field": "username",
+      "rules": "required|unique:astronomers|max:20"
+    },
+    {
+      "field": "password",
+      "rules": "required|max:20"
+    },
+    {
+      "field": "first_name",
+      "rules": "required|max:40"
+    },
+    {
+      "field": "last_name",
+      "rules": "required|max:40"
+    }
+  ]
+}
