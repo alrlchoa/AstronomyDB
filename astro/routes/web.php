@@ -28,3 +28,4 @@ Route::resource('admin/spectral-brightnesses', 'Admin\\SpectralBrightnessesContr
 Route::resource('admin/stars', 'Admin\\StarsController');
 Route::resource('admin/planets', 'Admin\\PlanetsController');
 Route::resource('admin/moons', 'Admin\\MoonsController');
+Route::resource('admin/galaxies', 'Admin\\GalaxiesController');

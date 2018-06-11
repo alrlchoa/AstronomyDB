@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2135c974-2bc2-4d4b-ab7b-b485b6c29865" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/astro/database/crudgenerator/moon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/astro/database/crudgenerator/galaxy.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/astro/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/astro/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,29 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="star.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/astro/database/crudgenerator/star.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="5" selection-end-line="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="institution.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/astro/database/crudgenerator/institution.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
               <caret line="19" column="3" selection-start-line="14" selection-start-column="2" selection-end-line="19" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Star.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/astro/app/Star.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -63,11 +44,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2018_06_11_064857_create_moons_table.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="2018_06_11_064857_create_moons_table.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/astro/database/migrations/2018_06_11_064857_create_moons_table.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
               <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="galaxy.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/astro/database/crudgenerator/galaxy.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="comet.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/astro/database/crudgenerator/comet.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="25" selection-end-line="29" />
             </state>
           </provider>
         </entry>
@@ -139,6 +138,7 @@
         <option value="$PROJECT_DIR$/astro/database/migrations/2018_06_11_054917_create_stars_table.php" />
         <option value="$PROJECT_DIR$/astro/database/crudgenerator/planet.json" />
         <option value="$PROJECT_DIR$/astro/database/crudgenerator/moon.json" />
+        <option value="$PROJECT_DIR$/astro/database/crudgenerator/galaxy.json" />
       </list>
     </option>
   </component>
@@ -354,18 +354,18 @@
       <workItem from="1528674342113" duration="585000" />
       <workItem from="1528691172438" duration="2528000" />
       <workItem from="1528693794349" duration="3797000" />
-      <workItem from="1528699140509" duration="729000" />
+      <workItem from="1528699140509" duration="1089000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16359000" />
+    <option name="totallyTimeSpent" value="16719000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="23" width="1333" height="812" extended-state="0" />
+    <frame x="722" y="0" width="718" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2295574" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.42618385" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -393,9 +393,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/astro/app/Http/Controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/astro/app/Http/Controllers/PagesController.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -546,13 +543,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/astro/database/migrations/2018_06_11_050613_create_spectral_brightnesses_table.php" />
-    <entry file="file://$PROJECT_DIR$/astro/database/crudgenerator/comet.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="21" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/astro/database/migrations/2018_06_11_042751_create_celestial_bodies_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -643,6 +633,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/astro/database/crudgenerator/comet.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="25" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/astro/database/crudgenerator/galaxy.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
         </state>
       </provider>
     </entry>

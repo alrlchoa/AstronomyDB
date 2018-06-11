@@ -1,0 +1,36 @@
+{
+  "fields": [
+    {
+      "name": "brightness",
+      "type": "float"
+    },
+    {
+      "name": "redshift",
+      "type": "float"
+    },
+    {
+      "name": "type",
+      "type": "select",
+      "options": {
+        "spiral": "Spiral",
+        "elliptical": "Elliptical",
+        "irregular": "Irregular"
+      }
+    }
+  ],
+  "foreign_keys": [
+    {
+      "column": "id",
+      "references": "id",
+      "on": "celestial_bodies",
+      "onDelete": "cascade",
+      "onUpdate": "cascade"
+    }
+  ],
+  "validations": [
+    {
+      "field": "brightness",
+      "rules": "min:0"
+    }
+  ]
+}
