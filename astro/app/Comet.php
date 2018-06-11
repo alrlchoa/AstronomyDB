@@ -31,5 +31,10 @@ class Comet extends Model
     {
         return $this->belongsToMany('App\Star');
     }
+
+    public function celestialbody()
+    {
+        return $this->belongsTo('App\CelestialBody');
+    }
     
 }

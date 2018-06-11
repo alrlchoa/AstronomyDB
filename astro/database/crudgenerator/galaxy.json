@@ -27,6 +27,13 @@
       "onUpdate": "cascade"
     }
   ],
+  "relationships": [
+    {
+      "name": "celestialbody",
+      "type": "belongsTo",
+      "class": "App\\CelestialBody"
+    }
+  ],
   "validations": [
     {
       "field": "brightness",

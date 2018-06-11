@@ -34,6 +34,11 @@
       "name": "planet",
       "type": "belongsTo",
       "class": "App\\Planet"
+    },
+    {
+      "name": "celestialbody",
+      "type": "belongsTo",
+      "class": "App\\CelestialBody"
     }
   ],
   "validations": [

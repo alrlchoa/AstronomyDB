@@ -35,5 +35,9 @@ class Star extends Model
     {
         return $this->belongsToMany('App\Planet');
     }
+    public function celestialbody()
+    {
+        return $this->belongsTo('App\CelestialBody');
+    }
     
 }

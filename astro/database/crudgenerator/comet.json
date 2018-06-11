@@ -18,6 +18,11 @@
       "name": "star",
       "type": "belongsToMany",
       "class": "App\\Star"
+    },
+    {
+      "name": "celestialbody",
+      "type": "belongsTo",
+      "class": "App\\CelestialBody"
     }
   ],
   "validations": [

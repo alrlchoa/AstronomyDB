@@ -31,5 +31,9 @@ class Moon extends Model
     {
         return $this->belongsTo('App\Planet');
     }
+    public function celestialbody()
+    {
+        return $this->belongsTo('App\CelestialBody');
+    }
     
 }

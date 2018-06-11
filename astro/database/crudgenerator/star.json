@@ -29,6 +29,11 @@
       "name": "planet",
       "type": "belongsToMany",
       "class": "App\\Planet"
+    },
+    {
+      "name": "celestialbody",
+      "type": "belongsTo",
+      "class": "App\\CelestialBody"
     }
   ]
 }

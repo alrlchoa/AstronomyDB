@@ -27,5 +27,10 @@ class Galaxy extends Model
      */
     protected $fillable = ['brightness', 'redshift', 'type'];
 
+    public function celestialbody()
+    {
+        return $this->belongsTo('App\CelestialBody');
+    }
+
     
 }
