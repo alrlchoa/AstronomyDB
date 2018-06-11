@@ -26,3 +26,4 @@ Route::resource('admin/celestial-bodies', 'Admin\\CelestialBodiesController');
 Route::resource('admin/comets', 'Admin\\CometsController');
 Route::resource('admin/spectral-brightnesses', 'Admin\\SpectralBrightnessesController');
 Route::resource('admin/stars', 'Admin\\StarsController');
+Route::resource('admin/planets', 'Admin\\PlanetsController');

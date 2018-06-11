@@ -1,0 +1,43 @@
+{
+  "fields": [
+    {
+      "name": "orbital_period",
+      "type": "float"
+    },
+    {
+      "name": "planet_type",
+      "type": "select",
+      "options": {
+        "gas_giant": "Gas Giant",
+        "earth_like": "Earth-Like",
+        "super_earth": "Super Earth"
+      }
+    }
+  ],
+  "foreign_keys": [
+    {
+      "column": "id",
+      "references": "id",
+      "on": "celestial_bodies",
+      "onDelete": "cascade"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "moon",
+      "type": "hasMany",
+      "class": "App\\Moon"
+    },
+    {
+      "name": "star",
+      "type": "belongsToMany",
+      "class": "App\\Star"
+    }
+  ],
+  "validations": [
+    {
+      "field": "orbital_period",
+      "rules": "min:0"
+    }
+  ]
+}
