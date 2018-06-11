@@ -1,0 +1,35 @@
+{
+  "fields": [
+    {
+      "name": "spectral_type",
+      "type": "select",
+      "options": {
+        "o": "O",
+        "b": "B",
+        "a": "A",
+        "f": "F",
+        "g": "G",
+        "a": "A",
+        "k": "K",
+        "m": "M"
+      }
+    },
+    {
+      "name": "brightness",
+      "type": "float"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "star",
+      "type": "hasMany",
+      "class": "App\\Star"
+    }
+  ],
+  "validations": [
+    {
+      "field": "brightness",
+      "rules": "required|unique:spectral_brightnesses|min:0"
+    }
+  ]
+}
