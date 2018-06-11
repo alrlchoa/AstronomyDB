@@ -30,7 +30,8 @@ Route::resource('admin/planets', 'Admin\\PlanetsController');
 Route::resource('admin/moons', 'Admin\\MoonsController');
 Route::resource('admin/galaxies', 'Admin\\GalaxiesController');
 Route::resource('admin/publications', 'Admin\\PublicationsController');
-Route::resource('admin/researcher-fellowship', 'Admin\\ResearcherFellowshipController');
 Route::resource('admin/astronomers', 'Admin\\AstronomersController');
 Route::resource('admin/astronomers', 'Admin\\AstronomersController');
 Route::resource('admin/researcher-fellowships', 'Admin\\ResearcherFellowshipsController');
+
+Route::resource('cb','CBController');
