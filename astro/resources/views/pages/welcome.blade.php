@@ -9,30 +9,31 @@
               <p>If you are itching to know what thing you just found in the sky, enter the coordinates below and search it up. If you want to just explore, try the advanced searches</p>
               <div class="row"> 
                 <div class="col-lg-12">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="right ascension, declination">
-                    <span class="input-group-btn">
-                      <button class="btn btn-secondary" type="button">Explore!</button>
-                    </span>
-                  </div><!-- /input-group -->
+                    {{Form::open(['class'=>'form-inline'])}}
+                      {{Form::text('right_ascension',null,['class'=>'form-control','placeholder'=>'right-ascension'])}}
+                      {{Form::text('declanation',null,['class'=>'form-control','placeholder'=>'declanation'])}}
+                      {{Form::submit('Explore!',['class'=>'btn btn-secondary'])}}
+                    {{Form::close()}}
                 </div><!-- /.col-lg-6 -->
               </div><!-- /.row -->
               <br />
-              <p><button class="btn btn-secondary btn-sm" data-toggle="collapse" data-target="#Advanced">Advanced Searching</button></p>
+                <p>
+                  {{Form::open()}}
+                  {{Form::button('Advanced Searching',['class'=> 'btn btn-secondary btn-sm', 'data-toggle'=>'collapse', 'data-target'=>'#Advanced'])}}
+                  {{Form::close()}}
+                </p>           
               <div class="col-md-12 collapse" id="Advanced">
                 <div class="container">
                   <p class="h4">Search by threshold brightness:</p>
                   <div class="input-group col-md-8">
-                    <div class="container">
-                      <input type="number" step=0.01 min=0 class="form-control" placeholder="Search all brightness &ge; threshold">
-                      <div class="checkbox">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" value="ver">
-                          Include non-verified Celestial Bodies
-                        </label>
-                      </div>
-                      <button class="btn btn-secondary" type="button">Search</button>
+                    <div class="container">  
+                      {{Form::open()}}
+                      {!!Form::input('number','amount',null,['class'=> 'form-control', 'placeholder' =>'Search all brightness &ge; threshold','step' => '0.01', 'min'=>'0'])!!}
+                      {{Form::checkbox('ver', null, null, ['class'=>'form-check-input'])}}
+                      {{Form::label('ver','Include non-verified Celestial Bodies')}}
                     </div>
+                    {{Form::submit('Search',['class'=>'btn btn-secondary'])}}
+                    {{Form::close()}}     
                   </div><!-- /input-group -->
                 </div>
                 <hr>
@@ -42,49 +43,51 @@
                     <div class="form-check">
                       <div class="checkbox">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" value="comet">
-                          Comet
+                          {{Form::open()}}
+                          {{Form::checkbox('comet', null, null, ['class'=>'form-check-input'])}}
+                          {{Form::label('comet','Comet')}}
                         </label>
                       </div>
                       <div class="checkbox">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" value="star">
-                          Star
+                          {{Form::checkbox('star', null, null, ['class'=>'form-check-input'])}}
+                          {{Form::label('star','Star')}}
                         </label>
                       </div>
                       <div class="checkbox">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" value="planet">
-                          Planet
+                          {{Form::checkbox('planet', null, null, ['class'=>'form-check-input'])}}
+                          {{Form::label('planet','Planet')}}  
                         </label>
                       </div>
                       <div class="checkbox">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" value="moon">
-                          Moon
+                          {{Form::checkbox('moon', null, null, ['class'=>'form-check-input'])}}
+                          {{Form::label('moon','Moon')}}                        
                         </label>
                       </div>
                       <div class="checkbox">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" value="galaxy">
-                          Galaxy
+                          {{Form::checkbox('galaxy', null, null, ['class'=>'form-check-input'])}}
+                          {{Form::label('galaxy','Galaxy')}}
                         </label>
                       </div>
                       <div class="checkbox">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" value="none">
-                          None Specified
+                          {{Form::checkbox('none', null, null, ['class'=>'form-check-input'])}}
+                          {{Form::label('none','None Specified')}}
                         </label>
                       </div>
                       <hr>
                       <div class="checkbox">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" value="ver">
-                          Include non-verified Celestial Bodies
+                          {{Form::checkbox('ver', null, null, ['class'=>'form-check-input'])}}
+                          {{Form::label('ver','Include non-verified Celestial Bodies')}}
                         </label>
                       </div>
                       <br />
-                      <button class="btn btn-secondary" type="button">Search</button>
+                      {{Form::submit('Search',['class'=>'btn btn-secondary'])}}
+                      {{Form::close()}}
                     </div>
                   </div><!-- /input-group -->
                 </div>
@@ -92,33 +95,41 @@
                 <div class="container">
                   <p class="h4">Search by Year Range Discovered:</p>
                   <form class="form-inline">
-                    <input type="number" min=0 max=2018 class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="From">
+                    {{Form::open()}}
+                    {!!Form::input('number','amount',null,['class'=> 'form-control mb-2 mr-sm-2 mb-sm-0', 'placeholder' =>'From','min'=>'0','max'=>'2018','id'=>'inlineFormInput'])!!}
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                      <input type="number" min=0 max=2018 class="form-control" id="inlineFormInputGroup" placeholder="To">
+                      {!!Form::input('number','amount',null,['class'=> 'form-control', 'placeholder' =>'To','min'=>'0','max'=>'2018','id'=>'inlineFormInputGroup'])!!}
                     </div>
                     <div class="form-check mb-2 mr-sm-2 mb-sm-0">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox"> Include non-verified Celestial Bodies
+                        {{Form::checkbox('ver', null, null, ['class'=>'form-check-input'])}}
+                          {{Form::label('ver','Include non-verified Celestial Bodies')}}
                       </label>
                     </div>
-
-                    <button type="submit" class="btn btn-secondary">Submit</button>
+                    {{Form::submit('Search',['class'=>'btn btn-secondary'])}}
+                    {{Form::close()}}
                   </form>
                 </div>
                 <hr>
                 <div class="container">
                   <p class="h4">Search by Astronomical ID:</p>
                   <div class="input-group col-md-8">
-                      <input type="number" step=0.01 min=0 class="form-control" placeholder="Input  Astronomical ID">
-                      <button class="btn btn-secondary" type="button">Search</button>
+                   {{Form::open(['class'=>'form-inline'])}}
+                    {!!Form::input('number','amount',null,['class'=> 'form-control', 'placeholder' =>'Input  Astronomical ID', 'min'=>'0'])!!}
+                    {{Form::submit('Search',['class'=>'btn btn-secondary'])}}
+                    {{Form::close()}}  
                   </div><!-- /input-group -->
                 </div>
                 <hr>
                 <div class="container">
                 <p class="h4">Search a Specific User:</p>
                 <div class="input-group col-md-8">
-                    <input type="number" step=0.01 min=0 class="form-control" placeholder="Input  Username">
-                    <button class="btn btn-secondary" type="button">Search</button>
+                  <div class="row">
+                   {{Form::open(['class'=>'form-inline'])}}                    
+                    {!!Form::input('text','amount',null,['class'=> 'form-control', 'placeholder' =>'Input Username'])!!}
+                    {{Form::submit('Search',['class'=>'btn btn-secondary'])}}                  
+                    {{Form::close()}}  
+                    </div>                  
                 </div><!-- /input-group -->
                 </div>
               </div>
