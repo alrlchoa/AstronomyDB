@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CelestialBody;
+use App\Comet;
+use App\Galaxy;
+use App\Moon;
+use App\Planet;
+use App\Star;
 
 class CBController extends Controller
 {
@@ -36,14 +41,16 @@ class CBController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'declination' => 'required|unique:celestial_bodies|min:0|max:360',
-            'right_ascension' => 'required|unique:celestial_bodies|min:0|max:360',
+            'declination' => 'required|unique:celestial_bodies|between:0,360',
+            'right_ascension' => 'required|unique:celestial_bodies|between:0,360',
             'name' => 'max:40'
-		]);
+        ]);
+        $cb = new CelestialBody;
+        
         $requestData = $request->all();
         
         CelestialBody::create($requestData);
-
+        
         return redirect('admin/celestial-bodies')->with('flash_message', 'Celestial Body added!');
     }
 
