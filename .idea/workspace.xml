@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2135c974-2bc2-4d4b-ab7b-b485b6c29865" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/AstronomyDB.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AstronomyDB.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -258,13 +260,14 @@
       <path value="$PROJECT_DIR$/astro/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/astro/vendor/laravelcollective/html" />
       <path value="$PROJECT_DIR$/astro/vendor/appzcoder/crud-generator" />
+      <path value="$PROJECT_DIR$/astro/vendor/laracasts/generators" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="64" />
     <option name="y" value="23" />
     <option name="width" value="1333" />
-    <option name="height" value="810" />
+    <option name="height" value="807" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -377,15 +380,15 @@
       <workItem from="1528707859167" duration="1425000" />
       <workItem from="1528757172959" duration="1581000" />
       <workItem from="1528763897751" duration="296000" />
+      <workItem from="1528839448761" duration="230000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24809000" />
+    <option name="totallyTimeSpent" value="25039000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="23" width="1333" height="810" extended-state="0" />
-    <editor active="true" />
+    <frame x="64" y="23" width="1333" height="807" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3135784" />
       <window_info anchor="bottom" id="TODO" order="6" />
