@@ -4,6 +4,8 @@
 
 @section('content')
 
-    <p class = "lead">This is a Celestial Body Post</p>
+    <h1>{{ $cb->title }}</h1>
+
+    <p class = "lead">{{ $cb->body }}</p>
 
 @endsection
