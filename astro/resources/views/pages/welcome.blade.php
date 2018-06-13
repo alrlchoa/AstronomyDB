@@ -9,11 +9,11 @@
               <p>If you are itching to know what thing you just found in the sky, enter the coordinates below and search it up. If you want to just explore, try the advanced searches</p>
               <div class="row"> 
                 <div class="col-lg-12">
-                    {{Form::open(['class'=>'form-inline'])}}
-                      {{Form::text('right_ascension',null,['class'=>'form-control','placeholder'=>'right-ascension'])}}
-                      {{Form::text('declanation',null,['class'=>'form-control','placeholder'=>'declanation'])}}
-                      {{Form::submit('Explore!',['class'=>'btn btn-secondary'])}}
-                    {{Form::close()}}
+                    {!! Form::open(['route'=>'cb.search', 'class'=>'form-inline'])!!}
+                      {!! Form::number('right_ascension',null,['class'=>'form-control','placeholder'=>'right-ascension']) !!}
+                      {!! Form::number('declanation',null,['class'=>'form-control','placeholder'=>'declanation']) !!}
+                      {!! Form::submit('Explore!',['class'=>'btn btn-secondary']) !!}
+                    {!! Form::close()!!}
                 </div><!-- /.col-lg-6 -->
               </div><!-- /.row -->
               <br />

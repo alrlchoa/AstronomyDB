@@ -11,6 +11,8 @@
 |
 */
 
+//Route::post('/cb/search', 'CBController@search')->name('cb.search');
+Route::get('cb/search', 'CBController@search')->name('cb.search');
 
 Route::get('/team', 'PagesController@getTeam');
 
@@ -35,3 +37,4 @@ Route::resource('admin/astronomers', 'Admin\\AstronomersController');
 Route::resource('admin/researcher-fellowships', 'Admin\\ResearcherFellowshipsController');
 
 Route::resource('cb','CBController');
+
