@@ -140,8 +140,8 @@ class CBController extends Controller
      */
     public function show($id)
     {
-        $cb = CelestialBody::find($id);
-        return view('cb.show')->with('cb', $cb);
+        $cb = CelestialBody::findOrFail($id);
+        return view('cb.show')->withCb($cb);
     }
 
     /**
