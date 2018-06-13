@@ -63,26 +63,19 @@ class CBController extends Controller
      */
     public function search(Request $request)
     {
-//        $this->validate($request, [
-//            'right_ascension' => 'required|min:0|max:360',
-//            'declination' => 'required|min:0|max:360']);
-//
-//        $right_ascension = $request->input('right_ascension');
-//        $declination = $request->input('declination');
-//        $celestialbody = DB::table('celestial_bodies')
-//            ->select(DB::raw("*"))
-//            ->where('right_ascension', '=', $right_ascension)
-//            ->where('declination','=', $declination)
-//            ->get(); //Method Illuminate\Database\Query\Builder::table does not exist.
+        $this->validate($request, [
+            'right_ascension' => 'required|min:0|max:360',
+            'declination' => 'required|min:0|max:360']);
 
-        /*If this is the one commented out, then when you directly search .../cb/search, it will
-        redirect to home page; if you click Explore!, it will give HttpException;
-        MAYBE BECAUSE WE HAVE NOTHING IN OUR DATABASE SO VALIDATION, OR THE SEARCH'S ->get() DOESN'T WORK??
-        */
+        $right_ascension = $request->input('right_ascension');
+        $declination = $request->input('declination');
+        $celestialbody = DB::table('celestial_bodies')
+            ->select(DB::raw("*"))
+            ->where('right_ascension', '=', $right_ascension)
+            ->where('declination','=', $declination)
+            ->get();
 
-//        $celestialbody = CelestialBody::all();
-
-        return view('cb.search');//->withCelestialbody($celestialbody);
+        return view('cb.search')->withCelestialbody($celestialbody);
     }
 
     /**

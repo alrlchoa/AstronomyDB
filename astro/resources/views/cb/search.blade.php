@@ -16,16 +16,14 @@
 
 			<tbody>
 
-				{{--@foreach ($celestialbody as $CB)--}}
-				{{--<tr>--}}
-					{{--<th>{{$CB->id}}</th>--}}
-					{{--<th>{{$CB->name}}</th>--}}
-					{{--<th>{{$CB->right_ascension}}</th>--}}
-					{{--<th>{{$CB->declination}}</th>--}}
-
-				{{--</tr>--}}
-
-				{{--@endforeach--}}
+				@foreach ($celestialbody as $CB)
+				<tr>
+					<th>{{$CB->id}}</th>
+					<th>{{$CB->name}}</th>
+					<th>{{$CB->right_ascension}}</th>
+					<th>{{$CB->declination}}</th>
+				</tr>
+				@endforeach
 
 			</tbody>
 		</table>

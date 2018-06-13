@@ -11,7 +11,7 @@
                 <div class="col-lg-12">
                     {!! Form::open(['route'=>'cb.search', 'class'=>'form-inline'])!!}
                       {!! Form::number('right_ascension',null,['class'=>'form-control','placeholder'=>'right-ascension']) !!}
-                      {!! Form::number('declanation',null,['class'=>'form-control','placeholder'=>'declanation']) !!}
+                      {!! Form::number('declination',null,['class'=>'form-control','placeholder'=>'declination']) !!}
                       {!! Form::submit('Explore!',['class'=>'btn btn-secondary']) !!}
                     {!! Form::close()!!}
                 </div><!-- /.col-lg-6 -->

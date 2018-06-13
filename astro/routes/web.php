@@ -11,8 +11,7 @@
 |
 */
 
-//Route::post('/cb/search', 'CBController@search')->name('cb.search');
-Route::get('cb/search', 'CBController@search')->name('cb.search');
+Route::post('cb/search', 'CBController@search')->name('cb.search');
 
 Route::get('/team', 'PagesController@getTeam');
 
