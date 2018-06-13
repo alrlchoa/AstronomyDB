@@ -7,6 +7,7 @@
         @include('partials._nav')
         <br />
         <div class="container">
+            @include('partials._messages')
         
             @yield('content')
 
