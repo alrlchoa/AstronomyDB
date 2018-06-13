@@ -103,7 +103,7 @@ class CBController extends Controller
      */
     public function show($id)
     {
-        $cb = CelestialBody::find(id);
+        $cb = CelestialBody::find($id);
         return view('cd.show')->with('cb', $post);
     }
 
