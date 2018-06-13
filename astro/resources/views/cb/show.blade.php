@@ -4,8 +4,9 @@
 
 @section('content')
 
-    <h1>{{ $cb->title }}</h1>
+    <h1>{{ $cb->id }}</h1>
 
-    <p class = "lead">{{ $cb->body }}</p>
+    <p class = "lead">{{ $cb->name }}</p>
+    <p> This is the normal format.</p>
 
 @endsection
