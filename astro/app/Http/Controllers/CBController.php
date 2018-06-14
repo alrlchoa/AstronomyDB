@@ -140,7 +140,7 @@ class CBController extends Controller
      */
     public function show($id)
     {
-        $cb = CelestialBody::find($id);
+        $cb = CelestialBody::findOrFail($id);
         if (is_null($cb)){
             return null;
         }
