@@ -22,7 +22,7 @@
 
     @if (!empty($galaxy))
         <p>Galaxy's Brightness: {{$galaxy->brightness}}</p>
-        <p>Galaxy's Redshift: {{$galaxy->speed}}</p>
+        <p>Galaxy's Redshift: {{$galaxy->redshift}}</p>
         <p>Galaxy's Type: {{$galaxy->type}}</p>
     @endif
 
