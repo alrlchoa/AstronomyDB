@@ -250,7 +250,7 @@ class CBController extends Controller
                     ->get();
             }
             if (array_has($array, 'none')) {
-                $galaxy = DB::table('celestial_bodies')
+                $none = DB::table('celestial_bodies')
                     ->get();
             }
         }else{
@@ -285,7 +285,7 @@ class CBController extends Controller
                     ->get();
             }
             if (array_has($array, 'none')) {
-                $galaxy = DB::table('celestial_bodies')
+                $none = DB::table('celestial_bodies')
                     ->where('celestial_bodies.verified','=',1)
                     ->get();
             }
