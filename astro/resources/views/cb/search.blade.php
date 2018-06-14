@@ -29,7 +29,4 @@
 		</table>
 	</div>
 </div>
-
-
-
 @endsection

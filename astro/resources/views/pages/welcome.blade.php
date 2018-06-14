@@ -114,10 +114,10 @@
                 <div class="container">
                   <p class="h4">Search by Astronomical ID:</p>
                   <div class="input-group col-md-8">
-                   {{Form::open(['class'=>'form-inline'])}}
-                    {!!Form::input('number','amount',null,['class'=> 'form-control', 'placeholder' =>'Input  Astronomical ID', 'min'=>'0'])!!}
-                    {{Form::submit('Search',['class'=>'btn btn-secondary'])}}
-                    {{Form::close()}}  
+                    {!! Form::open(['route' => 'cb.searchID', 'class'=>'form-inline']) !!}
+                    {!! Form::number('id',null,['class'=> 'form-control', 'placeholder' =>'Input  Astronomical ID', 'min'=>'0']) !!}
+                    {!! Form::submit('Search',['class'=>'btn btn-secondary']) !!}
+                    {!! Form::close() !!}  
                   </div><!-- /input-group -->
                 </div>
                 <hr>

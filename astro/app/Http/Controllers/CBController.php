@@ -157,6 +157,27 @@ class CBController extends Controller
     }
 
     /**
+     * Searches by Specific ID
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function searchID(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required|exists:celestial_bodies,id'
+            ]);
+
+        $id = $request->id;
+        $celestialbody = DB::table('celestial_bodies')
+            ->select(DB::raw("*"))
+            ->where('id', '=', $id)
+            ->get();
+
+        return view('cb.search')->withCelestialbody($celestialbody);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
