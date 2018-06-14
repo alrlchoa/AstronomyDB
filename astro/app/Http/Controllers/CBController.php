@@ -140,12 +140,28 @@ class CBController extends Controller
      */
     public function show($id)
     {
-        $cb = CelestialBody::findOrFail($id);
-        $comet = Comet::findOrFail($id);
-        $galaxy = Galaxy::findOrFail($id);
-        $moon = Moon::findOrFail($id);
-        $planet = Planet::findOrFail($id);
-        $star = Star::findOrFail($id);
+        $cb = CelestialBody::find($id);
+        if (is_null($cb)){
+            return null;
+        }
+
+        $comet = Comet::find($id);
+        $galaxy = Galaxy::find($id);
+        $moon = Moon::find($id);
+        $planet = Planet::find($id);
+        $star = Star::find($id);
+
+        if (!is_null($comet)){
+            return view('cb.show')->withCb($cb)->withComet($comet);
+        }else if (!is_null($galaxy)){
+            return view('cb.show')->withCb($cb)->withGalaxy($galaxy);
+        }else if(!is_null($moon)){
+            return view('cb.show')->withCb($cb)->withMoon($moon);
+        }else if(!is_null($planet)){
+            return view('cb.show')->withCb($cb)->withPlanet($planet);
+        }else if(!is_null($star)){
+            return view('cb.show')->withCb($cb)->withMoon($star);
+        }
         return view('cb.show')->withCb($cb);
     }
 
