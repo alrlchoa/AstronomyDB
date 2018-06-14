@@ -40,16 +40,57 @@ class CBController extends Controller
      */
     public function store(Request $request)
     {
+        if (!$request->has('verified')) {
+            $request->merge(['verified' => 0]);
+        }
         $this->validate($request, [
             'declination' => 'required|unique:celestial_bodies|between:0,360',
             'right_ascension' => 'required|unique:celestial_bodies|between:0,360',
             'name' => 'max:40'
         ]);
         $cb = new CelestialBody;
+        $cb->right_ascension = $request->right_ascension;
+        $cb->declination = $request->declination;
+        $cb->name = $request->name;
+        $cb->verified = $request->verified;
+
         
-        $requestData = $request->all();
         
-        CelestialBody::create($requestData);
+        switch($request->cbtype){
+            case 0:
+                $cb->save();
+                break;
+
+            case 1:
+                $this->validate($request, [
+                    'comet_speed' => 'required|min:0'
+                ]);
+                $cb->save();
+                $comet = new Comet;
+                $comet->id = $cb->id;;
+                $comet->speed = $request->comet_speed;
+                $comet->save();
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                break;
+
+            case 4:
+                break;
+
+            case 5:
+                break;
+            
+            default:
+                $this->validate($request, [
+                    'cbtype' => 'between:0,5'
+                ]);
+            }
+
+        // CelestialBody::create($requestData);
         
         return redirect('admin/celestial-bodies')->with('flash_message', 'Celestial Body added!');
     }

@@ -10,10 +10,10 @@
             {!! Form::open(['route' => 'cb.store', 'files' => true]) !!}
 
                 {{ Form::label('right_ascension', 'Right Ascension') }}
-                {!! Form::input('number','right_ascension',null,['class'=> 'form-control', 'placeholder' =>'Right Ascension', 'step'=>0.01]) !!}  
+                {!! Form::number('right_ascension',null,['class'=> 'form-control', 'placeholder' =>'Right Ascension', 'step'=>0.01]) !!}  
 
                 {{ Form::label('declination', 'Declination') }}
-                {!! Form::input('number','declination',null,['class'=> 'form-control', 'placeholder' =>'Declination', 'step'=>0.01]) !!} 
+                {!! Form::number('declination',null,['class'=> 'form-control', 'placeholder' =>'Declination', 'step'=>0.01]) !!} 
 
                 {{ Form::label('name', 'Name') }}
                 {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Name']) !!}
@@ -49,19 +49,19 @@
                 <hr>
                 <div class="col-md-11 offset-md-1">
                     <p class="lead"> For Comets: </p>
-                    {!! Form::label('comet-speed', 'Speed: ') !!}
-                    {!! Form::input('number','comet-speed',null,['class'=> 'form-control', 'placeholder' =>'Speed']) !!}
+                    {!! Form::label('comet_speed', 'Speed: ') !!}
+                    {!! Form::number('comet_speed',null,['class'=> 'form-control', 'placeholder' =>'Speed']) !!}
                 </div>
                 <div class="col-md-11 offset-md-1">
                     <p class="lead"> For Galaxies: </p>
-                    {!! Form::label('galaxy-brightness', 'Brightness: ') !!}
-                    {!! Form::input('number','galaxy-brightness',null,['class'=> 'form-control', 'placeholder' =>'Brightness']) !!}
+                    {!! Form::label('galaxy_brightness', 'Brightness: ') !!}
+                    {!! Form::number('galaxy_brightness',null,['class'=> 'form-control', 'placeholder' =>'Brightness']) !!}
 
-                    {!! Form::label('galaxy-redshift', 'Redshift: ') !!}
-                    {!! Form::input('number','galaxy-redshift',null,['class'=> 'form-control', 'placeholder' =>'Red Shift']) !!}
+                    {!! Form::label('galaxy_redshift', 'Redshift: ') !!}
+                    {!! Form::number('galaxy_redshift',null,['class'=> 'form-control', 'placeholder' =>'Red Shift']) !!}
 
-                    {!! Form::label('galaxy-type', 'Type: ') !!}
-                    {!! Form::select('galaxy-type', json_decode('{"spiral":"Spiral","elliptical":"Elliptical","irregular":"Irregular"}', true), null, ['class' => 'form-control']) !!}
+                    {!! Form::label('galaxy_type', 'Type: ') !!}
+                    {!! Form::select('galaxy_type', json_decode('{"spiral":"Spiral","elliptical":"Elliptical","irregular":"Irregular"}', true), null, ['class' => 'form-control']) !!}
                 </div>
                 <div class="col-md-11 offset-md-1">
                     <p class="lead"> For Moons: </p>
