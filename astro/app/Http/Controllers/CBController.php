@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Astronomer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\CelestialBody;
@@ -195,7 +196,8 @@ class CBController extends Controller
                 ->where('celestial_bodies.verified','=',1)
                 ->get();
         }
-        return view('cb.searchByThreshold')->withStar($cb_star)->withGalaxy($cb_galaxy);
+        $celestialbody = $cb_star->merge($cb_galaxy);
+        return view('cb.search')->withCelestialbody($celestialbody);
     }
 
 
@@ -215,6 +217,7 @@ class CBController extends Controller
             'none' => 'required_without_all:comet,star,planet,moon,galaxy',
         ]);
 
+        $celestialbody = new \Illuminate\Database\Eloquent\Collection;
         $array = $request->all();
         $comet = null;
         $star = null;
@@ -225,76 +228,103 @@ class CBController extends Controller
 
         if($request->has('ver')) {
             if (array_has($array, 'comet')) {
-                $comet = DB::table('comets')
+                $comet = Comet::query()
+                    ->select(DB::raw("*"))
                     ->join('celestial_bodies', 'comets.id', '=', 'celestial_bodies.id')
                     ->get();
+                $celestialbody = $celestialbody->merge($comet);
             }
             if (array_has($array, 'star')) {
-                $star = DB::table('stars')
+                $star = Star::query()
+                    ->select(DB::raw("*"))
                     ->join('celestial_bodies', 'stars.id', '=', 'celestial_bodies.id')
                     ->get();
+                $celestialbody = $celestialbody->merge($star);
+
             }
             if (array_has($array, 'planet')) {
-                $planet = DB::table('planets')
+                $planet = Planet::query()
+                    ->select(DB::raw("*"))
                     ->join('celestial_bodies', 'planets.id', '=', 'celestial_bodies.id')
                     ->get();
+                $celestialbody = $celestialbody->merge($planet);
+
             }
             if (array_has($array, 'moon')) {
-                $moon = DB::table('moons')
+                $moon = Moon::query()
+                    ->select(DB::raw("*"))
                     ->join('celestial_bodies', 'moons.id', '=', 'celestial_bodies.id')
                     ->get();
+                $celestialbody = $celestialbody->merge($moon);
+
             }
             if (array_has($array, 'galaxy')) {
-                $galaxy = DB::table('galaxies')
+                $galaxy = Galaxy::query()
+                    ->select(DB::raw("*"))
                     ->join('celestial_bodies', 'galaxies.id', '=', 'celestial_bodies.id')
                     ->get();
+                $celestialbody = $celestialbody->merge($galaxy);
+
             }
             if (array_has($array, 'none')) {
-                $none = DB::table('celestial_bodies')
+                $none = CelestialBody::query()
+                    ->select(DB::raw("*"))
                     ->get();
+                $celestialbody = $celestialbody->merge($none);
             }
+//            if(!$request->has('ver')) {
+//                $celestialbody = $celestialbody->where('celestial_bodies.verified','=', 1);
+//            }
         }else{
             if (array_has($array, 'comet')) {
-                $comet = DB::table('comets')
+                $comet = Comet::query()
                     ->join('celestial_bodies', 'comets.id', '=', 'celestial_bodies.id')
                     ->where('celestial_bodies.verified','=',1)
                     ->get();
+                $celestialbody = $celestialbody->merge($comet);
+
             }
             if (array_has($array, 'star')) {
-                $star = DB::table('stars')
+                $star = Star::query()
                     ->join('celestial_bodies', 'stars.id', '=', 'celestial_bodies.id')
                     ->where('celestial_bodies.verified','=',1)
                     ->get();
+                $celestialbody = $celestialbody->merge($star);
+
             }
             if (array_has($array, 'planet')) {
-                $planet = DB::table('planets')
+                $planet = Planet::query()
                     ->join('celestial_bodies', 'planets.id', '=', 'celestial_bodies.id')
                     ->where('celestial_bodies.verified','=',1)
                     ->get();
+                $celestialbody = $celestialbody->merge($planet);
             }
             if (array_has($array, 'moon')) {
-                $moon = DB::table('moons')
+                $moon = Moon::query()
                     ->join('celestial_bodies', 'moons.id', '=', 'celestial_bodies.id')
                     ->where('celestial_bodies.verified','=',1)
                     ->get();
+                $celestialbody = $celestialbody->merge($moon);
             }
             if (array_has($array, 'galaxy')) {
-                $galaxy = DB::table('galaxies')
+                $galaxy = Galaxy::query()
                     ->join('celestial_bodies', 'galaxies.id', '=', 'celestial_bodies.id')
                     ->where('celestial_bodies.verified','=',1)
                     ->get();
+                $celestialbody = $celestialbody->merge($galaxy);
             }
             if (array_has($array, 'none')) {
-                $none = DB::table('celestial_bodies')
+                $none = CelestialBody::query()
                     ->where('celestial_bodies.verified','=',1)
                     ->get();
-            }
-        }
+                $celestialbody = $celestialbody->merge($none);
 
-        return view('cb.searchByType')->withComet($comet)->withStar($star)->withPlanet($planet)->withMoon($moon)->withGalaxy($galaxy)->withNone($none);
+            }
+
+        }
+        return view('cb.search')->withCelestialbody($celestialbody);
 
     }
-
 
 
     /**
@@ -314,6 +344,28 @@ class CBController extends Controller
             ->get();
 
         return view('cb.search')->withCelestialbody($celestialbody);
+    }
+
+    /**
+     * Searches by  Username
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function searchByUser(Request $request){
+
+        $celestialbody = new \Illuminate\Database\Eloquent\Collection;
+        $this->validate($request, [
+            'amount' => 'required'
+        ]);
+        $username = $request->amount;
+
+        $astronomer = Astronomer::query()
+            ->select(DB::raw("*"))
+            ->where('username', '=', $username)
+            ->get();
+        return view('cb.userOutput')->withAstronomer($astronomer);
     }
 
     /**

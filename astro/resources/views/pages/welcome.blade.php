@@ -125,10 +125,10 @@
                 <p class="h4">Search a Specific User:</p>
                 <div class="input-group col-md-8">
                   <div class="row">
-                   {{Form::open(['class'=>'form-inline'])}}                    
+                   {!! Form::open(['route' => 'cb.searchByUser','class'=>'form-inline'])!!}
                     {!!Form::input('text','amount',null,['class'=> 'form-control', 'placeholder' =>'Input Username'])!!}
                     {{Form::submit('Search',['class'=>'btn btn-secondary'])}}                  
-                    {{Form::close()}}  
+                    {!! Form::close()!!}
                     </div>                  
                 </div><!-- /input-group -->
                 </div>
