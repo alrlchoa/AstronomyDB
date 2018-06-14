@@ -9,6 +9,7 @@ use App\Galaxy;
 use App\Moon;
 use App\Planet;
 use App\Star;
+use Session;
 
 class CBController extends Controller
 {
@@ -47,7 +48,7 @@ class CBController extends Controller
             'declination' => 'required|between:0,360',
             'right_ascension' => 'required|between:0,360',
             'name' => 'max:40',
-            'declination' => 'unique:celestial_bodies,declination,right_ascension'.$request->right_declination
+            'right_ascension' => 'unique:celestial_bodies,right_ascension,declination'.$request->declination
         ]);
         $cb = new CelestialBody;
         $cb->right_ascension = $request->right_ascension;
@@ -127,9 +128,9 @@ class CBController extends Controller
                 ]);
             }
 
-        // CelestialBody::create($requestData);
+        Session::flash('success', 'Celestial Body was created correctly.');
         
-        return redirect('admin/celestial-bodies')->with('flash_message', 'Celestial Body added!');
+        return redirect()->route('cb.show', $cb->id);
     }
 
     /**
