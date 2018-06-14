@@ -39,8 +39,7 @@ class CBController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         if (!$request->has('verified')) {
             $request->merge(['verified' => 0]);
         }
@@ -139,8 +138,7 @@ class CBController extends Controller
  * @param  \Illuminate\Http\Request  $request
  * @return \Illuminate\Http\Response
  */
-    public function search(Request $request)
-    {
+    public function search(Request $request){
         $this->validate($request, [
             'right_ascension' => 'required|min:0|max:360',
             'declination' => 'required|min:0|max:360']);
@@ -162,8 +160,7 @@ class CBController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function searchByThreshold(Request $request)
-    {
+    public function searchByThreshold(Request $request){
         $this->validate($request, [
             'amount' => 'required|min:0']);
 
@@ -208,8 +205,7 @@ class CBController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function searchByType(Request $request)
-    {
+    public function searchByType(Request $request){
         $this->validate($request, [
             'comet' => 'required_without_all:star,planet,moon,galaxy,none',
             'star' => 'required_without_all:comet,planet,moon,galaxy,none',
@@ -314,7 +310,6 @@ class CBController extends Controller
 
         $id = $request->id;
         $celestialbody = DB::table('celestial_bodies')
-            ->select(DB::raw("*"))
             ->where('id', '=', $id)
             ->get();
 
