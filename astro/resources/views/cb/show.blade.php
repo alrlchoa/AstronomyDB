@@ -16,16 +16,29 @@
         <p>Not Verified</p>
     @endif
 
-    @if (!is_null($comet))
-        <p>Comet Speed: {{$comet->speed}}</p>
+    @if (!empty($comet))
+        <p>Comet's Speed: {{$comet->speed}}</p>
     @endif
 
-    @if (!is_null($galaxy))
-        <p>Galaxy Brightness: {{$galaxy->brightness}}</p>
-        <p>Galaxy Redshift: {{$galaxy->speed}}</p>
-        <p>Galaxy Type: {{$galaxy->type}}</p>
+    @if (!empty($galaxy))
+        <p>Galaxy's Brightness: {{$galaxy->brightness}}</p>
+        <p>Galaxy's Redshift: {{$galaxy->speed}}</p>
+        <p>Galaxy's Type: {{$galaxy->type}}</p>
     @endif
 
+    @if (!empty($moon))
+        <p>Moon's Orbital Period: {{$moon->orbital_period}}</p>
+        <p>Moon's Radius: {{$moon->radius}}</p>
+        <p>Moon's Planet Id: {{$moon->planet_id}}</p>
+    @endif
 
+    @if (!empty($planet))
+        <p>Planet's Orbital Period: {{$planet->orbital_period}}</p>
+        <p>Planet's Type: {{$planet->planet_type}}</p>
+    @endif
+
+    @if (!empty($star))
+        <p>Star's Spectral Brightness: {{$star->spectral_brightness}}</p>
+    @endif
 
 @endsection
