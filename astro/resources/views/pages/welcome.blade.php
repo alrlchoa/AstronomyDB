@@ -27,13 +27,13 @@
                   <p class="h4">Search by threshold brightness:</p>
                   <div class="input-group col-md-8">
                     <div class="container">  
-                      {{Form::open()}}
-                      {!!Form::input('number','amount',null,['class'=> 'form-control', 'placeholder' =>'Search all brightness &ge; threshold','step' => '0.01', 'min'=>'0'])!!}
+                      {!! Form::open(['route'=>'cb.searchByThreshold'])!!}
+                      {!!Form::number('amount',null,['class'=> 'form-control', 'placeholder' =>'Search all brightness &ge; threshold','step' => '0.01', 'min'=>'0'])!!}
                       {{Form::checkbox('ver', null, null, ['class'=>'form-check-input'])}}
                       {{Form::label('ver','Include non-verified Celestial Bodies')}}
                     </div>
                     {{Form::submit('Search',['class'=>'btn btn-secondary'])}}
-                    {{Form::close()}}     
+                    {!! Form::close()!!}
                   </div><!-- /input-group -->
                 </div>
                 <hr>
