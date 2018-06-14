@@ -11,6 +11,7 @@ use App\Planet;
 use App\Star;
 use Session;
 
+
 class CBController extends Controller
 {
     /**
@@ -46,15 +47,16 @@ class CBController extends Controller
         }
         $this->validate($request, [
             'declination' => 'required|between:0,360',
-            'right_ascension' => 'required|between:0,360',
+            'right_ascension' => 'required|between:0,360|uniqueRaD:declination',
             'name' => 'max:40',
-            'right_ascension' => 'unique:celestial_bodies,right_ascension,declination'.$request->declination
         ]);
+
         $cb = new CelestialBody;
         $cb->right_ascension = $request->right_ascension;
         $cb->declination = $request->declination;
         $cb->name = $request->name;
-        $cb->verified = $request->verified;        
+        $cb->verified = $request->verified;  
+              
         switch($request->cbtype){
             case 0:
                 $cb->save();
