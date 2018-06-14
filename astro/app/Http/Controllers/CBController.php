@@ -307,8 +307,7 @@ class CBController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function searchID(Request $request)
-    {
+    public function searchID(Request $request){
         $this->validate($request, [
             'id' => 'required|exists:celestial_bodies,id'
             ]);
