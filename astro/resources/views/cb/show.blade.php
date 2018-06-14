@@ -38,7 +38,8 @@
     @endif
 
     @if (!empty($star))
-        <p>Star's Spectral Brightness: {{$star->spectral_brightness}}</p>
+        <p>Star's Spectral Brightness: {{$spectral->spectral_type}}</p>
+        <p>Star's Brightness: {{$spectral->brightness}}</p>
     @endif
 
 @endsection

@@ -11,6 +11,7 @@ use App\Galaxy;
 use App\Moon;
 use App\Planet;
 use App\Star;
+use App\SpectralBrightness;
 use Session;
 
 
@@ -399,7 +400,8 @@ class CBController extends Controller
         }else if(!is_null($planet)){
             return view('cb.show')->withCb($cb)->withPlanet($planet);
         }else if(!is_null($star)){
-            return view('cb.show')->withCb($cb)->withStar($star);
+            $spectral = SpectralBrightness::find($star->spectral_brightness_id);
+            return view('cb.show')->withCb($cb)->withStar($star)->withSpectral($spectral);
         }
         return view('cb.show')->withCb($cb);
     }
