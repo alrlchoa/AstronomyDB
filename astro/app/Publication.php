@@ -27,9 +27,13 @@ class Publication extends Model
      */
     protected $fillable = ['doi', 'date_of_publication'];
 
-    public function publication()
+    public function referrer()
     {
-        return $this->belongsToMany('App\Publication');
+        return $this->belongsToMany('App\Publication', 'publication_references', 'referrer_id', 'reference_id');
+    }
+    public function reference()
+    {
+        return $this->belongsToMany('App\Publication', 'publication_references', 'reference_id', 'referrer_id');
     }
     public function celestialbody()
     {

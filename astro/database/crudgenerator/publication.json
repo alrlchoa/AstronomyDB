@@ -11,7 +11,12 @@
   ],
   "relationships": [
     {
-      "name": "publication",
+      "name": "referrer",
+      "type": "belongsToMany",
+      "class": "App\\Publication"
+    },
+    {
+      "name": "reference",
       "type": "belongsToMany",
       "class": "App\\Publication"
     },

@@ -34,7 +34,6 @@ Route::resource('admin/stars', 'Admin\\StarsController');
 Route::resource('admin/planets', 'Admin\\PlanetsController');
 Route::resource('admin/moons', 'Admin\\MoonsController');
 Route::resource('admin/galaxies', 'Admin\\GalaxiesController');
-Route::resource('admin/publications', 'Admin\\PublicationsController');
 Route::resource('admin/astronomers', 'Admin\\AstronomersController');
 Route::resource('admin/astronomers', 'Admin\\AstronomersController');
 Route::resource('admin/researcher-fellowships', 'Admin\\ResearcherFellowshipsController');
@@ -42,3 +41,5 @@ Route::resource('admin/researcher-fellowships', 'Admin\\ResearcherFellowshipsCon
 Route::resource('cb','CBController');
 Route::resource('astro','AstroController');
 
+
+Route::resource('admin/publications', 'Admin\\PublicationsController');
