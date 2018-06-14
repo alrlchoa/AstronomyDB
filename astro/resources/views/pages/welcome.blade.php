@@ -43,7 +43,7 @@
                     <div class="form-check">
                       <div class="checkbox">
                         <label class="form-check-label">
-                          {{Form::open()}}
+                          {!! Form::open(['route'=>'cb.searchByType'])!!}
                           {{Form::checkbox('comet', null, null, ['class'=>'form-check-input'])}}
                           {{Form::label('comet','Comet')}}
                         </label>
@@ -87,7 +87,7 @@
                       </div>
                       <br />
                       {{Form::submit('Search',['class'=>'btn btn-secondary'])}}
-                      {{Form::close()}}
+                      {!! Form::close()!!}
                     </div>
                   </div><!-- /input-group -->
                 </div>

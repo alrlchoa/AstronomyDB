@@ -202,7 +202,102 @@ class CBController extends Controller
     }
 
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function searchByType(Request $request)
+    {
+        $this->validate($request, [
+            'comet' => 'required_without_all:star,planet,moon,galaxy,none',
+            'star' => 'required_without_all:comet,planet,moon,galaxy,none',
+            'planet' => 'required_without_all:comet,star,moon,galaxy,none',
+            'moon' => 'required_without_all:comet,star,planet,galaxy,none',
+            'galaxy' => 'required_without_all:comet,star,planet,moon,none',
+            'none' => 'required_without_all:comet,star,planet,moon,galaxy',
+        ]);
 
+        $array = $request->all();
+        $comet = null;
+        $star = null;
+        $planet = null;
+        $moon = null;
+        $galaxy = null;
+        $none = null;
+
+        if($request->has('ver')) {
+            if (array_has($array, 'comet')) {
+                $comet = DB::table('comets')
+                    ->join('celestial_bodies', 'comets.id', '=', 'celestial_bodies.id')
+                    ->get();
+            }
+            if (array_has($array, 'star')) {
+                $star = DB::table('stars')
+                    ->join('celestial_bodies', 'stars.id', '=', 'celestial_bodies.id')
+                    ->get();
+            }
+            if (array_has($array, 'planet')) {
+                $planet = DB::table('planets')
+                    ->join('celestial_bodies', 'planets.id', '=', 'celestial_bodies.id')
+                    ->get();
+            }
+            if (array_has($array, 'moon')) {
+                $moon = DB::table('moons')
+                    ->join('celestial_bodies', 'moons.id', '=', 'celestial_bodies.id')
+                    ->get();
+            }
+            if (array_has($array, 'galaxy')) {
+                $galaxy = DB::table('galaxies')
+                    ->join('celestial_bodies', 'galaxies.id', '=', 'celestial_bodies.id')
+                    ->get();
+            }
+            if (array_has($array, 'none')) {
+                $galaxy = DB::table('celestial_bodies')
+                    ->get();
+            }
+        }else{
+            if (array_has($array, 'comet')) {
+                $comet = DB::table('comets')
+                    ->join('celestial_bodies', 'comets.id', '=', 'celestial_bodies.id')
+                    ->where('celestial_bodies.verified','=',1)
+                    ->get();
+            }
+            if (array_has($array, 'star')) {
+                $star = DB::table('stars')
+                    ->join('celestial_bodies', 'stars.id', '=', 'celestial_bodies.id')
+                    ->where('celestial_bodies.verified','=',1)
+                    ->get();
+            }
+            if (array_has($array, 'planet')) {
+                $planet = DB::table('planets')
+                    ->join('celestial_bodies', 'planets.id', '=', 'celestial_bodies.id')
+                    ->where('celestial_bodies.verified','=',1)
+                    ->get();
+            }
+            if (array_has($array, 'moon')) {
+                $moon = DB::table('moons')
+                    ->join('celestial_bodies', 'moons.id', '=', 'celestial_bodies.id')
+                    ->where('celestial_bodies.verified','=',1)
+                    ->get();
+            }
+            if (array_has($array, 'galaxy')) {
+                $galaxy = DB::table('galaxies')
+                    ->join('celestial_bodies', 'galaxies.id', '=', 'celestial_bodies.id')
+                    ->where('celestial_bodies.verified','=',1)
+                    ->get();
+            }
+            if (array_has($array, 'none')) {
+                $galaxy = DB::table('celestial_bodies')
+                    ->where('celestial_bodies.verified','=',1)
+                    ->get();
+            }
+        }
+
+        return view('cb.searchByType')->withComet($comet)->withStar($star)->withPlanet($planet)->withMoon($moon)->withGalaxy($galaxy)->withNone($none);
+
+    }
 
 
 

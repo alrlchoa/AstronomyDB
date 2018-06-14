@@ -14,6 +14,7 @@
 Route::post('cb/searchID', 'CBController@searchID')->name('cb.searchID');
 Route::post('cb/search', 'CBController@search')->name('cb.search');
 Route::post('cb/searchByThreshold', 'CBController@searchByThreshold')->name('cb.searchByThreshold');
+Route::post('cb/searchByType', 'CBController@searchByType')->name('cb.searchByType');
 
 
 Route::get('/team', 'PagesController@getTeam');
