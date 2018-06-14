@@ -254,13 +254,13 @@ class CBController extends Controller
                     ->get();
             }
             if (array_has($array, 'none')) {
-                $none = DB::table('celestial_bodies')
+                $galaxy = DB::table('celestial_bodies')
                     ->select('celestial_bodies.id', 'celestial_bodies.name', 'celestial_bodies.right_ascension', 'celestial_bodies.declination')
-                    ->where('celestial_bodies.id','!=','comets.id')
-                    ->where('celestial_bodies.id','!=','stars.id')
-                    ->where('celestial_bodies.id','!=','planets.id')
-                    ->where('celestial_bodies.id','!=','moons.id')
-                    ->where('celestial_bodies.id','!=','galaxies.id')
+                    ->join('comets','celestial_bodies.id','!=','comets.id')
+                    ->join('stars','celestial_bodies.id','!=','stars.id')
+                    ->join('planets','celestial_bodies.id','!=','planets.id')
+                    ->join('moons','celestial_bodies.id','!=','moons.id')
+                    ->join('galaxies','celestial_bodies.id','!=','galaxies.id')
                     ->get();
             }
         }else{
@@ -295,21 +295,15 @@ class CBController extends Controller
                     ->get();
             }
             if (array_has($array, 'none')) {
-//                $local_comets = DB::table('comets')->select("id")->get();
-//                $local_stars = DB::table('stars')->select("id")->get();
-//                $local_planets = DB::table('planets')->select("id")->get();
-//                $local_moons = DB::table('moons')->select("id")->get();
-//                $local_galaxies= DB::table('galaxies')->select('id')->get();
-//                $none = DB::table('celestial_bodies')
-//                    ->select('celestial_bodies.id','celestial_bodies.name', 'celestial_bodies.right_ascension','celestial_bodies.declination')
-//                    ->where('celestial_bodies.verified','=',1)
-//                    ->whereNotIn('celestial_bodies.id',$local_comets->toArray())
-//                    ->whereNotIn('celestial_bodies.id',$local_stars->toArray())
-//                    ->whereNotIn('celestial_bodies.id',$local_planets->toArray())
-//                    ->whereNotIn('celestial_bodies.id',$local_moons->toArray())
-//                    ->whereNotIn('celestial_bodies.id',$local_galaxies->toArray())
-//                    ->get();
-//            }
+                $galaxy = DB::table('celestial_bodies')
+                    ->where('celestial_bodies.verified','=',1)
+                    ->join('comets','celestial_bodies.id','!=','comets.id')
+                    ->join('stars','celestial_bodies.id','!=','stars.id')
+                    ->join('planets','celestial_bodies.id','!=','planets.id')
+                    ->join('moons','celestial_bodies.id','!=','moons.id')
+                    ->join('galaxies','celestial_bodies.id','!=','galaxies.id')
+                    ->get();
+            }
         }
 
         return view('cb.searchByType')->withComet($comet)->withStar($star)->withPlanet($planet)->withMoon($moon)->withGalaxy($galaxy)->withNone($none);
