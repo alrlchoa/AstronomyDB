@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Astronomer;
+use App\CelestialBody;
+use App\ResearcherFellowship;
 use Illuminate\Http\Request;
 
 class AstroController extends Controller
@@ -45,7 +48,18 @@ class AstroController extends Controller
      */
     public function show($id)
     {
-        //
+        $cb = Astronomer::findOrFail($id);
+        if (is_null($cb)){
+            return null;
+        }
+        $reasearcherFellowship = ResearcherFellowship::find($id);
+        $celestialbody = CelestialBody::query()
+              ->where('id', '=', $id)
+              ->get();
+        if (!is_null($reasearcherFellowship)){
+            return view('astro.show')->withCb($cb)->withResearcherFellowship($reasearcherFellowship);
+        }
+        return view('astro.show')->withCb($cb)->withCelestialbody($celestialbody);
     }
 
     /**

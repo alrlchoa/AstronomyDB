@@ -4,18 +4,20 @@
 
 @section('content')
 
-    <h1>{{ $cb->id }}</h1>
+    <h1>Celestial Body {{ $cb->id }}</h1>
+    <hr>
 
     <p class = "lead">{{ $cb->name }}</p>
 
-    <p>Right Ascension: {{ $cb->right_ascension }}</p>
-    <p>Declination: {{ $cb->declination }}</p>
+    <p><b>Right Ascension:</b> {{ $cb->right_ascension }}</p>
+    <p><b>Declination:</b> {{ $cb->declination }}</p>
+    <p><b>Verification Status:</b>
     @if ($cb->verified == 1)
-        <p>Verified</p>
+        Verified
     @else
-        <p>Not Verified</p>
+        Not Verified
     @endif
-
+    </p>
     @if (!empty($comet))
         <p>Comet's Speed: {{$comet->speed}}</p>
     @endif
@@ -33,8 +35,8 @@
     @endif
 
     @if (!empty($planet))
-        <p>Planet's Orbital Period: {{$planet->orbital_period}}</p>
-        <p>Planet's Type: {{$planet->planet_type}}</p>
+        <p><b>Planet's Orbital Period: </b>{{$planet->orbital_period}}</p>
+        <p><b>Planet's Type: </b>{{$planet->planet_type}}</p>
     @endif
 
     @if (!empty($star))
