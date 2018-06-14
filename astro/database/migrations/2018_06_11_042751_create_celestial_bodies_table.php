@@ -15,8 +15,8 @@ class CreateCelestialBodiesTable extends Migration
         Schema::create('celestial_bodies', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->float('right_ascension', 8, 3);
-            $table->float('declination', 8, 3);
+            $table->integer('right_ascension');
+            $table->integer('declination');
             $table->string('name')->nullable();
             $table->boolean('verified')->default(false);
             });

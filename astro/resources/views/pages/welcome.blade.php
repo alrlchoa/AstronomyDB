@@ -9,11 +9,11 @@
               <p>If you are itching to know what thing you just found in the sky, enter the coordinates below and search it up. If you want to just explore, try the advanced searches</p>
               <div class="row"> 
                 <div class="col-lg-12">
-                    {{Form::open(['class'=>'form-inline'])}}
-                      {{Form::text('right_ascension',null,['class'=>'form-control','placeholder'=>'right-ascension'])}}
-                      {{Form::text('declanation',null,['class'=>'form-control','placeholder'=>'declanation'])}}
-                      {{Form::submit('Explore!',['class'=>'btn btn-secondary'])}}
-                    {{Form::close()}}
+                    {!! Form::open(['route'=>'cb.search', 'class'=>'form-inline'])!!}
+                      {!! Form::number('right_ascension',null,['class'=>'form-control','placeholder'=>'right-ascension']) !!}
+                      {!! Form::number('declination',null,['class'=>'form-control','placeholder'=>'declination']) !!}
+                      {!! Form::submit('Explore!',['class'=>'btn btn-secondary']) !!}
+                    {!! Form::close()!!}
                 </div><!-- /.col-lg-6 -->
               </div><!-- /.row -->
               <br />
@@ -27,13 +27,13 @@
                   <p class="h4">Search by threshold brightness:</p>
                   <div class="input-group col-md-8">
                     <div class="container">  
-                      {{Form::open()}}
-                      {!!Form::input('number','amount',null,['class'=> 'form-control', 'placeholder' =>'Search all brightness &ge; threshold','step' => '0.01', 'min'=>'0'])!!}
+                      {!! Form::open(['route'=>'cb.searchByThreshold'])!!}
+                      {!!Form::number('amount',null,['class'=> 'form-control', 'placeholder' =>'Search all brightness &ge; threshold','step' => '0.01', 'min'=>'0'])!!}
                       {{Form::checkbox('ver', null, null, ['class'=>'form-check-input'])}}
                       {{Form::label('ver','Include non-verified Celestial Bodies')}}
                     </div>
                     {{Form::submit('Search',['class'=>'btn btn-secondary'])}}
-                    {{Form::close()}}     
+                    {!! Form::close()!!}
                   </div><!-- /input-group -->
                 </div>
                 <hr>
@@ -43,7 +43,7 @@
                     <div class="form-check">
                       <div class="checkbox">
                         <label class="form-check-label">
-                          {{Form::open()}}
+                          {!! Form::open(['route'=>'cb.searchByType'])!!}
                           {{Form::checkbox('comet', null, null, ['class'=>'form-check-input'])}}
                           {{Form::label('comet','Comet')}}
                         </label>
@@ -87,7 +87,7 @@
                       </div>
                       <br />
                       {{Form::submit('Search',['class'=>'btn btn-secondary'])}}
-                      {{Form::close()}}
+                      {!! Form::close()!!}
                     </div>
                   </div><!-- /input-group -->
                 </div>
@@ -114,10 +114,10 @@
                 <div class="container">
                   <p class="h4">Search by Astronomical ID:</p>
                   <div class="input-group col-md-8">
-                   {{Form::open(['class'=>'form-inline'])}}
-                    {!!Form::input('number','amount',null,['class'=> 'form-control', 'placeholder' =>'Input  Astronomical ID', 'min'=>'0'])!!}
-                    {{Form::submit('Search',['class'=>'btn btn-secondary'])}}
-                    {{Form::close()}}  
+                    {!! Form::open(['route' => 'cb.searchID', 'class'=>'form-inline']) !!}
+                    {!! Form::number('id',null,['class'=> 'form-control', 'placeholder' =>'Input  Astronomical ID', 'min'=>'0']) !!}
+                    {!! Form::submit('Search',['class'=>'btn btn-secondary']) !!}
+                    {!! Form::close() !!}  
                   </div><!-- /input-group -->
                 </div>
                 <hr>
@@ -125,10 +125,10 @@
                 <p class="h4">Search a Specific User:</p>
                 <div class="input-group col-md-8">
                   <div class="row">
-                   {{Form::open(['class'=>'form-inline'])}}                    
+                   {!! Form::open(['route' => 'cb.searchByUser','class'=>'form-inline'])!!}
                     {!!Form::input('text','amount',null,['class'=> 'form-control', 'placeholder' =>'Input Username'])!!}
                     {{Form::submit('Search',['class'=>'btn btn-secondary'])}}                  
-                    {{Form::close()}}  
+                    {!! Form::close()!!}
                     </div>                  
                 </div><!-- /input-group -->
                 </div>
