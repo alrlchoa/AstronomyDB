@@ -16,4 +16,16 @@
         <p>Not Verified</p>
     @endif
 
+    @if (!is_null($comet))
+        <p>Comet Speed: {{$comet->speed}}</p>
+    @endif
+
+    @if (!is_null($galaxy))
+        <p>Galaxy Brightness: {{$galaxy->brightness}}</p>
+        <p>Galaxy Redshift: {{$galaxy->speed}}</p>
+        <p>Galaxy Type: {{$galaxy->type}}</p>
+    @endif
+
+
+
 @endsection
