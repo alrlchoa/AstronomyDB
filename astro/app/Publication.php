@@ -33,11 +33,11 @@ class Publication extends Model
     }
     public function celestialbody()
     {
-        return $this->belongsToMany('App\CelestialBody');
+        return $this->belongsToMany('App\CelestialBody', 'cb_pub', 'pub_id', 'cb_id');
     }
     public function researcherfellowship()
     {
-        return $this->belongsToMany('App\ResearcherFellowship');
+        return $this->belongsToMany('App\ResearcherFellowship', 'pub_rf', 'pub_id', 'rf_id');
     }
     
 }

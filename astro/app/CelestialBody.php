@@ -33,7 +33,7 @@ class CelestialBody extends Model
     }
     public function publication()
     {
-        return $this->belongsToMany('App\Publication');
+        return $this->belongsToMany('App\Publication', 'cb_pub', 'cb_id','pub_id');
     }
     public function comet()
     {
