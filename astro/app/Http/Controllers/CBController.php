@@ -141,6 +141,11 @@ class CBController extends Controller
     public function show($id)
     {
         $cb = CelestialBody::findOrFail($id);
+        $comet = Comet::findOrFail($id);
+        $galaxy = Galaxy::findOrFail($id);
+        $moon = Moon::findOrFail($id);
+        $planet = Planet::findOrFail($id);
+        $star = Star::findOrFail($id);
         return view('cb.show')->withCb($cb);
     }
 
