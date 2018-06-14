@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2135c974-2bc2-4d4b-ab7b-b485b6c29865" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/astro/resources/views/cb/searchByType.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/astro/app/Http/Controllers/CBController.php" beforeDir="false" afterPath="$PROJECT_DIR$/astro/app/Http/Controllers/CBController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/astro/resources/views/pages/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/astro/resources/views/pages/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/astro/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/astro/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/astro/resources/views/cb/searchByType.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -46,8 +50,8 @@
       <file leaf-file-name="CBController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/astro/app/Http/Controllers/CBController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="311" column="79" selection-start-line="311" selection-start-column="79" selection-end-line="311" selection-end-column="79" />
+            <state relative-caret-position="578">
+              <caret line="297" column="11" lean-forward="true" selection-start-line="297" selection-start-column="11" selection-end-line="297" selection-end-column="11" />
               <folding>
                 <element signature="e#40#74#0#PHP" expanded="true" />
               </folding>
@@ -245,8 +249,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="730" />
     <option name="y" value="23" />
-    <option name="width" value="1440" />
+    <option name="width" value="710" />
     <option name="height" value="810" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -424,15 +429,15 @@
       <workItem from="1528852393242" duration="55000" />
       <workItem from="1528852579685" duration="107000" />
       <workItem from="1528854879425" duration="18596000" />
-      <workItem from="1528938010083" duration="9452000" />
+      <workItem from="1528938010083" duration="7219000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53019000" />
+    <option name="totallyTimeSpent" value="50786000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="810" extended-state="0" />
+    <frame x="730" y="23" width="710" height="810" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.37209302" />
@@ -738,7 +743,7 @@
     <entry file="file://$PROJECT_DIR$/astro/resources/views/cb/searchByType.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
@@ -758,8 +763,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/astro/app/Http/Controllers/CBController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="311" column="79" selection-start-line="311" selection-start-column="79" selection-end-line="311" selection-end-column="79" />
+        <state relative-caret-position="578">
+          <caret line="297" column="11" lean-forward="true" selection-start-line="297" selection-start-column="11" selection-end-line="297" selection-end-column="11" />
           <folding>
             <element signature="e#40#74#0#PHP" expanded="true" />
           </folding>

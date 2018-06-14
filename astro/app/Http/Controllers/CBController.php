@@ -255,12 +255,6 @@ class CBController extends Controller
             }
             if (array_has($array, 'none')) {
                 $galaxy = DB::table('celestial_bodies')
-                    ->select('celestial_bodies.id', 'celestial_bodies.name', 'celestial_bodies.right_ascension', 'celestial_bodies.declination')
-                    ->join('comets','celestial_bodies.id','!=','comets.id')
-                    ->join('stars','celestial_bodies.id','!=','stars.id')
-                    ->join('planets','celestial_bodies.id','!=','planets.id')
-                    ->join('moons','celestial_bodies.id','!=','moons.id')
-                    ->join('galaxies','celestial_bodies.id','!=','galaxies.id')
                     ->get();
             }
         }else{
@@ -297,11 +291,6 @@ class CBController extends Controller
             if (array_has($array, 'none')) {
                 $galaxy = DB::table('celestial_bodies')
                     ->where('celestial_bodies.verified','=',1)
-                    ->join('comets','celestial_bodies.id','!=','comets.id')
-                    ->join('stars','celestial_bodies.id','!=','stars.id')
-                    ->join('planets','celestial_bodies.id','!=','planets.id')
-                    ->join('moons','celestial_bodies.id','!=','moons.id')
-                    ->join('galaxies','celestial_bodies.id','!=','galaxies.id')
                     ->get();
             }
         }
