@@ -169,19 +169,36 @@ class CBController extends Controller
 
         $threshold = $request->input('amount');
 
-        $cb_galaxy = DB::table('celestial_bodies')
-            ->join('galaxies', 'celestial_bodies.id', '=', 'galaxies.id')
-            ->select('celestial_bodies.id', 'celestial_bodies.name', 'celestial_bodies.right_ascension', 'celestial_bodies.declination', 'galaxies.brightness', 'celestial_bodies.verified')
-            ->get();
+        if($request->has('ver')){
+            $cb_galaxy = DB::table('celestial_bodies')
+                ->join('galaxies', 'celestial_bodies.id', '=', 'galaxies.id')
+                ->select('celestial_bodies.id', 'celestial_bodies.name', 'celestial_bodies.right_ascension', 'celestial_bodies.declination', 'galaxies.brightness')
+                ->where('galaxies.brightness','>=',$threshold)
+                ->get();
 
-        $cb_star = DB::table('celestial_bodies')
-            ->join('stars', 'celestial_bodies.id', '=', 'stars.id')
-            ->join('spectral_brightnesses', 'spectral_brightnesses.id', '=', 'stars.spectral_brightness_id')
-            ->select('celestial_bodies.id', 'celestial_bodies.name', 'celestial_bodies.right_ascension', 'celestial_bodies.declination', 'spectral_brightnesses.brightness', 'celestial_bodies.verified')
-            //->union($cb_galaxy)
-            //->where('spectral_brightnesses.brightness','>=',$threshold)
-            ->get();
-        return view('cb.searchByThreshold')->withUnioned($cb_star);
+            $cb_star = DB::table('celestial_bodies')
+                ->join('stars', 'celestial_bodies.id', '=', 'stars.id')
+                ->join('spectral_brightnesses', 'spectral_brightnesses.id', '=', 'stars.spectral_brightness_id')
+                ->select('celestial_bodies.id', 'celestial_bodies.name', 'celestial_bodies.right_ascension', 'celestial_bodies.declination', 'spectral_brightnesses.brightness')
+                ->where('spectral_brightnesses.brightness','>=',$threshold)
+                ->get();
+        }else {
+            $cb_galaxy = DB::table('celestial_bodies')
+                ->join('galaxies', 'celestial_bodies.id', '=', 'galaxies.id')
+                ->select('celestial_bodies.id', 'celestial_bodies.name', 'celestial_bodies.right_ascension', 'celestial_bodies.declination', 'galaxies.brightness', 'celestial_bodies.verified')
+                ->where('galaxies.brightness','>=',$threshold)
+                ->where('celestial_bodies.verified','=',1)
+                ->get();
+
+            $cb_star = DB::table('celestial_bodies')
+                ->join('stars', 'celestial_bodies.id', '=', 'stars.id')
+                ->join('spectral_brightnesses', 'spectral_brightnesses.id', '=', 'stars.spectral_brightness_id')
+                ->select('celestial_bodies.id', 'celestial_bodies.name', 'celestial_bodies.right_ascension', 'celestial_bodies.declination', 'spectral_brightnesses.brightness', 'celestial_bodies.verified')
+                ->where('spectral_brightnesses.brightness', '>=', $threshold)
+                ->where('celestial_bodies.verified','=',1)
+                ->get();
+        }
+        return view('cb.searchByThreshold')->withStar($cb_star)->withGalaxy($cb_galaxy);
     }
 
 
@@ -256,9 +273,5 @@ class CBController extends Controller
         //
     }
 
-//    public function getSearch(){
-//        return view('cb/search');
-//    }
 
-    
 }

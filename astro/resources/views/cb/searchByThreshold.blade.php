@@ -16,12 +16,21 @@
 
                 <tbody>
 
-                @foreach ($unioned as $CB)
+                @foreach ($star as $G)
                     <tr>
-                        <th>{{$CB->id}}</th>
-                        <th>{{$CB->name}}</th>
-                        <th>{{$CB->right_ascension}}</th>
-                        <th>{{$CB->declination}}</th>
+                        <th>{{$G->id}}</th>
+                        <th>{{$G->name}}</th>
+                        <th>{{$G->right_ascension}}</th>
+                        <th>{{$G->declination}}</th>
+                    </tr>
+                @endforeach
+
+                @foreach ($galaxy as $S)
+                    <tr>
+                        <th>{{$S->id}}</th>
+                        <th>{{$S->name}}</th>
+                        <th>{{$S->right_ascension}}</th>
+                        <th>{{$S->declination}}</th>
                     </tr>
                 @endforeach
 
