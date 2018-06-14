@@ -17,9 +17,12 @@
             <li class="nav-item {{Request::is('team') ? "active" : ""}}">
               <a class="nav-link" href="/team">Team</a>
             </li>
+            @guest
+            @else
             <li class="nav-item {{Request::is('cb/create') ? "active" : ""}}">
                 <a class="nav-link" href="/cb/create">Create CB</a>
-              </li>
+            </li>
+            @endguest
             </ul>
             <ul class ="navbar-nav navbar-right">
                 @guest
