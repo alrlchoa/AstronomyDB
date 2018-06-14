@@ -157,16 +157,11 @@ class CBController extends Controller
     }
 
     /**
-<<<<<<< HEAD
      * Remove the specified resource from storage.
-=======
-     * Searches by Specific ID
->>>>>>> e9d75bc7a5b0348fd767c0aa3c19503e66464370
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
     public function searchByThreshold(Request $request)
     {
         $this->validate($request, [
@@ -175,23 +170,31 @@ class CBController extends Controller
         $threshold = $request->input('amount');
 
         $cb_galaxy = DB::table('celestial_bodies')
-            ->join('galaxies','celestial_bodies.id','=','galaxies.id')
-            ->select('celestial_bodies.id','celestial_bodies.name','celestial_bodies.right_ascension','celestial_bodies.declination','galaxies.brightness','celestial_bodies.verified')
+            ->join('galaxies', 'celestial_bodies.id', '=', 'galaxies.id')
+            ->select('celestial_bodies.id', 'celestial_bodies.name', 'celestial_bodies.right_ascension', 'celestial_bodies.declination', 'galaxies.brightness', 'celestial_bodies.verified')
             ->get();
 
         $cb_star = DB::table('celestial_bodies')
-            ->join('stars','celestial_bodies.id','=','stars.id')
-            ->join('spectral_brightnesses','spectral_brightnesses.id','=','stars.spectral_brightness_id')
-            ->select('celestial_bodies.id','celestial_bodies.name','celestial_bodies.right_ascension','celestial_bodies.declination','spectral_brightnesses.brightness','celestial_bodies.verified')
+            ->join('stars', 'celestial_bodies.id', '=', 'stars.id')
+            ->join('spectral_brightnesses', 'spectral_brightnesses.id', '=', 'stars.spectral_brightness_id')
+            ->select('celestial_bodies.id', 'celestial_bodies.name', 'celestial_bodies.right_ascension', 'celestial_bodies.declination', 'spectral_brightnesses.brightness', 'celestial_bodies.verified')
             //->union($cb_galaxy)
             //->where('spectral_brightnesses.brightness','>=',$threshold)
             ->get();
-
-
-
-
         return view('cb.searchByThreshold')->withUnioned($cb_star);
-=======
+    }
+
+
+
+
+
+
+    /**
+     * Searches by Specific ID
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function searchID(Request $request)
     {
         $this->validate($request, [
@@ -205,7 +208,6 @@ class CBController extends Controller
             ->get();
 
         return view('cb.search')->withCelestialbody($celestialbody);
->>>>>>> e9d75bc7a5b0348fd767c0aa3c19503e66464370
     }
 
     /**
