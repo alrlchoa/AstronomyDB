@@ -160,7 +160,7 @@ class CBController extends Controller
         }else if(!is_null($planet)){
             return view('cb.show')->withCb($cb)->withPlanet($planet);
         }else if(!is_null($star)){
-            return view('cb.show')->withCb($cb)->withMoon($star);
+            return view('cb.show')->withCb($cb)->withStar($star);
         }
         return view('cb.show')->withCb($cb);
     }
