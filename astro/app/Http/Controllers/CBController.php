@@ -396,7 +396,8 @@ class CBController extends Controller
         }else if (!is_null($galaxy)){
             return view('cb.show')->withCb($cb)->withGalaxy($galaxy);
         }else if(!is_null($moon)){
-            return view('cb.show')->withCb($cb)->withMoon($moon);
+            $planet= Planet::find($moon->planet_id);
+            return view('cb.show')->withCb($cb)->withMoon($moon)->withPlanetoid($planet);
         }else if(!is_null($planet)){
             return view('cb.show')->withCb($cb)->withPlanet($planet);
         }else if(!is_null($star)){

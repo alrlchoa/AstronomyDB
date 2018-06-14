@@ -32,6 +32,8 @@
         <p>Moon's Orbital Period: {{$moon->orbital_period}}</p>
         <p>Moon's Radius: {{$moon->radius}}</p>
         <p>Moon's Planet Id: {{$moon->planet_id}}</p>
+        <p>Planet's Orbital Period: {{$planetoid->orbital_period}}</p>
+        <p>Planet's Type: {{$planetoid->planet_type}}</p>
     @endif
 
     @if (!empty($planet))

@@ -33,7 +33,7 @@ class ResearcherFellowship extends Model
     }
     public function publication()
     {
-        return $this->belongsToMany('App\Publication');
+        return $this->belongsToMany('App\Publication', 'pub_rf', 'rf_id', 'pub_id');
     }
     public function astronomer()
     {
