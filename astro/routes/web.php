@@ -40,4 +40,5 @@ Route::resource('admin/astronomers', 'Admin\\AstronomersController');
 Route::resource('admin/researcher-fellowships', 'Admin\\ResearcherFellowshipsController');
 
 Route::resource('cb','CBController');
+Route::resource('astro','AstroController');
 
