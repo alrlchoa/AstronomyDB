@@ -5,8 +5,9 @@
 @section('content')
     <div class="row">
         <div class="col-md-8">
-            {!! Form::model($cb, ['route'=>['cb.update',$cb->id]]) !!}
+            {!! Form::model($cb, ['route' => ['cb.update',$cb->id], 'method'=> 'PUT']) !!}
             <h1>Edit Celestial Body {{ Form::label('id', $cb->id) }}</h1>
+            {{ Form::hidden('id', $cb->id) }}
             <hr>
             {{ Form::label('name', 'Name:', ['class' => 'font-weight-bold']) }}
             {{ Form::text('name', $cb->name, ['class'=> 'form-control', 'placeholder' =>'Name']) }}
@@ -18,6 +19,7 @@
             {{ Form::checkbox('verified',1,0,['class'=>'form-check-input']) }}
             {{ Form::label('verified', 'Verified?') }}
             <hr>
+
             @if (!empty($comet))
                 {{Form::hidden('cbtype',1)}}
                 {!! Form::label('comet_speed', 'Speed: ') !!}
@@ -131,7 +133,8 @@
                         {!! Html::linkRoute('cb.show', 'Cancel', array($cb->id), array('class' =>'btn btn-danger btn-block')) !!}
                     </div>
                     <div class="col-sm-6">
-                        {!! Html::linkRoute('cb.update', 'Save Changes', array($cb->id), array('class' =>'btn btn-success btn-block')) !!}                    </div>
+                        {!! Form::submit('Save Changes', array('class' =>'btn btn-success btn-block')) !!}                    
+                    </div>
                 </div>
             </div>
             {!! Form::close() !!}
