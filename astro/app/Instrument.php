@@ -31,5 +31,10 @@ class Instrument extends Model
     {
         return $this->belongsTo('App\InstruModel');
     }
+
+    public function discovery()
+    {
+        return $this->hasMany('App\Discovery');
+    }
     
 }
