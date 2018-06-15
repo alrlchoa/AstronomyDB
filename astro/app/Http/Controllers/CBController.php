@@ -415,7 +415,8 @@ class CBController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cb = CelestialBody::find($id);
+        return view('cb.edit')->withCb($cb);
     }
 
     /**
