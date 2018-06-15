@@ -47,6 +47,21 @@
                 <p>Star's Brightness: {{$spectral->brightness}}</p>
             @endif
         </div>
+        <div class="col-md-4">
+            <div class="well">
+                <div class="row">
+                    <div class="col-sm-6">
+                        {!! Html::linkRoute('cb.edit', 'Edit', array($cb->id), array('class' =>'btn btn-primary btn-block')) !!}
+                    </div>
+                    <div class="col-sm-6">
+                        {!! Html::form('cb.relation', 'Add Relation', array($cb->id), array('class' =>'btn btn-primary btn-block')) !!}
+
+                        {{--{!! Form::open(['url'=>['/cb/relation',$cb->id]])!!}--}}
+                        {{--{{Form::submit('Add Relation',['class'=>'btn btn-secondary'])}}--}}
+                        {{--{!! Form::close() !!}--}}
+                    </div>
+                    <div class="col-sm-6">
+                        {!! Html::linkRoute('cb.destroy', 'Delete', array($cb->id), array('class' =>'btn btn-danger btn-block')) !!}
             @guest
             @else
                 <div class="col-md-4">
