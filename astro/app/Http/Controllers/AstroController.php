@@ -113,4 +113,30 @@ class AstroController extends Controller
             ->get();
         return view('astro.userOutput')->withAstronomer($astronomer);
     }
+
+    /**
+     * Searches by  Institution
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function searchByInstitution(Request $request){
+
+        $this->validate($request, [
+            'name' => 'required|exists:institutions,name'
+        ]);
+
+        $institution = DB::table('institutions')->where('name',$request->name)
+            ->pluck('id')->toArray();
+        
+        $institutionID = $institution[0];
+
+        $researchers = DB::table('researcher_fellowships')->where('institution_id', $institutionID)
+            ->pluck('id')->toArray();
+        
+        $astronomers = DB::table('astronomers')->whereIn('id',$researchers)
+            ->get();
+
+        return view('astro.userOutput')->withAstronomer($astronomers);
+    }
 }
