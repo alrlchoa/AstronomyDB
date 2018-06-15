@@ -51,10 +51,10 @@
             <div class="well">
                 <div class="row">
                     <div class="col-sm-6">
-                        {!! Html::linkRoute('cb.edit', 'Edit', array($cb->id), array('class' =>'btn btn-primary btn-block')) !!}
+                        {!! Html::linkRoute('cb.show', 'Cancel', array($cb->id), array('class' =>'btn btn-danger btn-block')) !!}
                     </div>
                     <div class="col-sm-6">
-                        {!! Html::linkRoute('cb.destroy', 'Delete', array($cb->id), array('class' =>'btn btn-danger btn-block')) !!}                    </div>
+                        {!! Html::linkRoute('cb.update', 'Save Changes', array($cb->id), array('class' =>'btn btn-success btn-block')) !!}                    </div>
                 </div>
             </div>
         </div>
