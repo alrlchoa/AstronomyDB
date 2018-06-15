@@ -48,42 +48,29 @@
             @endif
         </div>
         <div class="col-md-4">
-            <div class="well">
-                <div class="row">
-                    <div class="col-sm-6">
-                        {!! Html::linkRoute('cb.edit', 'Edit', array($cb->id), array('class' =>'btn btn-primary btn-block')) !!}
-                    </div>
-                    <div class="col-sm-6">
-                        {!! Html::form('cb.relation', 'Add Relation', array($cb->id), array('class' =>'btn btn-primary btn-block')) !!}
-
-                        {{--{!! Form::open(['url'=>['/cb/relation',$cb->id]])!!}--}}
-                        {{--{{Form::submit('Add Relation',['class'=>'btn btn-secondary'])}}--}}
-                        {{--{!! Form::close() !!}--}}
-                    </div>
-                    <div class="col-sm-6">
-                        {!! Html::linkRoute('cb.destroy', 'Delete', array($cb->id), array('class' =>'btn btn-danger btn-block')) !!}
             @guest
             @else
-                <div class="col-md-4">
-                    <div class="well">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                {!! Html::linkroute('cb.edit', 'Edit', [$cb->id], ['class' => 'btn btn-primary btn-block']) !!}
-                            </div>
-                            <div class="col-sm-6">        
-                                {!! Form::open(['route'=>['cb.relation',$cb->id], 'method' => 'GET'])!!}
-                                {!! Form::submit('Add Relation',['class'=>'btn btn-secondary']) !!}
-                                {!! Form::close() !!}
-                            </div>
-                            <div class="col-sm-6">
-                                {!! Form::open(['route' => ['cb.destroy',$cb->id], 'method'=> 'DELETE']) !!}
-                                {!! Form::submit('Delete', ['class' =>'btn btn-danger btn-block']) !!}
-                                {!! Form::close() !!}
-                            </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {!! Html::linkroute('cb.edit', 'Edit', [$cb->id], ['class' => 'btn btn-primary btn-block']) !!}
+                        </div>
+                        <div class="col-md-6">        
+                            {!! Form::open(['route'=>['cb.relation',$cb->id], 'method' => 'GET'])!!}
+                            {!! Form::submit('Add Relation',['class'=>'btn btn-secondary btn-block']) !!}
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col-md-12">
+                            {!! Form::open(['route' => ['cb.destroy',$cb->id], 'method'=> 'DELETE']) !!}
+                            {!! Form::submit('Delete', ['class' =>'btn btn-danger btn-block']) !!}
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
             @endguest
+        </div>
     </div>
     <hr>
     <div class="row">
