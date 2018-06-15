@@ -5,46 +5,123 @@
 @section('content')
     <div class="row">
         <div class="col-md-8">
-            <h1>Edit Celestial Body {{ $cb->id }}</h1>
+            {!! Form::model($cb, ['route'=>['cb.update',$cb->id]]) !!}
+            <h1>Edit Celestial Body {{ Form::label('id', $cb->id) }}</h1>
             <hr>
-
-            <p class = "lead">{{ $cb->name }}</p>
-
-            <p><b>Right Ascension:</b> {{ $cb->right_ascension }}</p>
-            <p><b>Declination:</b> {{ $cb->declination }}</p>
-            <p><b>Verification Status:</b>
-                @if ($cb->verified == 1)
-                    Verified
-                @else
-                    Not Verified
-                @endif
-            </p>
+            {{ Form::label('name', 'Name:', ['class' => 'font-weight-bold']) }}
+            {{ Form::text('name', $cb->name, ['class'=> 'form-control', 'placeholder' =>'Name']) }}
+            <br />
+            {{ Form::label('right_ascension', 'Right Ascension:', ['class' => 'font-weight-bold']) }}
+            {{ Form::number('right_ascension') }}</p>
+            {{ Form::label('declination', 'Declination:', ['class' => 'font-weight-bold']) }}
+            {{ Form::number('declination') }}</p>
+            {{ Form::checkbox('verified',1,0,['class'=>'form-check-input']) }}
+            {{ Form::label('verified', 'Verified?') }}
+            <hr>
             @if (!empty($comet))
-                <p>Comet's Speed: {{$comet->speed}}</p>
-            @endif
+                {{Form::hidden('cbtype',1)}}
+                {!! Form::label('comet_speed', 'Speed: ') !!}
+                {!! Form::number('comet_speed',$comet->speed,['class'=> 'form-control', 'placeholder' =>'Speed']) !!}
 
-            @if (!empty($galaxy))
-                <p>Galaxy's Brightness: {{$galaxy->brightness}}</p>
-                <p>Galaxy's Redshift: {{$galaxy->redshift}}</p>
-                <p>Galaxy's Type: {{$galaxy->type}}</p>
-            @endif
+            @elseif (!empty($galaxy))
+                {{Form::hidden('cbtype',2)}}
+                {!! Form::label('galaxy_brightness', 'Brightness: ') !!}
+                {!! Form::number('galaxy_brightness',$galaxy->brightness,['class'=> 'form-control', 'placeholder' =>'Brightness']) !!}
 
-            @if (!empty($moon))
-                <p>Moon's Orbital Period: {{$moon->orbital_period}}</p>
-                <p>Moon's Radius: {{$moon->radius}}</p>
-                <p>Moon's Planet Id: {{$moon->planet_id}}</p>
-                <p>Planet's Orbital Period: {{$planetoid->orbital_period}}</p>
-                <p>Planet's Type: {{$planetoid->planet_type}}</p>
-            @endif
+                {!! Form::label('galaxy_redshift', 'Redshift: ') !!}
+                {!! Form::number('galaxy_redshift',$galaxy->redshift,['class'=> 'form-control', 'placeholder' =>'Red Shift']) !!}
 
-            @if (!empty($planet))
-                <p><b>Planet's Orbital Period: </b>{{$planet->orbital_period}}</p>
-                <p><b>Planet's Type: </b>{{$planet->planet_type}}</p>
-            @endif
+                {!! Form::label('galaxy_type', 'Type: ') !!}
+                {!! Form::select('galaxy_type', json_decode('{"spiral":"Spiral","elliptical":"Elliptical","irregular":"Irregular"}', true), $galaxy->type, ['class' => 'form-control']) !!}
 
-            @if (!empty($star))
-                <p>Star's Spectral Brightness: {{$spectral->spectral_type}}</p>
-                <p>Star's Brightness: {{$spectral->brightness}}</p>
+            @elseif (!empty($moon))
+                {{Form::hidden('cbtype',3)}}
+                {!! Form::label('moon_plid', 'Planet Id: ') !!}
+                {!! Form::input('number','moon_plid',$moon->planet_id,['class'=> 'form-control', 'placeholder' =>'Planet ID']) !!}
+
+                {!! Form::label('moon_period', 'Orbital Period: ') !!}
+                {!! Form::input('number','moon_period',$moon->orbital_period,['class'=> 'form-control', 'placeholder' =>'Orbital Period']) !!}
+
+                {!! Form::label('moon_radius', 'Moon Radius: ') !!}
+                {!! Form::input('number','moon_radius',$moon->radius,['class'=> 'form-control', 'placeholder' =>'Radius']) !!}
+
+            @elseif (!empty($planet))
+                {{Form::hidden('cbtype',4)}}
+                {!! Form::label('planet_period', 'Orbital Period: ') !!}
+                {!! Form::number('planet_period',$planet->orbital_period,['class'=> 'form-control', 'placeholder' =>'Orbital Period']) !!}
+
+                {!! Form::label('planet_type', 'Planet Type: ') !!}
+                {!! Form::select('planet_type', json_decode('{"gas_giant":"Gas Giant","earth_like":"Earth-Like","super_earth":"Super Earth"}', true), $planet->planet_type, ['class' => 'form-control']) !!}
+
+            @elseif (!empty($star))
+                {{Form::hidden('cbtype',5)}}
+                {!! Form::label('star_spectral', 'Spectral Type ID: ') !!}
+                {!! Form::number('star_spectral',$spectral->id,['class'=> 'form-control', 'placeholder' =>'Spectral ID']) !!}
+            
+            @else
+                {!! Form::label('cbtype', 'Type of Celestial Body:', ['class' => 'col-md-4 control-label-lg']) !!}
+                <div class="col-md-6">
+                    <div class="checkbox">
+                        <label>{!! Form::radio('cbtype', '0', true) !!} Not Specified</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>{!! Form::radio('cbtype', '1') !!} Comet</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>{!! Form::radio('cbtype', '2') !!} Galaxy</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>{!! Form::radio('cbtype', '3') !!} Moon</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>{!! Form::radio('cbtype', '4') !!} Planet</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>{!! Form::radio('cbtype', '5') !!} Star</label>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-md-11 offset-md-1">
+                    <p class="lead"> For Comets: </p>
+                    {!! Form::label('comet_speed', 'Speed: ') !!}
+                    {!! Form::number('comet_speed',null,['class'=> 'form-control', 'placeholder' =>'Speed']) !!}
+                </div>
+                <div class="col-md-11 offset-md-1">
+                    <p class="lead"> For Galaxies: </p>
+                    {!! Form::label('galaxy_brightness', 'Brightness: ') !!}
+                    {!! Form::number('galaxy_brightness',null,['class'=> 'form-control', 'placeholder' =>'Brightness']) !!}
+
+                    {!! Form::label('galaxy_redshift', 'Redshift: ') !!}
+                    {!! Form::number('galaxy_redshift',null,['class'=> 'form-control', 'placeholder' =>'Red Shift']) !!}
+
+                    {!! Form::label('galaxy_type', 'Type: ') !!}
+                    {!! Form::select('galaxy_type', json_decode('{"spiral":"Spiral","elliptical":"Elliptical","irregular":"Irregular"}', true), null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="col-md-11 offset-md-1">
+                    <p class="lead"> For Moons: </p>
+                    {!! Form::label('moon_plid', 'Planet Id: ') !!}
+                    {!! Form::input('number','moon_plid',null,['class'=> 'form-control', 'placeholder' =>'Planet ID']) !!}
+
+                    {!! Form::label('moon_period', 'Orbital Period: ') !!}
+                    {!! Form::input('number','moon_period',null,['class'=> 'form-control', 'placeholder' =>'Orbital Period']) !!}
+
+                    {!! Form::label('moon_radius', 'Moon Radius: ') !!}
+                    {!! Form::input('number','moon_radius',null,['class'=> 'form-control', 'placeholder' =>'Radius']) !!}
+                </div>
+                <div class="col-md-11 offset-md-1">
+                    <p class="lead"> For Planets: </p>
+                    {!! Form::label('planet_period', 'Orbital Period: ') !!}
+                    {!! Form::number('planet_period',null,['class'=> 'form-control', 'placeholder' =>'Orbital Period']) !!}
+
+                    {!! Form::label('planet_type', 'Planet Type: ') !!}
+                    {!! Form::select('planet_type', json_decode('{"gas_giant":"Gas Giant","earth_like":"Earth-Like","super_earth":"Super Earth"}', true), null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="col-md-11 offset-md-1">
+                    <p class="lead"> For Stars: </p>
+                    {!! Form::label('star_spectral', 'Spectral Type: ') !!}
+                    {!! Form::number('star_spectral',null,['class'=> 'form-control', 'placeholder' =>'Spectral ID']) !!}
+                </div>
+                <br />
             @endif
         </div>
         <div class="col-md-4">
@@ -57,6 +134,7 @@
                         {!! Html::linkRoute('cb.update', 'Save Changes', array($cb->id), array('class' =>'btn btn-success btn-block')) !!}                    </div>
                 </div>
             </div>
+            {!! Form::close() !!}
         </div>
     </div>
 @stop
