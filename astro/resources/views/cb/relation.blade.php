@@ -1,11 +1,11 @@
 @extends('main')
 
-@section('title', '- View cb')
+@section('title', '- Relation cb')
 
 @section('content')
     <div class="row">
         <div class="col-md-8">
-            <h1>Celestial Body {{ $cb->id }}</h1>
+            <h1>Add Relation to Celestial Body {{ $cb->id }}</h1>
             <hr>
 
             <p class = "lead">{{ $cb->name }}</p>
@@ -51,21 +51,12 @@
             <div class="well">
                 <div class="row">
                     <div class="col-sm-6">
-                        {!! Html::linkRoute('cb.edit', 'Edit', array($cb->id), array('class' =>'btn btn-primary btn-block')) !!}
+                        {!! Html::linkRoute('cb.show', 'Cancel', array($cb->id), array('class' =>'btn btn-danger btn-block')) !!}
                     </div>
                     <div class="col-sm-6">
-                        {!! Html::form('cb.relation', 'Add Relation', array($cb->id), array('class' =>'btn btn-primary btn-block')) !!}
-
-                        {{--{!! Form::open(['url'=>['/cb/relation',$cb->id]])!!}--}}
-                        {{--{{Form::submit('Add Relation',['class'=>'btn btn-secondary'])}}--}}
-                        {{--{!! Form::close() !!}--}}
-                    </div>
-                    <div class="col-sm-6">
-                        {!! Html::linkRoute('cb.destroy', 'Delete', array($cb->id), array('class' =>'btn btn-danger btn-block')) !!}
-                    </div>
+                        {!! Html::linkRoute('cb.update', 'Save Changes', array($cb->id), array('class' =>'btn btn-success btn-block')) !!}                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-@endsection
+@stop

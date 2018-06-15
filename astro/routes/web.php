@@ -11,6 +11,7 @@
 |
 */
 Route::post('astro/searchByUser', 'AstroController@searchByUser')->name('astro.searchByUser');
+Route::post('cb/relation', 'CBController@relation')->name('cb.relation');
 Route::post('cb/searchID', 'CBController@searchID')->name('cb.searchID');
 Route::post('cb/search', 'CBController@search')->name('cb.search');
 Route::post('cb/searchByThreshold', 'CBController@searchByThreshold')->name('cb.searchByThreshold');
