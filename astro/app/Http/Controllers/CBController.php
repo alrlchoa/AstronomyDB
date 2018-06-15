@@ -350,27 +350,6 @@ class CBController extends Controller
         return view('cb.search')->withCelestialbody($celestialbody);
     }
 
-    /**
-     * Searches by  Username
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-    public function searchByUser(Request $request){
-
-        $celestialbody = new \Illuminate\Database\Eloquent\Collection;
-        $this->validate($request, [
-            'amount' => 'required'
-        ]);
-        $username = $request->amount;
-
-        $astronomer = Astronomer::query()
-            ->select(DB::raw("*"))
-            ->where('username', '=', $username)
-            ->get();
-        return view('cb.userOutput')->withAstronomer($astronomer);
-    }
 
     /**
      * Display the specified resource.
@@ -415,7 +394,32 @@ class CBController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cb = CelestialBody::find($id);
+
+        if (is_null($cb)){
+            return null;
+        }
+
+        $comet = Comet::find($id);
+        $galaxy = Galaxy::find($id);
+        $moon = Moon::find($id);
+        $planet = Planet::find($id);
+        $star = Star::find($id);
+
+        if (!is_null($comet)){
+            return view('cb.edit')->withCb($cb)->withComet($comet);
+        }else if (!is_null($galaxy)){
+            return view('cb.edit')->withCb($cb)->withGalaxy($galaxy);
+        }else if(!is_null($moon)){
+            $planet= Planet::find($moon->planet_id);
+            return view('cb.edit')->withCb($cb)->withMoon($moon)->withPlanetoid($planet);
+        }else if(!is_null($planet)){
+            return view('cb.edit')->withCb($cb)->withPlanet($planet);
+        }else if(!is_null($star)){
+            $spectral = SpectralBrightness::find($star->spectral_brightness_id);
+            return view('cb.edit')->withCb($cb)->withStar($star)->withSpectral($spectral);
+        }
+        return view('cb.edit')->withCb($cb);
     }
 
     /**

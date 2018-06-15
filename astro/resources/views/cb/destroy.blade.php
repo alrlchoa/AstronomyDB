@@ -8,17 +8,17 @@
             <h1>Celestial Body {{ $cb->id }}</h1>
             <hr>
 
-             <p class = "lead">{{ $cb->name }}</p>
+            <p class = "lead">{{ $cb->name }}</p>
 
             <p><b>Right Ascension:</b> {{ $cb->right_ascension }}</p>
             <p><b>Declination:</b> {{ $cb->declination }}</p>
             <p><b>Verification Status:</b>
-            @if ($cb->verified == 1)
-                Verified
-            @else
-                Not Verified
-            @endif
-        </p>
+                @if ($cb->verified == 1)
+                    Verified
+                @else
+                    Not Verified
+                @endif
+            </p>
             @if (!empty($comet))
                 <p>Comet's Speed: {{$comet->speed}}</p>
             @endif
@@ -47,18 +47,18 @@
                 <p>Star's Brightness: {{$spectral->brightness}}</p>
             @endif
         </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            {!! Html::linkRoute('cb.edit', 'Edit', array($cb->id), array('class' =>'btn btn-primary btn-block')) !!}
-                        </div>
-                        <div class="col-sm-6">
-                            {!! Html::linkRoute('cb.destroy', 'Delete', array($cb->id), array('class' =>'btn btn-danger btn-block')) !!}
-                        </div>
+        <div class="col-md-4">
+            <div class="well">
+                <div class="row">
+                    <div class="col-sm-6">
+                        {!! Html::linkRoute('cb.edit', 'Edit', array($cb->id), array('class' =>'btn btn-primary btn-block')) !!}
+                    </div>
+                    <div class="col-sm-6">
+                        {!! Html::linkRoute('cb.destroy', 'Delete', array($cb->id), array('class' =>'btn btn-danger btn-block')) !!}
                     </div>
                 </div>
             </div>
+        </div>
     </div>
 
 @endsection
