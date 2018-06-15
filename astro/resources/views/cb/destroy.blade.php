@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '- Edit cb')
+@section('title', '- View cb')
 
 @section('content')
     <div class="row">
@@ -54,9 +54,11 @@
                         {!! Html::linkRoute('cb.edit', 'Edit', array($cb->id), array('class' =>'btn btn-primary btn-block')) !!}
                     </div>
                     <div class="col-sm-6">
-                        {!! Html::linkRoute('cb.destroy', 'Delete', array($cb->id), array('class' =>'btn btn-danger btn-block')) !!}                    </div>
+                        {!! Html::linkRoute('cb.destroy', 'Delete', array($cb->id), array('class' =>'btn btn-danger btn-block')) !!}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-@stop
+
+@endsection
