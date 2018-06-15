@@ -13,12 +13,13 @@
             <p><b>Right Ascension:</b> {{ $cb->right_ascension }}</p>
             <p><b>Declination:</b> {{ $cb->declination }}</p>
             <p><b>Verification Status:</b>
-            @if ($cb->verified == 1)
-                Verified
-            @else
-                Not Verified
-            @endif
-        </p>
+                @if ($cb->verified == 1)
+                    Verified
+                @else
+                    Not Verified
+                @endif
+            </p>
+
             @if (!empty($comet))
                 <p>Comet's Speed: {{$comet->speed}}</p>
             @endif
@@ -47,18 +48,54 @@
                 <p>Star's Brightness: {{$spectral->brightness}}</p>
             @endif
         </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            {!! Html::linkRoute('cb.edit', 'Edit', array($cb->id), array('class' =>'btn btn-primary btn-block')) !!}
-                        </div>
-                        <div class="col-sm-6">
-                            {!! Html::linkRoute('cb.destroy', 'Delete', array($cb->id), array('class' =>'btn btn-danger btn-block')) !!}
+            @guest
+            @else
+                <div class="col-md-4">
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                {!! Html::linkRoute('cb.edit', 'Edit', array($cb->id), array('class' =>'btn btn-primary btn-block')) !!}
+                            </div>
+                            <div class="col-sm-6">
+                                {!! Html::linkRoute('cb.destroy', 'Delete', array($cb->id), array('class' =>'btn btn-danger btn-block')) !!}
+                            </div>
                         </div>
                     </div>
                 </div>
+            @endguest
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="container bg-light">
+                <p class="text-center h4">Publications</p>
             </div>
+        </div>
+        <div class="col-md-6">
+            <div class="container bg-light">
+                <p class="text-center h4">Relationships</p>
+                @if (!empty($comet))
+                    <p>Comet is speeding past: {{$comet->speed}}</p>
+
+                @elseif (!empty($galaxy))
+                    <p>Galaxy's do not have any relationships!!!</p>
+
+                @elseif (!empty($moon))
+                    <p>Moon is orbiting around: {{$planetoid->orbital_period}}</p>
+
+                @elseif (!empty($planet))
+                    <p><b>Planet's Orbital Period: </b>{{$planet->orbital_period}}</p>
+                    <p><b>Planet's Type: </b>{{$planet->planet_type}}</p>
+
+                @elseif (!empty($star))
+                    <p>Planets orbiting around this Star: {{$spectral->spectral_type}}</p>
+                    <p>Comets zooming past this Star: {{$spectral->brightness}}</p>
+                
+                @else
+                    <strong>This Celestial body has not been classified yet!</strong>
+                @endif
+            </div>
+        </div>
     </div>
 
 @endsection

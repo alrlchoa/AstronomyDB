@@ -27,6 +27,18 @@ class AppServiceProvider extends ServiceProvider
             return $count == 0;
         }, 'Right Ascension and Declination combination has already been used.');
 
+        Validator::extend('uniqueRaDUp', function ($attribute, $value, $parameters, $validator) {
+            $declination = array_get($validator->getData(), $parameters[0]);
+            $id = array_get($validator->getData(), $parameters[1]);
+
+            $count = DB::table('celestial_bodies')->where('right_ascension', $value)
+                                        ->where('declination', $declination)
+                                        ->where('id', '!=', $id)
+                                        ->count();
+        
+            return $count == 0;
+        }, 'Right Ascension and Declination combination has already been used by  a different Celestial Body.');
+
         Validator::extend('uniqueMidLoc', function ($attribute, $value, $parameters, $validator) {
             $param1 = array_get($validator->getData(), $parameters[0]);
 
