@@ -51,10 +51,10 @@
                 <div class="well">
                     <div class="row">
                         <div class="col-sm-6">
-                            <a href="cb.edit" class="btn btn-primary btm-block">Edit</a>
+                            <a href="cb/edit" class="btn btn-primary btm-block">Edit</a>
                         </div>
                         <div class="col-sm-6">
-                            <a href="cb.delete" class="btn btn-danger btm-block">Delete</a>
+                            <a href="cb/delete" class="btn btn-danger btm-block">Delete</a>
                         </div>
                     </div>
                 </div>
