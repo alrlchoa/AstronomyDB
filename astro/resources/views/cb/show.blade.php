@@ -51,10 +51,10 @@
                 <div class="well">
                     <div class="row">
                         <div class="col-sm-6">
-                            <a href="cb/edit" class="btn btn-primary btm-block">Edit</a>
+                            {!! Html::linkRoute('cb.edit', 'Edit', array($cb->id), array('class' =>'btn btn-primary btn-block')) !!}
                         </div>
                         <div class="col-sm-6">
-                            <a href="cb/delete" class="btn btn-danger btm-block">Delete</a>
+                            {!! Html::linkRoute('cb.destroy', 'Delete', array($cb->id), array('class' =>'btn btn-danger btn-block')) !!}
                         </div>
                     </div>
                 </div>
