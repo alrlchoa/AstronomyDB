@@ -132,6 +132,18 @@
                     </div>                  
                 </div><!-- /input-group -->
                 </div>
+                <hr>
+                <div class="container">
+                <p class="h4">Search by Institution:</p>
+                <div class="input-group col-md-8">
+                  <div class="row">
+                    {!! Form::open(['route' => 'astro.searchByInstitution','class'=>'form-inline'])!!}
+                    {!! Form::text('name',null,['class'=> 'form-control', 'placeholder' =>'Input Institution'])!!}
+                    {{  Form::submit('Search',['class'=>'btn btn-secondary'])}}                  
+                    {!! Form::close()!!}
+                    </div>                  
+                </div><!-- /input-group -->
+                </div>
               </div>
             </div>
           </div>
