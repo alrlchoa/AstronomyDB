@@ -33,7 +33,7 @@ class Astronomer extends Model
     }
     public function celestialbody()
     {
-        return $this->belongsToMany('App\CelestialBody');
+        return $this->belongsToMany('App\CelestialBody', 'discoveries', 'discoverer_id', 'cb_id');
     }
     
 }
