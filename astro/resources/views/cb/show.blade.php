@@ -19,10 +19,6 @@
                     Not Verified
                 @endif
             </p>
-<<<<<<< HEAD
-=======
-
->>>>>>> a057016167ed4045ae468e91b5115f3ae355b582
             @if (!empty($comet))
                 <p>Comet's Speed: {{$comet->speed}}</p>
             @endif
@@ -67,7 +63,6 @@
                     </div>
                     <div class="col-sm-6">
                         {!! Html::linkRoute('cb.destroy', 'Delete', array($cb->id), array('class' =>'btn btn-danger btn-block')) !!}
-=======
             @guest
             @else
                 <div class="col-md-4">
@@ -82,7 +77,6 @@
                                 {!! Form::close() !!}
                             </div>
                         </div>
->>>>>>> a057016167ed4045ae468e91b5115f3ae355b582
                     </div>
                 </div>
             @endguest
@@ -94,8 +88,7 @@
                 <p class="text-center h4">Publications</p>
             </div>
         </div>
-<<<<<<< HEAD
-=======
+
         <div class="col-md-6">
             <div class="container bg-light">
                 <p class="text-center h4">Relationships</p>
@@ -121,7 +114,6 @@
                 @endif
             </div>
         </div>
->>>>>>> a057016167ed4045ae468e91b5115f3ae355b582
     </div>
 
 @endsection
