@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('astro/searchByInstitution', 'AstroController@searchByInstitution')->name('astro.searchByInstitution');
 Route::post('astro/searchByUser', 'AstroController@searchByUser')->name('astro.searchByUser');
 Route::post('cb/relation', 'CBController@relation')->name('cb.relation');
 Route::post('cb/searchID', 'CBController@searchID')->name('cb.searchID');
@@ -44,3 +45,5 @@ Route::resource('astro','AstroController');
 
 
 Route::resource('admin/publications', 'Admin\\PublicationsController');
+Route::resource('admin/instru-models', 'Admin\\InstruModelsController');
+Route::resource('admin/instruments', 'Admin\\InstrumentsController');

@@ -1,0 +1,21 @@
+{
+  "fields": [
+    {
+      "name": "type",
+      "type": "string"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "instrument",
+      "type": "hasMany",
+      "class": "App\\Instrument"
+    }
+  ],
+  "validations": [
+    {
+      "field": "type",
+      "rules": "required|max:40"
+    }
+  ]
+}

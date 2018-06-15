@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\CelestialBody;
+use App\InstruModel;
 use Illuminate\Http\Request;
 
-class CelestialBodiesController extends Controller
+class InstruModelsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,16 +21,13 @@ class CelestialBodiesController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $celestialbodies = CelestialBody::where('right_ascension', 'LIKE', "%$keyword%")
-                ->orWhere('declination', 'LIKE', "%$keyword%")
-                ->orWhere('name', 'LIKE', "%$keyword%")
-                ->orWhere('verified', 'LIKE', "%$keyword%")
+            $instrumodels = InstruModel::where('type', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $celestialbodies = CelestialBody::latest()->paginate($perPage);
+            $instrumodels = InstruModel::latest()->paginate($perPage);
         }
 
-        return view('admin.celestial-bodies.index', compact('celestialbodies'));
+        return view('admin.instru-models.index', compact('instrumodels'));
     }
 
     /**
@@ -40,7 +37,7 @@ class CelestialBodiesController extends Controller
      */
     public function create()
     {
-        return view('admin.celestial-bodies.create');
+        return view('admin.instru-models.create');
     }
 
     /**
@@ -53,15 +50,13 @@ class CelestialBodiesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'right_ascension' => 'required|min:0|max:360|uniqueRaD:declination',
-            'declination' => 'required|min:0|max:360',
-			'name' => 'max:40'
+			'type' => 'required|max:40'
 		]);
         $requestData = $request->all();
         
-        CelestialBody::create($requestData);
+        InstruModel::create($requestData);
 
-        return redirect('admin/celestial-bodies')->with('flash_message', 'CelestialBody added!');
+        return redirect('admin/instru-models')->with('flash_message', 'InstruModel added!');
     }
 
     /**
@@ -73,9 +68,9 @@ class CelestialBodiesController extends Controller
      */
     public function show($id)
     {
-        $celestialbody = CelestialBody::findOrFail($id);
+        $instrumodel = InstruModel::findOrFail($id);
 
-        return view('admin.celestial-bodies.show', compact('celestialbody'));
+        return view('admin.instru-models.show', compact('instrumodel'));
     }
 
     /**
@@ -87,9 +82,9 @@ class CelestialBodiesController extends Controller
      */
     public function edit($id)
     {
-        $celestialbody = CelestialBody::findOrFail($id);
+        $instrumodel = InstruModel::findOrFail($id);
 
-        return view('admin.celestial-bodies.edit', compact('celestialbody'));
+        return view('admin.instru-models.edit', compact('instrumodel'));
     }
 
     /**
@@ -103,16 +98,14 @@ class CelestialBodiesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-			'right_ascension' => 'required|min:0|max:360|uniqueRaD:declination',
-			'declination' => 'required|min:0|max:360',
-			'name' => 'max:40'
+			'type' => 'required|max:40'
 		]);
         $requestData = $request->all();
         
-        $celestialbody = CelestialBody::findOrFail($id);
-        $celestialbody->update($requestData);
+        $instrumodel = InstruModel::findOrFail($id);
+        $instrumodel->update($requestData);
 
-        return redirect('admin/celestial-bodies')->with('flash_message', 'CelestialBody updated!');
+        return redirect('admin/instru-models')->with('flash_message', 'InstruModel updated!');
     }
 
     /**
@@ -124,8 +117,8 @@ class CelestialBodiesController extends Controller
      */
     public function destroy($id)
     {
-        CelestialBody::destroy($id);
+        InstruModel::destroy($id);
 
-        return redirect('admin/celestial-bodies')->with('flash_message', 'CelestialBody deleted!');
+        return redirect('admin/instru-models')->with('flash_message', 'InstruModel deleted!');
     }
 }
