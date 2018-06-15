@@ -125,8 +125,8 @@
                 <p class="h4">Search a Specific User:</p>
                 <div class="input-group col-md-8">
                   <div class="row">
-                   {!! Form::open(['route' => 'cb.searchByUser','class'=>'form-inline'])!!}
-                    {!!Form::input('text','amount',null,['class'=> 'form-control', 'placeholder' =>'Input Username'])!!}
+                   {!! Form::open(['route' => 'astro.searchByUser','class'=>'form-inline'])!!}
+                    {!!Form::text('username',null,['class'=> 'form-control', 'placeholder' =>'Input Username'])!!}
                     {{Form::submit('Search',['class'=>'btn btn-secondary'])}}                  
                     {!! Form::close()!!}
                     </div>                  

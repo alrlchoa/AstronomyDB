@@ -4,23 +4,19 @@
 
 @section('content')
 
-    <h1> Astronomer {{ $cb->id }}</h1>
+    <h1> Astronomer {{ $astronomer->id }}</h1>
     <hr>
 
     {{--<p class = "lead">{{ $cb->first_name, $cb->last_name }}</p>--}}
 
-    <p><b>First Name:</b> {{ $cb->first_name }}</p>
-    <p><b>Last Name: </b>{{ $cb->last_name }}</p>
-    <p><b>Username: </b>{{ $cb->username }}</p>
-    {{--@if ($cb->verified == 1)--}}
-        {{--<p>Verified</p>--}}
-    {{--@else--}}
-        {{--<p>Not Verified</p>--}}
-    {{--@endif--}}
+    <p><b>First Name:</b> {{ $astronomer->first_name }}</p>
+    <p><b>Last Name: </b>{{ $astronomer->last_name }}</p>
+    <p><b>Username: </b>{{ $astronomer->username }}</p>
 
-    <p><b>Researcher Status:</b>
-    @if (!empty($reasearcherFellowship))
-         Reasearcher at Institution with ID: {{$reasearcherFellowship->institution_id}}
+    <p><strong>Researcher Status:</strong>
+        <br />
+    @if (!empty($institution))
+         Reasearcher at Institution: {{$institution->name}}
     @else
         Not a Researcher
     @endif

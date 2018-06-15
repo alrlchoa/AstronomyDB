@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Astronomer;
+use App\Institution;
 use App\CelestialBody;
 use App\ResearcherFellowship;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AstroController extends Controller
 {
@@ -48,18 +50,15 @@ class AstroController extends Controller
      */
     public function show($id)
     {
-        $cb = Astronomer::findOrFail($id);
-        if (is_null($cb)){
+        $astronomer = Astronomer::find($id);
+        if (is_null($astronomer)){
             return null;
         }
         $reasearcherFellowship = ResearcherFellowship::find($id);
-        $celestialbody = CelestialBody::query()
-              ->where('id', '=', $id)
+        $institution = Institution::find($reasearcherFellowship->institution_id);
+        $celestialbody = DB::table('celestial_bodies')->where('id', $id)  //Implement properly when pivot table discovers is present
               ->get();
-        if (!is_null($reasearcherFellowship)){
-            return view('astro.show')->withCb($cb)->withResearcherFellowship($reasearcherFellowship);
-        }
-        return view('astro.show')->withCb($cb)->withCelestialbody($celestialbody);
+        return view('astro.show')->withAstronomer($astronomer)->withInstitution($institution)->withCelestialbody($celestialbody);
     }
 
     /**
@@ -94,5 +93,24 @@ class AstroController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Searches by  Username
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function searchByUser(Request $request){
+
+        $this->validate($request, [
+            'username' => 'required'
+        ]);
+        $username = $request->username;
+
+        $astronomer = DB::table('astronomers')->where('username', $username)
+            ->get();
+        return view('astro.userOutput')->withAstronomer($astronomer);
     }
 }

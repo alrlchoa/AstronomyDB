@@ -350,27 +350,6 @@ class CBController extends Controller
         return view('cb.search')->withCelestialbody($celestialbody);
     }
 
-    /**
-     * Searches by  Username
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-    public function searchByUser(Request $request){
-
-        $celestialbody = new \Illuminate\Database\Eloquent\Collection;
-        $this->validate($request, [
-            'amount' => 'required'
-        ]);
-        $username = $request->amount;
-
-        $astronomer = Astronomer::query()
-            ->select(DB::raw("*"))
-            ->where('username', '=', $username)
-            ->get();
-        return view('cb.userOutput')->withAstronomer($astronomer);
-    }
 
     /**
      * Display the specified resource.

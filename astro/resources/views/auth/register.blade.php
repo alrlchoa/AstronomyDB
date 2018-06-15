@@ -88,7 +88,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-                        {!! Form::label('astrotype', 'Type of Celestial Body:', ['class' => 'col-md-4 control-label-lg']) !!}
+                        {!! Form::label('astrotype', 'Type of Astronomer:', ['class' => 'col-md-4 control-label-lg']) !!}
                         <div class="col-md-6">
                             <div class="checkbox">
                                 <label>{!! Form::radio('astrotype', '0', true) !!}Astronomer</label>

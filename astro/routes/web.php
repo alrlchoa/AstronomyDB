@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::post('cb/searchByUser', 'CBController@searchByUser')->name('cb.searchByUser');
+Route::post('astro/searchByUser', 'AstroController@searchByUser')->name('astro.searchByUser');
 Route::post('cb/searchID', 'CBController@searchID')->name('cb.searchID');
 Route::post('cb/search', 'CBController@search')->name('cb.search');
 Route::post('cb/searchByThreshold', 'CBController@searchByThreshold')->name('cb.searchByThreshold');
