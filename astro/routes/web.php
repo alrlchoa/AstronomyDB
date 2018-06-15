@@ -43,3 +43,5 @@ Route::resource('astro','AstroController');
 
 
 Route::resource('admin/publications', 'Admin\\PublicationsController');
+Route::resource('admin/instru-models', 'Admin\\InstruModelsController');
+Route::resource('admin/instruments', 'Admin\\InstrumentsController');

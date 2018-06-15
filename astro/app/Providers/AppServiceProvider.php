@@ -26,6 +26,16 @@ class AppServiceProvider extends ServiceProvider
         
             return $count == 0;
         }, 'Right Ascension and Declination combination has already been used.');
+
+        Validator::extend('uniqueMidLoc', function ($attribute, $value, $parameters, $validator) {
+            $param1 = array_get($validator->getData(), $parameters[0]);
+
+            $count = DB::table('instruments')->where('mid', $value)
+                ->where('location', $param1)
+                ->count();
+
+            return $count == 0;
+        }, 'Model ID and Location has already been used.');
     }
 
     /**

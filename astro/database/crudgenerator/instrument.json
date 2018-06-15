@@ -1,0 +1,38 @@
+{
+  "fields": [
+    {
+      "name": "mid",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "location",
+      "type": "string"
+    }
+  ],
+  "foreign_keys": [
+    {
+      "column": "mid",
+      "references": "id",
+      "on": "instru_models",
+      "onDelete": "set null",
+      "onUpdate": "cascade"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "instrumodel",
+      "type": "belongsTo",
+      "class": "App\\InstruModel"
+    }
+  ],
+  "validations": [
+    {
+      "field": "location",
+      "rules": "required|max:40"
+    },
+    {
+      "field": "mid",
+      "rules": "min:0"
+    }
+  ]
+}

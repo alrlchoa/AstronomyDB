@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\CelestialBody;
+use App\Instrument;
 use Illuminate\Http\Request;
 
-class CelestialBodiesController extends Controller
+class InstrumentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,16 +21,14 @@ class CelestialBodiesController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $celestialbodies = CelestialBody::where('right_ascension', 'LIKE', "%$keyword%")
-                ->orWhere('declination', 'LIKE', "%$keyword%")
-                ->orWhere('name', 'LIKE', "%$keyword%")
-                ->orWhere('verified', 'LIKE', "%$keyword%")
+            $instruments = Instrument::where('mid', 'LIKE', "%$keyword%")
+                ->orWhere('location', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $celestialbodies = CelestialBody::latest()->paginate($perPage);
+            $instruments = Instrument::latest()->paginate($perPage);
         }
 
-        return view('admin.celestial-bodies.index', compact('celestialbodies'));
+        return view('admin.instruments.index', compact('instruments'));
     }
 
     /**
@@ -40,7 +38,7 @@ class CelestialBodiesController extends Controller
      */
     public function create()
     {
-        return view('admin.celestial-bodies.create');
+        return view('admin.instruments.create');
     }
 
     /**
@@ -53,15 +51,14 @@ class CelestialBodiesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'right_ascension' => 'required|min:0|max:360|uniqueRaD:declination',
-            'declination' => 'required|min:0|max:360',
-			'name' => 'max:40'
+			'location' => 'required|max:40',
+			'mid' => 'min:0|uniqueMidLoc:location'
 		]);
         $requestData = $request->all();
         
-        CelestialBody::create($requestData);
+        Instrument::create($requestData);
 
-        return redirect('admin/celestial-bodies')->with('flash_message', 'CelestialBody added!');
+        return redirect('admin/instruments')->with('flash_message', 'Instrument added!');
     }
 
     /**
@@ -73,9 +70,9 @@ class CelestialBodiesController extends Controller
      */
     public function show($id)
     {
-        $celestialbody = CelestialBody::findOrFail($id);
+        $instrument = Instrument::findOrFail($id);
 
-        return view('admin.celestial-bodies.show', compact('celestialbody'));
+        return view('admin.instruments.show', compact('instrument'));
     }
 
     /**
@@ -87,9 +84,9 @@ class CelestialBodiesController extends Controller
      */
     public function edit($id)
     {
-        $celestialbody = CelestialBody::findOrFail($id);
+        $instrument = Instrument::findOrFail($id);
 
-        return view('admin.celestial-bodies.edit', compact('celestialbody'));
+        return view('admin.instruments.edit', compact('instrument'));
     }
 
     /**
@@ -103,16 +100,15 @@ class CelestialBodiesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-			'right_ascension' => 'required|min:0|max:360|uniqueRaD:declination',
-			'declination' => 'required|min:0|max:360',
-			'name' => 'max:40'
+			'location' => 'required|max:40',
+			'mid' => 'min:0|uniqueMidLoc:location'
 		]);
         $requestData = $request->all();
         
-        $celestialbody = CelestialBody::findOrFail($id);
-        $celestialbody->update($requestData);
+        $instrument = Instrument::findOrFail($id);
+        $instrument->update($requestData);
 
-        return redirect('admin/celestial-bodies')->with('flash_message', 'CelestialBody updated!');
+        return redirect('admin/instruments')->with('flash_message', 'Instrument updated!');
     }
 
     /**
@@ -124,8 +120,8 @@ class CelestialBodiesController extends Controller
      */
     public function destroy($id)
     {
-        CelestialBody::destroy($id);
+        Instrument::destroy($id);
 
-        return redirect('admin/celestial-bodies')->with('flash_message', 'CelestialBody deleted!');
+        return redirect('admin/instruments')->with('flash_message', 'Instrument deleted!');
     }
 }
