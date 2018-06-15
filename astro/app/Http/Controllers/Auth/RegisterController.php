@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Astronomer;
+use App\ResearcherFellowship;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -49,13 +51,25 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'fname' => 'required|string|max:255',
-            'lname' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'username' => 'required|string|max:20|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
+        if($data['astrotype'] == 1){
+            return Validator::make($data, [
+                'fname' => 'required|string|max:255',
+                'lname' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'username' => 'required|string|max:20|unique:users',
+                'password' => 'required|string|min:6|confirmed',
+                'institution' => 'required|string|exists:institutions,name'
+            ]);
+        }
+        else{
+            return Validator::make($data, [
+                'fname' => 'required|string|max:255',
+                'lname' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'username' => 'required|string|max:20|unique:users',
+                'password' => 'required|string|min:6|confirmed',
+            ]);
+        }
     }
 
     /**
@@ -73,6 +87,15 @@ class RegisterController extends Controller
         $astronomer->last_name = $data['lname'];
 
         $astronomer->save();
+
+        if($data['astrotype'] == 1){
+            $researcher = new ResearcherFellowship;
+            $researcher->id = $astronomer->id;
+            $inst = DB::table('institutions')->where('name', '=', $data['institution'])
+            ->get();
+            $researcher->institution_id = $inst[0]->id;
+            $researcher->save();
+        }
 
         return User::create([
             'fname' => $data['fname'],
