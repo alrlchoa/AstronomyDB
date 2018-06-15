@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-8">
-            <h1>Celestial Body {{ $cb->id }}</h1>
+            <h1>Edit Celestial Body {{ $cb->id }}</h1>
             <hr>
 
             <p class = "lead">{{ $cb->name }}</p>
