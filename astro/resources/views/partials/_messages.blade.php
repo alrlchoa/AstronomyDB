@@ -16,3 +16,11 @@
         </ul>
     </div>
 @endif
+
+@if (Session::has('delete'))
+
+    <div class="alert alert-danger" role="alert">
+        <strong>Deleted!</strong> {{Session::get('delete')}}
+    </div>
+
+@endif

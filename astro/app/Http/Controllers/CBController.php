@@ -525,7 +525,11 @@ class CBController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cb = CelestialBody::find($id);
+        $cb->delete();
+
+        Session::flash('delete', 'Celestial Body was deleted correctly.');
+        return redirect()->action('PagesController@getIndex');
     }
 
 
