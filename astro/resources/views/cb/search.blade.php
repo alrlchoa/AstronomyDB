@@ -19,9 +19,10 @@
 				@foreach ($celestialbody as $CB)
 				<tr>
 					<th>{{$CB->id}}</th>
-					<th>{{$CB->name}}</th>
-					<th>{{$CB->right_ascension}}</th>
-					<th>{{$CB->declination}}</th>
+					<td>{{$CB->name}}</td>
+					<td>{{$CB->right_ascension}}</td>
+					<td>{{$CB->declination}}</td>
+					<td><a href="{{route('cb.show',$CB->id)}}" class="btn btn-outline-dark" role="button">View</a></td>
 				</tr>
 				@endforeach
 
