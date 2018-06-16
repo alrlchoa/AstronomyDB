@@ -94,17 +94,16 @@
             <div class="container bg-light">
                 <p class="text-center h4">Relationships</p>
                 @if (!empty($comet))
-                    <p>Comet is speeding past: {{$comet->speed}}</p>
+                    <p>Comet is speeding past Star: {{$comet->speed}}</p>
 
                 @elseif (!empty($galaxy))
-                    <p>Galaxy's do not have any relationships!!!</p>
+                    <p>Galaxy's do not have any relationships</p>
 
                 @elseif (!empty($moon))
-                    <p>Moon is orbiting around: {{$planetoid->orbital_period}}</p>
+                    <p>Moon is orbiting around Star: {{$planetoid->orbital_period}}</p>
 
                 @elseif (!empty($planet))
-                    <p><b>Planet's Orbital Period: </b>{{$planet->orbital_period}}</p>
-                    <p><b>Planet's Type: </b>{{$planet->planet_type}}</p>
+                    <p><b>Planet is orbiting around Star: </b>{{$planet->orbital_period}}</p>
 
                 @elseif (!empty($star))
                     <p>Planets orbiting around this Star: {{$spectral->spectral_type}}</p>
