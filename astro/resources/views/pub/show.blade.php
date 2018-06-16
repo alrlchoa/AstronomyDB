@@ -8,66 +8,31 @@
             <h1>Publication {{ $pub->id }}</h1>
             <hr>
 
-            <p class = "lead">{{ $astronomer->first_name }}</p>
+            <p><b>Date of publication:</b> {{ $pub->date_of_publication }}</p>
+            <p><b>Digital Object Identifier:</b> {{ $pub->doi}}</p>
 
-        </div>
-        <div class="col-md-4">
-            @guest
-            @else
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            {!! Html::linkroute('cb.edit', 'Edit', [$cb->id], ['class' => 'btn btn-primary btn-block']) !!}
-                        </div>
-                        <div class="col-md-6">
-                            {!! Form::open(['route'=>['cb.relation',$cb->id], 'method' => 'GET'])!!}
-                            {!! Form::submit('Add Relation',['class'=>'btn btn-secondary btn-block']) !!}
-                            {!! Form::close() !!}
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 10px;">
-                        <div class="col-md-12">
-                            {!! Form::open(['route' => ['cb.destroy',$cb->id], 'method'=> 'DELETE']) !!}
-                            {!! Form::submit('Delete', ['class' =>'btn btn-danger btn-block']) !!}
-                            {!! Form::close() !!}
-                        </div>
-                    </div>
-                </div>
-            @endguest
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="container bg-light">
-                <p class="text-center h4">Publications</p>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="container bg-light">
-                <p class="text-center h4">Relationships</p>
-                @if (!empty($comet))
-                    <p>Comet is speeding past: {{$comet->speed}}</p>
+            <table>
+            <thead>
+            <th>First Name</th>
+            <th>Last Name</th>
+            </thead>
 
-                @elseif (!empty($galaxy))
-                    <p>Galaxy's do not have any relationships!!!</p>
+            <tbody>
 
-                @elseif (!empty($moon))
-                    <p>Moon is orbiting around: {{$planetoid->orbital_period}}</p>
+            @foreach ($astronomers as $astronomer)
+                <tr>
+                    <td>{{$astronomer->first_name}}</td>
+                    <td>{{$astronomer->last_name}}</td>
+                </tr>
+            @endforeach
 
-                @elseif (!empty($planet))
-                    <p><b>Planet's Orbital Period: </b>{{$planet->orbital_period}}</p>
-                    <p><b>Planet's Type: </b>{{$planet->planet_type}}</p>
+            </tbody>
+            </table>
 
-                @elseif (!empty($star))
-                    <p>Planets orbiting around this Star: {{$spectral->spectral_type}}</p>
-                    <p>Comets zooming past this Star: {{$spectral->brightness}}</p>
+            
 
-                @else
-                    <strong>This Celestial body has not been classified yet!</strong>
-                @endif
-            </div>
-        </div>
-    </div>
+
+        <div/>
+    <div/>
 
 @endsection

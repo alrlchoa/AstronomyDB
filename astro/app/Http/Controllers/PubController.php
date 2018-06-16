@@ -72,8 +72,11 @@ class PubController extends Controller
     {
         $pub= Publication::find($id);
         if(!is_null($pub)){
-            $astronomer = Astronomer::find($pub->rf_id);
-            return view('pub.show')->withPub($pub)->withAstronomer($astronomer);
+            $pubs = DB::table('pub_rf')->where('pub_id',$pub->id)
+                ->pluck('rf_id')->toArray();
+            $astronomers = DB::table('astronomers')->whereIn('id',$pubs)
+                ->get();
+            return view('pub.show')->withPub($pub)->withAstronomers($astronomers);
         } else{
             return null;
         }
