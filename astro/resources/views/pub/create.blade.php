@@ -13,9 +13,8 @@
 
             <br />
 
-            {{ Form::label('year', 'Year Published') }}
-            {{ Form::selectYear('year', 0, 2018) }}
-
+            {{ Form::label('date_of_publication', 'Date of publication ') }}
+            {!! Form::date('date_of_publication', \Carbon\Carbon::now()->format('D/M/Y'), ['class' => 'form-control', 'required' => true]) !!}
             <br />
             <br />
 
