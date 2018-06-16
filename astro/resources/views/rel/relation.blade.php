@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '- Relation cb')
+@section('title', '- Relation rel')
 
 @section('content')
     <div class="row">
@@ -60,37 +60,64 @@
     <hr>
     @if (!empty($planet))
                 <div class="col-md-6">        
-                            {!! Form::open(['route'=>['cb.relation',$cb->id], 'method' => 'GET','class'=>'form-inline'])!!}
+                            {!! Form::open(['route'=>'rel.store', 'method' => 'POST','class'=>'form-inline'])!!}
+
+                            {{Form::hidden ('parent_id',$planet->id)}}
+                            {{Form::hidden ('parent_type',4)}}
+                            
                             <p class="h4">Planet {{ $cb->id }} Orbits:</p>
                             {!!Form::text('star_id',null,['class'=> 'form-control', 'placeholder' =>'Input Star ID'])!!}
+                            
                             {{Form::submit('Confirm',['class'=>'btn btn-secondary'])}} 
+                            
                             {!! Form::close() !!}
                         </div>
      @endif
      @if (!empty($comet))
                 <div class="col-md-6">        
-                            {!! Form::open(['route'=>['cb.relation',$cb->id], 'method' => 'GET','class'=>'form-inline'])!!}
-                            <p class="h4" style="margin-right: 10px;">Comet {{ $cb->id }} Passes By:</p>
+                            {!! Form::open(['route'=>'rel.store', 'method' => 'POST','class'=>'form-inline'])!!}
+                            
+                            {{Form::hidden ('parent_id',$comet->id)}}
+                            {{Form::hidden ('parent_type',1)}}
+
+                            <p class="h4" style="margin-right: 10px;"> Comet {{ $cb->id }} Passes By:</p>
+                            
                             {!!Form::text('star_id',null,['class'=> 'form-control', 'placeholder' =>'Input Star ID'])!!}
+                            
                             {{Form::submit('Confirm',['class'=>'btn btn-secondary'])}} 
+                            
                             {!! Form::close() !!}
                         </div>
     @endif
     @if (!empty($star))
                 <div class="col-md-8">        
-                            {!! Form::open(['route'=>['cb.relation',$cb->id], 'method' => 'GET','class'=>'form-inline'])!!}
                             <div class ="row">
                                 <div class="col-md-4">
                                 <p class="h4">Star {{ $cb->id }} is Orbited By:</p>
                                 </div>
                                 <div class="col-md-8">
-                                {!!Form::text('planet_id',null,['class'=> 'form-control', 'placeholder' =>'Input Planet ID'])!!}
-                                {{Form::submit('Confirm',['class'=>'btn btn-secondary'])}} 
-                                {!!Form::text('comet_id',null,['class'=> 'form-control', 'placeholder' =>'Input Comet ID'])!!}
-                                {{Form::submit('Confirm',['class'=>'btn btn-secondary'])}}
-                            </div>
-                            </div>
+                            {!! Form::open(['route'=>'rel.store', 'method' => 'POST','class'=>'form-inline'])!!}
+                            
+                            {{Form::hidden ('parent_id',$star->id)}}
+                            {{Form::hidden ('parent_type',5)}}
+                            {{Form::hidden ('child_type',4)}}
+                            {!!Form::text('planet_id',null,['class'=> 'form-control', 'placeholder' =>'Input Planet ID'])!!}
+                            {{Form::submit('Confirm',['class'=>'btn btn-secondary'])}} 
+                            
                             {!! Form::close() !!}
+
+                            {!! Form::open(['route'=>'rel.store', 'method' => 'POST','class'=>'form-inline'])!!}
+                        
+                            {{Form::hidden ('parent_id',$star->id)}}
+                            {{Form::hidden ('parent_type',5)}}
+                            {{Form::hidden ('child_type',1)}}
+                            {!!Form::text('comet_id',null,['class'=> 'form-control', 'placeholder' =>'Input Comet ID'])!!}
+                            {{Form::submit('Confirm',['class'=>'btn btn-secondary'])}}
+                            
+                            {!! Form::close() !!}
+
+                            </div>
+                            </div>
                         </div>
 
     @endif

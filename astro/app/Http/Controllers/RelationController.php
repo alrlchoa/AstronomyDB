@@ -2,7 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Astronomer;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\CelestialBody;
+use App\Comet;
+use App\Galaxy;
+use App\Moon;
+use App\Planet;
+use App\Star;
+use App\SpectralBrightness;
+use Session;
 
 class RelationController extends Controller
 {
@@ -34,7 +44,74 @@ class RelationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'parent_id' => 'required'
+        ]);
+
+        switch($request->parent_type){
+            
+            case 1:
+                $this->validate($request, [
+                    'parent_id' => 'required|exists:comets,id',
+                    'star_id' =>  'required|exists:stars,id'
+                    
+                ]);
+                $comet_id = $request->parent_id;
+                $star_id = $request->star_id;
+                $relationship = DB::table('comet_star')
+                    ->insert(['comet_id' => $comet_id, 'star_id' => $star_id]);
+
+                break;        
+
+            case 4:
+                $this->validate($request, [
+                    'parent_id' => 'required|exists:planets,id',
+                    'star_id' =>  'required|exists:stars,id'
+
+                ]);
+                $planet_id = $request->parent_id;
+                $star_id = $request->star_id;
+                $relationship = DB::table('planet_star')
+                    ->insert(['planet_id' => $planet_id, 'star_id' => $star_id]);
+
+                break;
+
+            case 5:
+                $this->validate($request, [
+                    'parent_id' => 'required|exists:stars,id',
+                ]);
+
+            
+                if($request->child_type == 1){
+                    $this->validate($request, [
+                    'comet_id' => 'required|exists:comets,id',
+                ]);
+                    $comet_id = $request->comet_id;
+                    $star_id = $request->parent_id;
+                    $relationship = DB::table('comet_star')
+                        ->insert(['comet_id' => $comet_id, 'star_id' => $star_id]);
+
+                }else if($request->child_type == 4){
+                    $this->validate($request, [
+                    'planet_id' => 'required|exists:planets,id',
+                ]);
+                        $planet_id = $request->planet_id;
+                        $star_id = $request->parent_id;
+                        $relationship = DB::table('planet_star')
+                            ->insert(['planet_id' => $planet_id, 'star_id' => $star_id]);
+                    }
+            
+                break;
+
+            default:
+                $this->validate($request, [
+                    'parent_id' => 'between:0,6'
+                ]);
+        }
+
+        Session::flash('success', 'Relationship was added correctly.');
+
+            return redirect()->action('PagesController@getIndex');
     }
 
     /**
@@ -102,18 +179,18 @@ class RelationController extends Controller
         $star = Star::find($id);
 
         if (!is_null($comet)){
-            return view('cb.relation')->withCb($cb)->withComet($comet);
+            return view('rel.relation')->withCb($cb)->withComet($comet);
         }else if (!is_null($galaxy)){
-            return view('cb.relation')->withCb($cb)->withGalaxy($galaxy);
+            return view('rel.relation')->withCb($cb)->withGalaxy($galaxy);
         }else if(!is_null($moon)){
             $planet= Planet::find($moon->planet_id);
-            return view('cb.relation')->withCb($cb)->withMoon($moon)->withPlanetoid($planet);
+            return view('rel.relation')->withCb($cb)->withMoon($moon)->withPlanetoid($planet);
         }else if(!is_null($planet)){
-            return view('cb.relation')->withCb($cb)->withPlanet($planet);
+            return view('rel.relation')->withCb($cb)->withPlanet($planet);
         }else if(!is_null($star)){
             $spectral = SpectralBrightness::find($star->spectral_brightness_id);
-            return view('cb.relation')->withCb($cb)->withStar($star)->withSpectral($spectral);
+            return view('rel.relation')->withCb($cb)->withStar($star)->withSpectral($spectral);
         }
-        return view('cb.relation')->withCb($cb);
+        return view('rel.relation')->withCb($cb);
     }
 }

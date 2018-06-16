@@ -22,7 +22,7 @@
             @if (!empty($comet))
                 <p>Comet's Speed: {{$comet->speed}}</p>
                 <div class="col-md-6">        
-                            {!! Form::open(['route'=>['cb.relation',$cb->id], 'method' => 'GET'])!!}
+                            {!! Form::open(['route'=>['rel.relation',$cb->id], 'method' => 'GET'])!!}
                             {!! Form::submit('Add Relation',['class'=>'btn btn-secondary btn-block']) !!}
                             {!! Form::close() !!}
                         </div>
@@ -46,7 +46,7 @@
                 <p><b>Planet's Orbital Period: </b>{{$planet->orbital_period}}</p>
                 <p><b>Planet's Type: </b>{{$planet->planet_type}}</p>
                 <div class="col-md-6">        
-                            {!! Form::open(['route'=>['cb.relation',$cb->id], 'method' => 'GET'])!!}
+                            {!! Form::open(['route'=>['rel.relation',$cb->id], 'method' => 'GET'])!!}
                             {!! Form::submit('Add Relation',['class'=>'btn btn-secondary btn-block']) !!}
                             {!! Form::close() !!}
                         </div>
@@ -56,7 +56,7 @@
                 <p>Star's Spectral Brightness: {{$spectral->spectral_type}}</p>
                 <p>Star's Brightness: {{$spectral->brightness}}</p>
                 <div class="col-md-6">        
-                            {!! Form::open(['route'=>['cb.relation',$cb->id], 'method' => 'GET'])!!}
+                            {!! Form::open(['route'=>['rel.relation',$cb->id], 'method' => 'GET'])!!}
                             {!! Form::submit('Add Relation',['class'=>'btn btn-secondary btn-block']) !!}
                             {!! Form::close() !!}
                         </div>
