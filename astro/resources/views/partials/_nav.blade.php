@@ -1,7 +1,7 @@
 <!-- BootStrap Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="#">AstroDB</a>
+        <a class="navbar-brand" href="/">AstroDB</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,6 +21,9 @@
             @else
             <li class="nav-item {{Request::is('cb/create') ? "active" : ""}}">
                 <a class="nav-link" href="/cb/create">Create CB</a>
+            </li>
+            <li class="nav-item {{Request::is('pub/create') ? "active" : ""}}">
+                <a class="nav-link" href="/pub/create">Create PUB</a>
             </li>
             @endguest
             </ul>

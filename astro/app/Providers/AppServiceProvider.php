@@ -49,6 +49,7 @@ class AppServiceProvider extends ServiceProvider
             return $count == 0;
         }, 'Model ID and Location has already been used.');
 
+
         Validator::extend('bet', function ($attribute, $value, $parameters, $validator) {
             $param0 = $parameters[0];
             $param1 = $parameters[1];
@@ -59,6 +60,17 @@ class AppServiceProvider extends ServiceProvider
         Validator::replacer('bet', function ($message, $attribute, $rule, $parameters) {
             return str_replace([':param0',':param1'],$parameters,$message);
         });
+
+        Validator::extend('userIsRF', function ($attribute, $value, $parameters, $validator) {
+
+            $id = DB::table('astronomers')->where('username',$value)
+                ->first()->id;
+            $count = DB::table('researcher_fellowships')->where('id', $id)
+                ->count();
+
+            return $count > 0;
+        }, 'User is not a researcher.');
+
     }
 
     /**

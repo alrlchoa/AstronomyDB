@@ -436,21 +436,25 @@ class CBController extends Controller
         $moon = Moon::find($id);
         $planet = Planet::find($id);
         $star = Star::find($id);
+        $ids = DB::table('cb_pub')->where('cb_id',$cb->id)
+            ->pluck('pub_id')->toArray();
+        $pubs = DB::table('publications')->whereIn('id', $ids)
+            ->get();
 
         if (!is_null($comet)){
-            return view('cb.show')->withCb($cb)->withComet($comet);
+            return view('cb.show')->withCb($cb)->withComet($comet)->withPubs($pubs);
         }else if (!is_null($galaxy)){
-            return view('cb.show')->withCb($cb)->withGalaxy($galaxy);
+            return view('cb.show')->withCb($cb)->withGalaxy($galaxy)->withPubs($pubs);
         }else if(!is_null($moon)){
             $planet= Planet::find($moon->planet_id);
-            return view('cb.show')->withCb($cb)->withMoon($moon)->withPlanetoid($planet);
+            return view('cb.show')->withCb($cb)->withMoon($moon)->withPlanetoid($planet)->withPubs($pubs);
         }else if(!is_null($planet)){
-            return view('cb.show')->withCb($cb)->withPlanet($planet);
+            return view('cb.show')->withCb($cb)->withPlanet($planet)->withPubs($pubs);
         }else if(!is_null($star)){
             $spectral = SpectralBrightness::find($star->spectral_brightness_id);
-            return view('cb.show')->withCb($cb)->withStar($star)->withSpectral($spectral);
+            return view('cb.show')->withCb($cb)->withStar($star)->withSpectral($spectral)->withPubs($pubs);
         }
-        return view('cb.show')->withCb($cb);
+        return view('cb.show')->withCb($cb)->withPubs($pubs);
     }
 
     /**

@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('pub/searchByDOI', 'PubController@searchByDOI')->name('pub.searchByDOI');
 Route::post('astro/searchByInstitution', 'AstroController@searchByInstitution')->name('astro.searchByInstitution');
 Route::post('astro/searchByUser', 'AstroController@searchByUser')->name('astro.searchByUser');
 Route::post('cb/relation', 'CBController@relation')->name('cb.relation');
@@ -17,6 +18,9 @@ Route::post('cb/searchID', 'CBController@searchID')->name('cb.searchID');
 Route::post('cb/search', 'CBController@search')->name('cb.search');
 Route::post('cb/searchByThreshold', 'CBController@searchByThreshold')->name('cb.searchByThreshold');
 Route::post('cb/searchByType', 'CBController@searchByType')->name('cb.searchByType');
+Route::post('pub/author', 'PubController@author')->name('pub.author');
+Route::post('pub/relation', 'PubController@relation')->name('pub.relation');
+Route::post('pub/reference', 'PubController@reference')->name('pub.reference');
 
 
 Route::get('/team', 'PagesController@getTeam');
@@ -43,7 +47,7 @@ Route::resource('admin/researcher-fellowships', 'Admin\\ResearcherFellowshipsCon
 Route::resource('cb','CBController');
 Route::resource('astro','AstroController');
 
-
+Route::resource('pub', 'PubController');
 Route::resource('admin/publications', 'Admin\\PublicationsController');
 Route::resource('admin/instru-models', 'Admin\\InstruModelsController');
 Route::resource('admin/instruments', 'Admin\\InstrumentsController');
