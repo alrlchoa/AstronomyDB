@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '- View pub')
+@section('title', '- Destroy pub')
 
 @section('content')
     <div class="row">
@@ -12,21 +12,21 @@
             <p><b>Digital Object Identifier:</b> {{ $pub->doi}}</p>
 
             <table>
-            <thead>
-            <th>First Name</th>
-            <th>Last Name</th>
-            </thead>
+                <thead>
+                <th>First Name</th>
+                <th>Last Name</th>
+                </thead>
 
-            <tbody>
+                <tbody>
 
-            @foreach ($astronomers as $astronomer)
-                <tr>
-                    <td>{{$astronomer->first_name}}</td>
-                    <td>{{$astronomer->last_name}}</td>
-                </tr>
-            @endforeach
+                @foreach ($astronomers as $astronomer)
+                    <tr>
+                        <td>{{$astronomer->first_name}}</td>
+                        <td>{{$astronomer->last_name}}</td>
+                    </tr>
+                @endforeach
 
-            </tbody>
+                </tbody>
             </table>
 
             <div class="col-md-4">
@@ -57,7 +57,7 @@
             </div>
 
 
-        <div/>
-    <div/>
+            <div/>
+            <div/>
 
 @endsection
