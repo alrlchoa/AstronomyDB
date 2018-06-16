@@ -48,6 +48,16 @@ class AppServiceProvider extends ServiceProvider
 
             return $count == 0;
         }, 'Model ID and Location has already been used.');
+
+        Validator::extend('userIsRF', function ($attribute, $value, $parameters, $validator) {
+
+            $id = DB::table('astronomers')->where('username',$value)
+                ->first()->id;
+            $count = DB::table('researcher_fellowships')->where('id', $id)
+                ->count();
+
+            return $count > 0;
+        }, 'User is not a researcher.');
     }
 
     /**

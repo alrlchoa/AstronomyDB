@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Publication;
+use Illuminate\Support\Facades\DB;
 
 class PubController extends Controller
 {
@@ -35,17 +36,26 @@ class PubController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
+            'username' => 'required|userIsRF',
             'date_of_publication' => 'required',
             'doi' => 'required|min:0|unique:Publications,doi',
         ]);
 
+
         $pub = new Publication;
+
 
         $pub->date_of_publication = $request->date_of_publication;
         $pub->doi = $request->doi;
 
         $pub->save();
+
+        $id = DB::table('astronomers')->where('username',$request->username)
+            ->first()->id;
+
+        DB::table('pub_rf')->insert(['pub_id'=>$pub->id, 'rf_id'=>$id]);
 
         return redirect()->route('pub.show', $pub->id);
 
