@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Astronomer;
 use Illuminate\Http\Request;
 use App\Publication;
 use Illuminate\Support\Facades\DB;
@@ -69,7 +70,13 @@ class PubController extends Controller
      */
     public function show($id)
     {
-        //
+        $pub= Publication::find($id);
+        if(!is_null($pub)){
+            $astronomer = Astronomer::find($pub->rf_id);
+            return view('pub.show')->withPub($pub)->withAstronomer($astronomer);
+        } else{
+            return null;
+        }
     }
 
     /**
