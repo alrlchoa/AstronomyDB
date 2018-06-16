@@ -123,7 +123,19 @@ class PubController extends Controller
         $astronomer = DB::table('astronomers')->where('username',$request->username)
             ->first()->id;
 
-        $pub->save();
+        $count = DB::table('pub_rf')
+            ->where('pub_id',$id)
+            ->where('rf_id',$astronomer)
+            ->count();
+
+        if($count > 0){
+            Session::flash('error', 'Error, this combination exists already');
+            return redirect()->route('pub.show', $pub->id);
+        }
+        else{
+            DB::table('pub_rf')
+                ->insert(['pub_id' => $id, 'rf_id' => $astronomer]);
+        }
 
         Session::flash('success', 'Author was added.');
         return redirect()->route('pub.show', $pub->id);
