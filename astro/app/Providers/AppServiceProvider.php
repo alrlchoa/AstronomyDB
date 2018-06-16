@@ -71,6 +71,23 @@ class AppServiceProvider extends ServiceProvider
             return $count > 0;
         }, 'User is not a researcher.');
 
+        Validator::extend('uniqueCbPub', function ($attribute, $value, $parameters, $validator) {
+            $param1 = array_get($validator->getData(), $parameters[0]);
+
+            $pubID = DB::table('publications')->where('doi',$value)
+                ->first();
+            if($pubID){
+                $pubID = $pubID->id;
+            }else{
+                return false;
+            };
+
+            $count = DB::table('cb_pub')->where('pub_id', $pubID)
+                                        ->where('cb_id', $param1)
+                                        ->count();
+        
+            return $count == 0;
+        }, '(Celestial Body, Publication) combination has already been used or Publication does not exist.');
     }
 
     /**

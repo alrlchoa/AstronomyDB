@@ -73,8 +73,10 @@ class PubController extends Controller
     {
         $pub= Publication::find($id);
         if(!is_null($pub)){
-            $pubs = DB::table('pub_rf')->where('pub_id',$pub->id)
+            $pubs = DB::table('pub_rf')
+                ->where('pub_id',$pub->id)
                 ->pluck('rf_id')->toArray();
+
             $astronomers = DB::table('astronomers')->whereIn('id',$pubs)
                 ->get();
             return view('pub.show')->withPub($pub)->withAstronomers($astronomers);
@@ -137,9 +139,33 @@ class PubController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateAuthor(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'username' => 'required|userIsRF'
+        ]);
+
+        $pub = Publication::find($id);
+
+        $astronomer = DB::table('astronomers')->where('username',$request->username)
+            ->first()->id;
+
+        $count = DB::table('pub_rf')
+            ->where('pub_id',$id)
+            ->where('rf_id',$astronomer)
+            ->count();
+
+        if($count > 0){
+            Session::flash('error', 'Error, this combination exists already');
+            return redirect()->route('pub.show', $pub->id);
+        }
+        else{
+            DB::table('pub_rf')
+                ->insert(['pub_id' => $id, 'rf_id' => $astronomer]);
+        }
+
+        Session::flash('success', 'Author was added.');
+        return redirect()->route('pub.show', $pub->id);
     }
 
     /**

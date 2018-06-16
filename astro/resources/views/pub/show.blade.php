@@ -13,14 +13,17 @@
 
             <table>
             <thead>
+            <th>Username</th>
             <th>First Name</th>
             <th>Last Name</th>
+
             </thead>
 
             <tbody>
 
             @foreach ($astronomers as $astronomer)
                 <tr>
+                    <td>{{$astronomer->username}}</td>
                     <td>{{$astronomer->first_name}}</td>
                     <td>{{$astronomer->last_name}}</td>
                 </tr>
@@ -35,9 +38,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12"style="margin-top: 10px;">
-                                {!! Form::open(['route' => ['pub.author',$pub->id], 'method'=> 'GET']) !!}
-                                {!! Form::submit('Add Author', ['class' =>'btn btn-primary btn-block']) !!}
-                                {!! Form::close() !!}
+                                {!! Html::linkroute('pub.author', 'Add Author', [$pub->id], ['class' => 'btn btn-primary btn-block']) !!}
                             </div>
                             <div class="col-md-12"style="margin-top: 10px;">
                                 {!! Html::linkRoute('pub.showReferencePage', 'Add Reference', array($pub->id), array('class' =>'btn btn-danger btn-block')) !!}
