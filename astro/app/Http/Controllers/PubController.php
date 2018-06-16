@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Publication;
 
 class PubController extends Controller
 {
@@ -34,7 +35,20 @@ class PubController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'date_of_publication' => 'required',
+            'doi' => 'required|min:0|unique:Publications,doi',
+        ]);
+
+        $pub = new Publication;
+
+        $pub->date_of_publication = $request->date_of_publication;
+        $pub->doi = $request->doi;
+
+        $pub->save();
+
+        return redirect()->route('pub.show', $pub->id);
+
     }
 
     /**
