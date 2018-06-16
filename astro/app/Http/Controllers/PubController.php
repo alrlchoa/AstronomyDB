@@ -6,6 +6,7 @@ use App\Astronomer;
 use Illuminate\Http\Request;
 use App\Publication;
 use Illuminate\Support\Facades\DB;
+use Session;
 
 class PubController extends Controller
 {
@@ -40,7 +41,7 @@ class PubController extends Controller
 
         $this->validate($request, [
             'username' => 'required|userIsRF',
-            'date_of_publication' => 'required',
+            'date_of_publication' => 'required|before_or_equal:now',
             'doi' => 'required|min:0|unique:Publications,doi',
         ]);
 
@@ -83,14 +84,23 @@ class PubController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for added an author.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function author($id)
     {
-        //
+        $pub= Publication::find($id);
+        if(!is_null($pub)){
+            $pubs = DB::table('pub_rf')->where('pub_id',$pub->id)
+                ->pluck('rf_id')->toArray();
+            $astronomers = DB::table('astronomers')->whereIn('id',$pubs)
+                ->get();
+            return view('pub.author')->withPub($pub)->withAstronomers($astronomers);
+        } else{
+            return null;
+        }
     }
 
     /**
@@ -113,7 +123,11 @@ class PubController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pub = Publication::find($id);
+        $pub->delete();
+
+        Session::flash('delete', 'Publication was deleted.');
+        return redirect()->action('PagesController@getIndex');
     }
 
     /**
