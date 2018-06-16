@@ -95,13 +95,12 @@
                     {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Location']) !!}
 
                     {{ Form::label('mid', 'Instrument Model ID') }}
-                    {!! Form::number('mid',null,['class'=> 'form-control', 'placeholder' =>'Instrument Model ID', 'step'=>0.01]) !!}
-
+                    {!! Form::number('mid',null,['class'=> 'form-control', 'placeholder' =>'Instrument Model ID']) !!}
                 </div>
                 <hr>
 
                 {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create', ['class' => 'btn btn-secondary']) !!}
-                
+
             {!!  Form::close() !!}
             <br />
             </div>
