@@ -55,9 +55,9 @@ class CBController extends Controller
             'declination' => 'required|between:0,360',
             'right_ascension' => 'required|between:0,360|uniqueRaD:declination',
             'name' => 'max:40',
-            'date' => 'required',
+            'date' => 'required|before_or_equal:now',
             'location' => 'required|max:40',
-            'mid' => 'min:0|uniqueMidLoc:location'
+            'mid' => 'min:0'
         ]);
 
         $createdInstrument = false;
@@ -176,8 +176,12 @@ class CBController extends Controller
                 ]);
         }
 
-        if ($createdInstrumentModel) $instrumentModel->save();
-        $instrument->mid = $instrumentModel->id;
+        if ($createdInstrumentModel) {
+            $instrumentModel->save();
+            $instrument->mid = $instrumentModel->id;
+        } else {
+            $instrument->mid = $request->mid;
+        }
         if ($createdInstrument) $instrument->save();
 
         // Retrieve the ID of the astronomer who is creating the celestial body (and thus discovered it)
