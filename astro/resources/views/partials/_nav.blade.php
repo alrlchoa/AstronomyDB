@@ -22,6 +22,9 @@
             <li class="nav-item {{Request::is('cb/create') ? "active" : ""}}">
                 <a class="nav-link" href="/cb/create">Create CB</a>
             </li>
+            <li class="nav-item {{Request::is('pub/create') ? "active" : ""}}">
+                <a class="nav-link" href="/pub/create">Create PUB</a>
+            </li>
             @endguest
             </ul>
             <ul class ="navbar-nav navbar-right">
