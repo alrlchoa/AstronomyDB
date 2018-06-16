@@ -208,8 +208,8 @@ class CBController extends Controller
  */
     public function search(Request $request){
         $this->validate($request, [
-            'right_ascension' => 'required|min:0|max:360',
-            'declination' => 'required|min:0|max:360']);
+            'right_ascension' => 'required|bet:0,360',
+            'declination' => 'required|bet:0,360']);
 
         $right_ascension = $request->input('right_ascension');
         $declination = $request->input('declination');
