@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::delete('cb/{cb}/{pub}/destroy_pub_relation', ['uses' => 'CBController@destroy_pub_relation'])->name('cb.destroy_pub_relation');
+Route::post('cb/add_pub_relation', 'CBController@add_pub_relation')->name('cb.add_pub_relation');
+Route::get('cb/{id}/create_pub_relation', ['uses' => 'CBController@create_pub_relation'])->name('cb.create_pub_relation');
 Route::post('pub/searchByDOI', 'PubController@searchByDOI')->name('pub.searchByDOI');
 Route::post('astro/searchByInstitution', 'AstroController@searchByInstitution')->name('astro.searchByInstitution');
 Route::post('astro/searchByUser', 'AstroController@searchByUser')->name('astro.searchByUser');

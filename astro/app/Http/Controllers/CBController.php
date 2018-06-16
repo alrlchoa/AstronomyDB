@@ -637,4 +637,83 @@ class CBController extends Controller
         Session::flash('delete', 'Celestial Body was deleted correctly.');
         return redirect()->action('PagesController@getIndex');
     }
+
+    /**
+     * Show the form for adding publication.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function create_pub_relation($id)
+    {
+        $cb = CelestialBody::find($id);
+
+        if (is_null($cb)){
+            return null;
+        }
+
+        $comet = Comet::find($id);
+        $galaxy = Galaxy::find($id);
+        $moon = Moon::find($id);
+        $planet = Planet::find($id);
+        $star = Star::find($id);
+        $ids = DB::table('cb_pub')->where('cb_id',$cb->id)
+            ->pluck('pub_id')->toArray();
+        $pubs = DB::table('publications')->whereIn('id', $ids)
+            ->get();
+
+        if (!is_null($comet)){
+            return view('cb.edit_pub_relation')->withCb($cb)->withComet($comet)->withPubs($pubs);
+        }else if (!is_null($galaxy)){
+            return view('cb.edit_pub_relation')->withCb($cb)->withGalaxy($galaxy)->withPubs($pubs);
+        }else if(!is_null($moon)){
+            $planet= Planet::find($moon->planet_id);
+            return view('cb.edit_pub_relation')->withCb($cb)->withMoon($moon)->withPlanetoid($planet)->withPubs($pubs);
+        }else if(!is_null($planet)){
+            return view('cb.edit_pub_relation')->withCb($cb)->withPlanet($planet)->withPubs($pubs);
+        }else if(!is_null($star)){
+            $spectral = SpectralBrightness::find($star->spectral_brightness_id);
+            return view('cb.edit_pub_relation')->withCb($cb)->withStar($star)->withSpectral($spectral)->withPubs($pubs);
+        }
+        return view('cb.edit_pub_relation')->withCb($cb)->withPubs($pubs);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function add_pub_relation(Request $request){
+        $this->validate($request, [
+            'cb_id' => 'required|exists:celestial_bodies,id',
+            'pub_doi' => 'required|exists:publications,doi',
+            'pub_doi' => 'uniqueCbPub:cb_id'
+        ]);
+        
+        $pubID = DB::table('publications')->where('doi',$request->pub_doi)
+                ->first()->id;
+
+        DB::table('cb_pub')->insert(['pub_id'=>$pubID, 'cb_id'=>$request->cb_id]);
+
+        Session::flash('success', '(Celestial Body,Publication) Relation was created correctly.');
+        
+        return redirect()->route('cb.show', $request->cb_id);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy_pub_relation($cb,$pub)
+    {
+        DB::table('cb_pub')->where('cb_id',$cb)
+                ->where('pub_id',$pub)
+                ->delete();
+
+        Session::flash('delete', '(Celestial Body,Publication) Relation was deleted correctly.');
+        return redirect()->route('cb.show', $cb);
+    }
 }
