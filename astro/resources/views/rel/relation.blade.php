@@ -59,7 +59,7 @@
 
     <hr>
     @if (!empty($planet))
-                <div class="col-md-6">        
+                <div class="col-md-8">        
                             {!! Form::open(['route'=>'rel.store', 'method' => 'POST','class'=>'form-inline'])!!}
 
                             {{Form::hidden ('parent_id',$planet->id)}}
@@ -74,7 +74,7 @@
                         </div>
      @endif
      @if (!empty($comet))
-                <div class="col-md-6">        
+                <div class="col-md-8">        
                             {!! Form::open(['route'=>'rel.store', 'method' => 'POST','class'=>'form-inline'])!!}
                             
                             {{Form::hidden ('parent_id',$comet->id)}}
