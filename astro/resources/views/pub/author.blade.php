@@ -7,10 +7,6 @@
         <div class="col-md-8">
             <h1>Publication {{ $pub->id }}</h1>
             <hr>
-
-            <p><b>Date of publication:</b> {{ $pub->date_of_publication }}</p>
-            <p><b>Digital Object Identifier:</b> {{ $pub->doi}}</p>
-
             <table>
                 <thead>
                 <th>First Name</th>

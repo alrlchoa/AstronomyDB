@@ -84,12 +84,12 @@ class PubController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for added an author.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function author($id)
     {
         $pub= Publication::find($id);
         if(!is_null($pub)){
@@ -97,7 +97,7 @@ class PubController extends Controller
                 ->pluck('rf_id')->toArray();
             $astronomers = DB::table('astronomers')->whereIn('id',$pubs)
                 ->get();
-            return view('pub.edit')->withPub($pub)->withAstronomers($astronomers);
+            return view('pub.author')->withPub($pub)->withAstronomers($astronomers);
         } else{
             return null;
         }
