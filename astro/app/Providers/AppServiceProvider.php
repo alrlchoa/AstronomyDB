@@ -48,6 +48,17 @@ class AppServiceProvider extends ServiceProvider
 
             return $count == 0;
         }, 'Model ID and Location has already been used.');
+
+        Validator::extend('bet', function ($attribute, $value, $parameters, $validator) {
+            $param0 = $parameters[0];
+            $param1 = $parameters[1];
+
+            return $value>=$param0 && $value<=$param1;
+        }, " The :attribute should be between :param0 and :param1");
+
+        Validator::replacer('bet', function ($message, $attribute, $rule, $parameters) {
+            return str_replace([':param0',':param1'],$parameters,$message);
+        });
     }
 
     /**
