@@ -37,9 +37,9 @@
                             <div class="col-md-12">
                                 {!! Html::linkRoute('pub.author', 'Add Author', array($pub->id), array('class' =>'btn btn-primary btn-block')) !!}
                             </div>
-                            {{--<div class="col-md-6">--}}
-                                {{--{!! Html::linkRoute('pub.reference', 'Add Author', array($pub->id), array('class' =>'btn btn-primary btn-block')) !!}--}}
-                            {{--</div>--}}
+                            <div class="col-md-12">
+                                {!! Html::linkRoute('pub.reference', 'Add Reference', array($pub->id), array('class' =>'btn btn-primary btn-block')) !!}
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -47,11 +47,11 @@
                             </div>
                         </div>
 
-                        {{--<div class="row" style="margin-top: 10px;">--}}
-                            {{--<div class="col-md-12">--}}
-                                {{--{!! Html::linkRoute('pub.destroy', 'Delete', array($pub->id), array('class' =>'btn btn-danger btn-block')) !!}--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-12">
+                                {!! Html::linkRoute('pub.destroy', 'Delete', array($pub->id), array('class' =>'btn btn-danger btn-block')) !!}
+                            </div>
+                        </div>
                     </div>
                 @endguest
             </div>
