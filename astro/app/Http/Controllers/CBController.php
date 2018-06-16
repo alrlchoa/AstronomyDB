@@ -177,10 +177,7 @@ class CBController extends Controller
         }
 
         if ($createdInstrumentModel) $instrumentModel->save();
-        $instrumentModelID = DB::table('instru_models')
-            ->where('id', $request->mid)
-            ->pluck('id')->first();
-        $instrument->mid = $instrumentModelID;
+        $instrument->mid = $instrumentModel->id;
         if ($createdInstrument) $instrument->save();
 
         // Retrieve the ID of the astronomer who is creating the celestial body (and thus discovered it)
