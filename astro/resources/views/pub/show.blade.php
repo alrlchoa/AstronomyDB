@@ -29,7 +29,32 @@
             </tbody>
             </table>
 
-            
+            <div class="col-md-4">
+                @guest
+                @else
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                {!! Html::linkRoute('pub.author', 'Add Author', array($pub->id), array('class' =>'btn btn-primary btn-block')) !!}
+                            </div>
+                            {{--<div class="col-md-6">--}}
+                                {{--{!! Html::linkRoute('pub.reference', 'Add Author', array($pub->id), array('class' =>'btn btn-primary btn-block')) !!}--}}
+                            {{--</div>--}}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                {!! Html::linkRoute('pub.relation', 'Add Relation', array($pub->id), array('class' =>'btn btn-primary btn-block')) !!}
+                            </div>
+                        </div>
+
+                        {{--<div class="row" style="margin-top: 10px;">--}}
+                            {{--<div class="col-md-12">--}}
+                                {{--{!! Html::linkRoute('pub.destroy', 'Delete', array($pub->id), array('class' =>'btn btn-danger btn-block')) !!}--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    </div>
+                @endguest
+            </div>
 
 
         <div/>

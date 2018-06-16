@@ -17,6 +17,8 @@ Route::post('cb/searchID', 'CBController@searchID')->name('cb.searchID');
 Route::post('cb/search', 'CBController@search')->name('cb.search');
 Route::post('cb/searchByThreshold', 'CBController@searchByThreshold')->name('cb.searchByThreshold');
 Route::post('cb/searchByType', 'CBController@searchByType')->name('cb.searchByType');
+Route::post('pub/author', 'PubController@author')->name('pub.author');
+Route::post('pub/relation', 'PubController@relation')->name('pub.relation');
 
 
 Route::get('/team', 'PagesController@getTeam');
