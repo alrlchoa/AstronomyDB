@@ -9,6 +9,8 @@
             <hr>
             {!! Form::open(['route' => 'cb.store', 'files' => true]) !!}
 
+                {{ Form::hidden("astronomer_username", Auth::user()->username) }}
+
                 {{ Form::label('right_ascension', 'Right Ascension') }}
                 {!! Form::number('right_ascension',null,['class'=> 'form-control', 'placeholder' =>'Right Ascension', 'step'=>0.01]) !!}  
 
@@ -92,10 +94,13 @@
                     {!! Form::date('date', \Carbon\Carbon::now()->format('D/M/Y'), ['class' => 'form-control', 'required' => true]) !!}
 
                     {{ Form::label('location', 'Location') }}
-                    {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Location']) !!}
+                    {!! Form::text('location',null,['class'=>'form-control','placeholder'=>'Location']) !!}
 
                     {{ Form::label('mid', 'Instrument Model ID') }}
                     {!! Form::number('mid',null,['class'=> 'form-control', 'placeholder' =>'Instrument Model ID']) !!}
+
+                    {{ Form::label('type', 'Type') }}
+                    {!! Form::text('type',null,['class'=>'form-control','placeholder'=>'Type']) !!}
                 </div>
                 <hr>
 
