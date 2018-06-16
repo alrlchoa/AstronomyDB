@@ -44,13 +44,6 @@
                                 {!! Html::linkRoute('pub.showReferencePage', 'Add Reference', array($pub->id), array('class' =>'btn btn-danger btn-block')) !!}
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12"style="margin-top: 10px;">
-                                {!! Form::open(['route' => ['pub.relation',$pub->id], 'method'=> 'GET']) !!}
-                                {!! Form::submit('Add Relation', ['class' =>'btn btn-secondary btn-block']) !!}
-                                {!! Form::close() !!}
-                            </div>
-                        </div>
 
                         <div class="row" style="margin-top: 10px;">
                             <div class="col-md-12">
