@@ -43,7 +43,7 @@ Route::resource('admin/researcher-fellowships', 'Admin\\ResearcherFellowshipsCon
 Route::resource('cb','CBController');
 Route::resource('astro','AstroController');
 
-
+Route::resource('pub', 'PubController');
 Route::resource('admin/publications', 'Admin\\PublicationsController');
 Route::resource('admin/instru-models', 'Admin\\InstruModelsController');
 Route::resource('admin/instruments', 'Admin\\InstrumentsController');
