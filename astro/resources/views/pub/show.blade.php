@@ -40,9 +40,7 @@
                                 {!! Form::close() !!}
                             </div>
                             <div class="col-md-12"style="margin-top: 10px;">
-                                {!! Form::open(['route' => ['pub.reference',$pub->id], 'method'=> 'GET']) !!}
-                                {!! Form::submit('Add Reference', ['class' =>'btn btn-primary btn-block']) !!}
-                                {!! Form::close() !!}
+                                {!! Html::linkRoute('pub.showReferencePage', 'Add Reference', array($pub->id), array('class' =>'btn btn-danger btn-block')) !!}
                             </div>
                         </div>
                         <div class="row">

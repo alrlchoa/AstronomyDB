@@ -103,6 +103,33 @@ class PubController extends Controller
         }
     }
 
+
+    public function showReferencePage($id)
+    {
+        $pub = Publication::find($id);
+        if(!is_null($pub)){
+            $pub_ids = DB::table('publication_references')
+                ->where('referrer_id', $pub->id)
+                ->pluck('reference_id')->toArray();
+            $pubs = DB::table('publications')->whereIn('id',$pub_ids)
+                ->get();
+            return view('pub.reference')->withPub($pub)->withPubs($pubs);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Adds a new entry in the pivot table for
+     * the publication-publication relation. Adds a new
+     * publication
+     * @param Request $request
+     */
+    public function reference(Request $request)
+    {
+
+    }
+
     /**
      * Update the specified resource in storage.
      *
