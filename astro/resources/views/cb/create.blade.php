@@ -42,9 +42,6 @@
                             <label>{!! Form::radio('cbtype', '5') !!} Star</label>
                         </div>
                     </div>
-                
-                
-                {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create', ['class' => 'btn btn-secondary']) !!}
 
                 <hr>
                 <div class="col-md-11 offset-md-1">
@@ -87,6 +84,24 @@
                     {!! Form::label('star_spectral', 'Spectral Type: ') !!}
                     {!! Form::number('star_spectral',null,['class'=> 'form-control', 'placeholder' =>'Spectral ID']) !!}
                 </div>
+
+                <hr>
+                <h5>Instrument Used</h5>
+                <div class="col-md-11">
+                    {{ Form::label('date', 'Date of Discovery') }}
+                    {!! Form::date('date', \Carbon\Carbon::now()->format('D/M/Y'), ['class' => 'form-control', 'required' => true]) !!}
+
+                    {{ Form::label('location', 'Location') }}
+                    {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Location']) !!}
+
+                    {{ Form::label('mid', 'Instrument Model ID') }}
+                    {!! Form::number('mid',null,['class'=> 'form-control', 'placeholder' =>'Instrument Model ID', 'step'=>0.01]) !!}
+
+                </div>
+                <hr>
+
+                {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create', ['class' => 'btn btn-secondary']) !!}
+                
             {!!  Form::close() !!}
             <br />
             </div>
