@@ -6,6 +6,7 @@ use App\Astronomer;
 use Illuminate\Http\Request;
 use App\Publication;
 use Illuminate\Support\Facades\DB;
+use Session;
 
 class PubController extends Controller
 {
@@ -90,7 +91,16 @@ class PubController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pub= Publication::find($id);
+        if(!is_null($pub)){
+            $pubs = DB::table('pub_rf')->where('pub_id',$pub->id)
+                ->pluck('rf_id')->toArray();
+            $astronomers = DB::table('astronomers')->whereIn('id',$pubs)
+                ->get();
+            return view('pub.edit')->withPub($pub)->withAstronomers($astronomers);
+        } else{
+            return null;
+        }
     }
 
     /**
@@ -113,7 +123,11 @@ class PubController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pub = Publication::find($id);
+        $pub->delete();
+
+        Session::flash('delete', 'Publication was deleted.');
+        return redirect()->action('PagesController@getIndex');
     }
 
     /**
