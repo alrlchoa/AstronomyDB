@@ -9,7 +9,7 @@
             <h1>Create a Publication</h1>
             <hr>
             {!! Form::open(['route' => 'pub.store', 'files' => true]) !!}
-
+            {{Form::hidden('username', Auth::user()->username)}}
 
             <br />
 
