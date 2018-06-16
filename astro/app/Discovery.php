@@ -20,6 +20,8 @@ class Discovery extends Model
      */
     protected $fillable = ['date_of_discovery'];
 
+    public $timestamps = false;
+
     public function instrument()
     {
         return $this->belongsTo('App\Instrument');

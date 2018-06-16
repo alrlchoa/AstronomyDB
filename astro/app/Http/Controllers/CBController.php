@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Astronomer;
+use App\Discovery;
+use App\Instrument;
+use App\InstruModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\CelestialBody;
@@ -48,16 +51,57 @@ class CBController extends Controller
             $request->merge(['verified' => 0]);
         }
         $this->validate($request, [
+            'astronomer_username' => 'required',
             'declination' => 'required|between:0,360',
             'right_ascension' => 'required|between:0,360|uniqueRaD:declination',
             'name' => 'max:40',
+            'date' => 'required|before_or_equal:now',
+            'location' => 'required|max:40',
+            'mid' => 'min:0'
         ]);
 
+        $createdInstrument = false;
+        $createdInstrumentModel = false;
+
+        // Retrieve the instrument with the location and id specified in the request.
+        $instrument = DB::table('instruments')
+            ->where('mid', $request->mid)
+            ->where('location', $request->location)
+            ->first();
+
+        // Check if the instrument was found, and if not, query the instrument models to ensure there
+        // is an instrument model with the mid in the request
+        if(!$instrument){
+            $instrumentModel = DB::table('instru_models')
+                ->where('id', $request->mid)
+                ->first();
+            // Check if the instrument model was found.
+            if (!$instrumentModel) {
+                // If the user hasn't filled out the type field, make them through this validation.
+                $this->validate($request, [
+                    'type' => 'required|max:40'
+                ]);
+                // Create a new model with the type specified in the request.
+                $instrumentModel = new InstruModel;
+                $instrumentModel->type = $request->type;
+                $createdInstrumentModel = true;
+
+            }
+            // Create a new instrument with mid and location of the instrumentModel above
+            $instrument = new Instrument;
+            // would normally assign instrument mid here as below:
+            // $instrument->mid = $instrumentModel->id; but the instrumentModel referred to here may not
+            // have been saved yet and thus may not have an id! We do this below instead.
+            $instrument->location = $request->location;
+            $createdInstrument = true;
+        }
+
+        // Create a celestial body from the form data
         $cb = new CelestialBody;
         $cb->right_ascension = $request->right_ascension;
         $cb->declination = $request->declination;
         $cb->name = $request->name;
-        $cb->verified = $request->verified;  
+        $cb->verified = $request->verified;
               
         switch($request->cbtype){
             case 0:
@@ -132,6 +176,29 @@ class CBController extends Controller
                 ]);
         }
 
+        if ($createdInstrumentModel) {
+            $instrumentModel->save();
+            $instrument->mid = $instrumentModel->id;
+        } else {
+            $instrument->mid = $request->mid;
+        }
+        if ($createdInstrument) $instrument->save();
+
+        // Retrieve the ID of the astronomer who is creating the celestial body (and thus discovered it)
+        $astronomerID = DB::table('astronomers')
+            ->where('username', $request->astronomer_username)
+            ->pluck('id')->first();
+
+        // Create a discovery with the astronomer id, the celestial body id, the instrument id,
+        // and the date of the discovery.
+        $discovery = new Discovery;
+        $discovery->discoverer_id = $astronomerID;
+        $discovery->cb_id = $cb->id;
+        $discovery->instrument_id = $instrument->id;
+        $discovery->date_of_discovery = $request->date;
+
+        $discovery->save();
+
         Session::flash('success', 'Celestial Body was created correctly.');
         
         return redirect()->route('cb.show', $cb->id);
@@ -145,8 +212,8 @@ class CBController extends Controller
  */
     public function search(Request $request){
         $this->validate($request, [
-            'right_ascension' => 'required|min:0|max:360',
-            'declination' => 'required|min:0|max:360']);
+            'right_ascension' => 'required|bet:0,360',
+            'declination' => 'required|bet:0,360']);
 
         $right_ascension = $request->input('right_ascension');
         $declination = $request->input('declination');
