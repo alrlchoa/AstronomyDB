@@ -19,6 +19,7 @@
                     Not Verified
                 @endif
             </p>
+            <p><b>Discoverer:</b> {{ $discoverer->first_name }} {{ $discoverer->last_name }}</p>
             @if (!empty($comet))
                 <p>Comet's Speed: {{$comet->speed}}</p>
             @endif

@@ -440,21 +440,25 @@ class CBController extends Controller
             ->pluck('pub_id')->toArray();
         $pubs = DB::table('publications')->whereIn('id', $ids)
             ->get();
+        $discovery = DB::table('discoveries')->where('cb_id', $id)
+            ->first();
+        $astronomer = DB::table('astronomers')->where('id',$discovery->discoverer_id)
+            ->first();
 
         if (!is_null($comet)){
-            return view('cb.show')->withCb($cb)->withComet($comet)->withPubs($pubs);
+            return view('cb.show')->withCb($cb)->withComet($comet)->withPubs($pubs)->withDiscoverer($astronomer);
         }else if (!is_null($galaxy)){
-            return view('cb.show')->withCb($cb)->withGalaxy($galaxy)->withPubs($pubs);
+            return view('cb.show')->withCb($cb)->withGalaxy($galaxy)->withPubs($pubs)->withDiscoverer($astronomer);
         }else if(!is_null($moon)){
             $planet= Planet::find($moon->planet_id);
-            return view('cb.show')->withCb($cb)->withMoon($moon)->withPlanetoid($planet)->withPubs($pubs);
+            return view('cb.show')->withCb($cb)->withMoon($moon)->withPlanetoid($planet)->withPubs($pubs)->withDiscoverer($astronomer);
         }else if(!is_null($planet)){
-            return view('cb.show')->withCb($cb)->withPlanet($planet)->withPubs($pubs);
+            return view('cb.show')->withCb($cb)->withPlanet($planet)->withPubs($pubs)->withDiscoverer($astronomer);
         }else if(!is_null($star)){
             $spectral = SpectralBrightness::find($star->spectral_brightness_id);
-            return view('cb.show')->withCb($cb)->withStar($star)->withSpectral($spectral)->withPubs($pubs);
+            return view('cb.show')->withCb($cb)->withStar($star)->withSpectral($spectral)->withPubs($pubs)->withDiscoverer($astronomer);
         }
-        return view('cb.show')->withCb($cb)->withPubs($pubs);
+        return view('cb.show')->withCb($cb)->withPubs($pubs)->withDiscoverer($astronomer);
     }
 
     /**
