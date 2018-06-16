@@ -47,30 +47,6 @@
                 <p>Star's Brightness: {{$spectral->brightness}}</p>
             @endif
         </div>
-        <div class="col-md-4">
-            @guest
-            @else
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            {!! Html::linkroute('cb.edit', 'Edit', [$cb->id], ['class' => 'btn btn-primary btn-block']) !!}
-                        </div>
-                        <div class="col-md-6">        
-                            {!! Form::open(['route'=>['cb.relation',$cb->id], 'method' => 'GET'])!!}
-                            {!! Form::submit('Add Relation',['class'=>'btn btn-secondary btn-block']) !!}
-                            {!! Form::close() !!}
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 10px;">
-                        <div class="col-md-12">
-                            {!! Form::open(['route' => ['cb.destroy',$cb->id], 'method'=> 'DELETE']) !!}
-                            {!! Form::submit('Delete', ['class' =>'btn btn-danger btn-block']) !!}
-                            {!! Form::close() !!}
-                        </div>
-                    </div>
-                </div>
-            @endguest
-        </div>
     </div>
     <hr>
     <div class="row">
@@ -91,16 +67,26 @@
                                 <td>{{$pub->id}}</td>
                                 <td>{{$pub->doi}}</td>
                                 <td>{{$pub->date_of_publication}}</td>
-                                <td><a href="{{route('pub.show',$pub->id)}}" class="btn btn-outline-dark" role="button">View</a></td>
+                                <td>
+                                {!! Form::open(['route'=>['cb.destroy_pub_relation',$cb->id,$pub->id], 'method' => 'DELETE'])!!}
+
+                                {!! Form::submit('Delete',['class'=>'btn btn-danger btn-block']) !!}
+
+                                {!! Form::close() !!}
+                                </td>
                             </tr>
                         @endforeach
             
                     </tbody>
                 </table>
                 <div class="row">
-                    <div class="col-md-12">
-                            {!! Form::open(['route'=>['cb.create_pub_relation',$cb->id], 'method' => 'GET'])!!}
-                            {!! Form::submit('Edit Publications',['class'=>'btn btn-secondary btn-block']) !!}
+                    <div class="row col-md-12">
+                            {!! Form::open(['route'=>['cb.add_pub_relation']])!!}
+                            {{ Form::hidden('cb_id', $cb->id) }}
+                            {{ Form::label('pub_doi', 'Publication DOI:') }}
+                            {!! Form::text('pub_doi', null, ['class'=> 'form-control', 'placeholder' =>'Input Publication DOI']) !!}
+                            {!! Form::submit('Add Publication',['class'=>'btn btn-secondary btn-block']) !!}
+
                             {!! Form::close() !!}
                     </div>
                 </div>
