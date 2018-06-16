@@ -129,4 +129,22 @@ class PubController extends Controller
         Session::flash('delete', 'Publication was deleted.');
         return redirect()->action('PagesController@getIndex');
     }
+
+    /**
+     * Searches by  DOI
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function searchByDOI(Request $request){
+
+        $this->validate($request, [
+            'name' => 'required|exists:publications,doi'
+        ]);
+
+        $pubs = DB::table('publications')->where('doi',$request->name)
+            ->get();
+
+        return view('pub.output')->withPubs($pubs);
+    }
 }
