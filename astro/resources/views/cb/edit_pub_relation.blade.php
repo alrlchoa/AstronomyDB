@@ -81,14 +81,17 @@
                 </table>
                 <div class="row">
                     <div class="row col-md-12">
-                            {!! Form::open(['route'=>['cb.add_pub_relation']])!!}
+                            {!! Form::open(['route'=>['cb.add_pub_relation'], 'class' => 'form-inline'])!!}
                             {{ Form::hidden('cb_id', $cb->id) }}
-                            {{ Form::label('pub_doi', 'Publication DOI:') }}
+                            {{ Form::label('pub_doi', 'Publication DOI:', ['style'=>'margin-right: 5px;']) }}
                             {!! Form::text('pub_doi', null, ['class'=> 'form-control', 'placeholder' =>'Input Publication DOI']) !!}
-                            {!! Form::submit('Add Publication',['class'=>'btn btn-secondary btn-block']) !!}
-
+                            {!! Form::submit('Add Publication',['class'=>'btn btn-secondary', 'style'=>'margin-left: 5px;']) !!}
                             {!! Form::close() !!}
                     </div>
+                </div>
+                <br />
+                <div class="row">
+                    {!! Html::linkRoute('cb.show', 'Cancel', array($cb->id), array('class' =>'btn btn-secondary btn-block')) !!}
                 </div>
             </div>
         </div>
