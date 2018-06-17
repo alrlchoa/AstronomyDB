@@ -28,6 +28,7 @@
                 </tbody>
             </table>
             {{ Form::hidden("pubID", $pub->id) }}
+            {{ Form::hidden("current_username", Auth::user()->username) }}
             {{ Form::label('username', 'Username:', ['class' => 'font-weight-bold']) }}
             {{ Form::text(' username', $astronomer->username, ['class'=> 'form-control', 'placeholder' =>'Username']) }}
 

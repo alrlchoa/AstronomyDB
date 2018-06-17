@@ -133,6 +133,7 @@ class PubController extends Controller
         $this->validate($request, [
             'referrer_id' => 'required|exists:publications,id',
             'doi' => 'required|min:0|exists:publications,doi|uniquePubRef:referrer_id|noSelfRefs:referrer_id',
+            'current_username' => 'currUserIsRF'
         ]);
 
         $reference_id = DB::table('publications')->where('doi',$request->doi)
@@ -155,7 +156,8 @@ class PubController extends Controller
     public function updateAuthor(Request $request, $id)
     {
         $this->validate($request, [
-            'username' => 'required|userIsRF|uniquePubAuth:pubID'
+            'username' => 'required|userIsRF|uniquePubAuth:pubID',
+            'current_username' => 'currUserIsRF'
         ]);
 
         $pub = Publication::find($id);

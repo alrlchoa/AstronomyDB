@@ -24,7 +24,7 @@
 
 
                 {{ Form::hidden("referrer_id", $pub->id) }}
-
+                {{ Form::hidden("current_username", Auth::user()->username) }}
                 {{ Form::label('doi', 'Digital Object Identifier') }}
                 {!! Form::text('doi', null, ['class'=>'form-control', 'placeholder'=>'Digital Object Identifier']) !!}
 

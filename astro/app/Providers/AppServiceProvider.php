@@ -76,6 +76,21 @@ class AppServiceProvider extends ServiceProvider
             return $count > 0;
         }, 'User is not a researcher.');
 
+        Validator::extend('currUserIsRF', function ($attribute, $value, $parameters, $validator) {
+
+            $id = DB::table('astronomers')->where('username',$value)
+                ->first();
+            if (!$id){
+                return false;
+            } else{
+                $id = $id->id;
+            }
+            $count = DB::table('researcher_fellowships')->where('id', $id)
+                ->count();
+
+            return $count > 0;
+        }, 'You must be a researcher to use this functionality.');
+
         Validator::extend('uniqueCbPub', function ($attribute, $value, $parameters, $validator) {
             $param1 = array_get($validator->getData(), $parameters[0]);
 
