@@ -221,9 +221,10 @@ class PubController extends Controller
         $this->validate($request, [
             'minmax' => 'required|bet:0,1'
         ]);
-        $pub = DB::table('publication_references')
-                ->selectRaw('reference_id, count(*) as total')
-                ->groupBy('reference_id')
+        $pub = DB::table('publications')
+                ->leftjoin('publication_references','publications.id', '=', 'publication_references.reference_id')
+                ->selectRaw('publications.id as reference_id, count(publication_references.reference_id) as total')
+                ->groupBy('publications.id')
                 ->get();
         
         if($pub->isEmpty()){
