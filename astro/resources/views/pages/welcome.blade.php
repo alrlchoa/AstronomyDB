@@ -147,6 +147,7 @@
                     </div>                  
                 </div><!-- /input-group -->
                 </div>
+                <hr>
                 <div class="container">
                   <p class="h4">Search Publication:</p>
                   <div class="input-group col-md-8">
@@ -156,6 +157,19 @@
                       {{  Form::submit('Search',['class'=>'btn btn-secondary'])}}                  
                       {!! Form::close()!!}
                     </div>                  
+                  </div><!-- /input-group -->
+                </div>
+                <hr>
+                <div class="container">
+                  <p class="h4">Insights:</p>
+                  <p class="h5">(Aggregates and Nested Aggregate via Group by)</p>
+                  <div class="input-group col-md-8">
+                      {!! Html::linkroute('cb.edit', 'Most Cited Paper', ['class' => 'btn btn-primary btn-block']) !!}
+                      {!! Html::linkroute('cb.edit', 'Least Cited Paper', ['class' => 'btn btn-primary btn-block']) !!}
+                      {!! Html::linkroute('cb.edit', 'Institution Cited Most on Average', ['class' => 'btn btn-primary btn-block']) !!}
+                      {!! Html::linkroute('cb.edit', 'Institution Cited Least on Average', ['class' => 'btn btn-primary btn-block']) !!}
+                      {!! Html::linkroute('cb.edit', 'Institution Cited Most', ['class' => 'btn btn-primary btn-block']) !!}
+                      {!! Html::linkroute('cb.edit', 'Institution Cited Least', ['class' => 'btn btn-primary btn-block']) !!}                
                   </div><!-- /input-group -->
                 </div>
               </div>
