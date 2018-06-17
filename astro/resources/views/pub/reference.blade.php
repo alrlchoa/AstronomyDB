@@ -12,6 +12,13 @@
 
             <p><b>Date of Publication:</b> {{ $pub->date_of_publication }}</p>
 
+            @foreach ($pubs as $publication)
+                <tr>
+                    <td>{{$publication->doi}}</td>
+                    <td>{{$publication->date_of_publication}}</td>
+                </tr>
+                @endforeach
+
             </p>
             {!! Form::open(['route' => 'pub.reference', 'files' => true, 'method' => 'POST']) !!}
 
@@ -20,7 +27,7 @@
                 {{ Form::label('doi', 'Digital Object Identifier') }}
                 {!! Form::text('doi', null, ['class'=>'form-control', 'placeholder'=>'Digital Object Identifier']) !!}
 
-                {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create Reference', ['class' => 'btn btn-secondary']) !!}
+                {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create Reference', ['class' => 'btn btn-primary']) !!}
 
             {!!  Form::close() !!}
         </div>
