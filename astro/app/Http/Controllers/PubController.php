@@ -132,25 +132,15 @@ class PubController extends Controller
     {
         $this->validate($request, [
             'referrer_id' => 'required|exists:publications,id',
-            'doi' => 'required|min:0|exists:publications,doi',
+            'doi' => 'required|min:0|exists:publications,doi|uniquePubRef:referrer_id|noSelfRefs:referrer_id',
         ]);
 
         $reference_id = DB::table('publications')->where('doi',$request->doi)
             ->first()->id;
 
-        $count = DB::table('publication_references')
-            ->where('referrer_id',$request->referrer_id)
-            ->where('reference_id',$reference_id)
-            ->count();
+        DB::table('publication_references')
+            ->insert(['referrer_id' => $request->referrer_id, 'reference_id' => $reference_id]);
 
-        if($count > 0){
-            Session::flash('error', 'Error, this reference already exists');
-            return redirect()->route('pub.show', $request->referrer_id);
-        }
-        else{
-            DB::table('publication_references')
-                ->insert(['referrer_id' => $request->referrer_id, 'reference_id' => $reference_id]);
-        }
         Session::flash('success', 'Reference was added.');
         return redirect()->route('pub.show', $request->referrer_id);
     }
@@ -165,7 +155,7 @@ class PubController extends Controller
     public function updateAuthor(Request $request, $id)
     {
         $this->validate($request, [
-            'username' => 'required|userIsRF'
+            'username' => 'required|userIsRF|uniquePubAuth:pubID'
         ]);
 
         $pub = Publication::find($id);

@@ -51,7 +51,7 @@ class PlanetsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-			'orbital_period' => 'min:0'
+			'orbital_period' => 'bet:0,999999'
 		]);
         $requestData = $request->all();
         
@@ -99,7 +99,7 @@ class PlanetsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-			'orbital_period' => 'min:0'
+			'orbital_period' => 'bet:0,999999'
 		]);
         $requestData = $request->all();
         

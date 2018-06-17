@@ -52,7 +52,7 @@ class PublicationsController extends Controller
     {
         $this->validate($request, [
 			'doi' => 'required|max:20',
-			'date_of_publication' => 'required'
+			'date_of_publication' => 'required|before_or_equal:now'
 		]);
         $requestData = $request->all();
         
@@ -101,7 +101,7 @@ class PublicationsController extends Controller
     {
         $this->validate($request, [
 			'doi' => 'required|max:20',
-			'date_of_publication' => 'required'
+			'date_of_publication' => 'required|before_or_equal:now'
 		]);
         $requestData = $request->all();
         
