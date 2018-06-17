@@ -9,7 +9,7 @@
             <hr>
             <p>
             Arnold Choa <br />
-            Alex Larbi <br />
+            Alex Larbi (Scrum Master)<br />
             Josh MacEachern <br />
             Tanraj Saran
             </p>
