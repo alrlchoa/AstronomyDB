@@ -40,7 +40,7 @@ class PubController extends Controller
     {
 
         $this->validate($request, [
-            'username' => 'required|userIsRF',
+            'username' => 'required|currUserIsRF',
             'date_of_publication' => 'required|before_or_equal:now',
             'doi' => 'required|min:0|unique:Publications,doi',
         ]);
