@@ -22,11 +22,14 @@
             <p><b>Discoverer:</b> {{ $discoverer->first_name }} {{ $discoverer->last_name }}</p>
             @if (!empty($comet))
                 <p><b>Comet's Speed:</b> {{$comet->speed}}</p>
+                @guest
+                @else
                 <div class="col-md-6">        
                             {!! Form::open(['route'=>['rel.relation',$cb->id], 'method' => 'GET'])!!}
                             {!! Form::submit('Add Relation',['class'=>'btn btn-secondary btn-block']) !!}
                             {!! Form::close() !!}
                         </div>
+                @endguest
             @endif
 
             @if (!empty($galaxy))
@@ -46,21 +49,27 @@
             @if (!empty($planet))
                 <p><b>Planet's Orbital Period: </b>{{$planet->orbital_period}}</p>
                 <p><b>Planet's Type: </b>{{$planet->planet_type}}</p>
+                @guest
+                @else
                 <div class="col-md-6">        
                             {!! Form::open(['route'=>['rel.relation',$cb->id], 'method' => 'GET'])!!}
                             {!! Form::submit('Add Relation',['class'=>'btn btn-secondary btn-block']) !!}
                             {!! Form::close() !!}
                         </div>
+                @endguest
             @endif
 
             @if (!empty($star))
                 <p><b>Star's Spectral Brightness:</b> {{$spectral->spectral_type}}</p>
                 <p><b>Star's Brightness:</b> {{$spectral->brightness}}</p>
+                @guest
+                @else
                 <div class="col-md-6">        
                             {!! Form::open(['route'=>['rel.relation',$cb->id], 'method' => 'GET'])!!}
                             {!! Form::submit('Add Relation',['class'=>'btn btn-secondary btn-block']) !!}
                             {!! Form::close() !!}
                         </div>
+                @endguest
 
             @endif
         </div>
@@ -109,6 +118,8 @@
             
                     </tbody>
                 </table>
+                @guest
+                @else
                 <div class="row">
                     <div class="col-md-12">
                             {!! Form::open(['route'=>['cb.create_pub_relation',$cb->id], 'method' => 'GET'])!!}
@@ -116,6 +127,7 @@
                             {!! Form::close() !!}
                     </div>
                 </div>
+                @endguest
             </div>
         </div>
         <div class="col-md-6">
