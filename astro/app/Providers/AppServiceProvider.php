@@ -64,7 +64,12 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('userIsRF', function ($attribute, $value, $parameters, $validator) {
 
             $id = DB::table('astronomers')->where('username',$value)
-                ->first()->id;
+                ->first();
+            if (!$id){
+                return false;
+            } else{
+                $id = $id->id;
+            }
             $count = DB::table('researcher_fellowships')->where('id', $id)
                 ->count();
 
@@ -88,6 +93,46 @@ class AppServiceProvider extends ServiceProvider
         
             return $count == 0;
         }, '(Celestial Body, Publication) combination has already been used or Publication does not exist.');
+
+        Validator::extend('uniquePubRef', function ($attribute, $value, $parameters, $validator) {
+            $param1 = array_get($validator->getData(), $parameters[0]);
+
+            $pubID = DB::table('publications')
+                ->where('doi',$value)
+                ->pluck('id')
+                ->first();
+
+            $count = DB::table('publication_references')->where('referrer_id', $param1)
+                ->where('reference_id', $pubID)
+                ->count();
+
+            return $count == 0;
+        }, 'Cannot add reference. This reference already exists.');
+
+        Validator::extend('uniquePubAuth', function ($attribute, $value, $parameters, $validator) {
+            $param1 = array_get($validator->getData(), $parameters[0]);
+
+            $authorID = DB::table('researcher_fellowships')
+                ->join('astronomers', 'researcher_fellowships.id', '=', 'astronomers.id')
+                ->where('username', $value)
+                ->pluck('researcher_fellowships.id')
+                ->first();
+
+            $count = DB::table('pub_rf')->where('pub_id', $param1)
+                ->where('rf_id', $authorID)
+                ->count();
+            return $count == 0;
+        }, 'Cannot add Author. This author already is listed on this publication.');
+
+        Validator::extend('noSelfRefs', function ($attribute, $value, $parameters, $validator) {
+            $param1 = array_get($validator->getData(), $parameters[0]);
+
+            $pubID = DB::table('publications')
+                ->where('doi',$value)
+                ->pluck('id')
+                ->first();
+            return $pubID != $param1;
+        }, 'Cannot add reference. A publication may not reference itself.');
     }
 
     /**
