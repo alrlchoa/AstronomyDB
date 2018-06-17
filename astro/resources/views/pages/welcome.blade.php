@@ -44,7 +44,7 @@
                     <div class="form-check">
                       <div class="checkbox">
                         <label class="form-check-label">
-                          <p class="h5">Division Query</p>
+                          <p class="h5">(Division Query)</p>
                           {!! Form::open(['route'=>'cb.searchByType'])!!}
                           {{Form::checkbox('comet', null, null, ['class'=>'form-check-input'])}}
                           {{Form::label('comet','Comet')}}
@@ -163,7 +163,7 @@
                 <div class="container">
                   <p class="h4">Insights:</p>
                   <p class="h5">(Aggregates and Nested Aggregate via Group by)</p>
-                  <div class="col-md-6">
+                  <div class="col-md-10">
                           {!! Form::open(['route' => 'pub.paper', 'method' => 'GET'])!!}
                           {{ Form::hidden('minmax', 1) }}
                           {{  Form::submit('Most Cited Paper',['class'=>'btn btn-primary btn-block'])}}                  
