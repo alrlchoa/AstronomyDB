@@ -205,7 +205,7 @@ class PubController extends Controller
     public function searchByDOI(Request $request){
 
         $this->validate($request, [
-            'name' => 'required|exists:publications,doi'
+            'doi' => 'required|exists:publications,doi'
         ]);
 
         $pubs = DB::table('publications')->where('doi',$request->name)

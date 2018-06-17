@@ -153,7 +153,7 @@
                   <div class="input-group col-md-8">
                     <div class="row">
                       {!! Form::open(['route' => 'pub.searchByDOI','class'=>'form-inline'])!!}
-                      {!! Form::text('name',null,['class'=> 'form-control', 'placeholder' =>'Input DOI'])!!}
+                      {!! Form::text('doi',null,['class'=> 'form-control', 'placeholder' =>'Input DOI'])!!}
                       {{  Form::submit('Search',['class'=>'btn btn-secondary'])}}                  
                       {!! Form::close()!!}
                     </div>                  
