@@ -129,6 +129,16 @@ class PubController extends Controller
      */
     public function reference(Request $request)
     {
+        $this->validate($request, [
+            'referrer_id' => 'required|exists:publications,id',
+            'doi' => 'required|min:0|unique:Publications,doi',
+        ]);
+
+        $pubs = DB::table('publications')->where('doi',$request->name)
+            ->get();
+
+//        DB::table('publication_references')
+//            ->insert(['referer_id' => , 'rf_id' => $astronomer]);
 
     }
 
