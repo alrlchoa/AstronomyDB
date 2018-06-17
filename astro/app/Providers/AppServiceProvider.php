@@ -148,6 +148,27 @@ class AppServiceProvider extends ServiceProvider
                 ->first();
             return $pubID != $param1;
         }, 'Cannot add reference. A publication may not reference itself.');
+
+        Validator::extend('existsWith', function ($attribute, $value, $parameters, $validator) {
+            $param0 = $parameters[0]; //table
+            $param1 = array_get($validator->getData(), $parameters[1]); //parent_id
+            $param2 = array_get($validator->getData(), $parameters[2]); //parent_type
+            if($param2 == 1){
+                $temp = 'comet_id';
+            }
+            elseif($param2 == 4){
+                $temp = 'planet_id';
+            }
+            elseif($param2 == 5){
+                $temp = 'star_id';
+            }
+            $pubID = DB::table($param0)
+                ->where($attribute, $value)
+                ->where($temp, $param1)
+                ->count();
+
+            return $pubID == 0;
+        }, 'Relation already exists');
     }
 
     /**

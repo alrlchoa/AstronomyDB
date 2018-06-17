@@ -53,7 +53,7 @@ class RelationController extends Controller
             case 1:
                 $this->validate($request, [
                     'parent_id' => 'required|exists:comets,id',
-                    'star_id' =>  'required|exists:stars,id'
+                    'star_id' =>  'required|exists:stars,id|existsWith:comet_star,parent_id,parent_type'
                     
                 ]);
                 $comet_id = $request->parent_id;
@@ -66,7 +66,7 @@ class RelationController extends Controller
             case 4:
                 $this->validate($request, [
                     'parent_id' => 'required|exists:planets,id',
-                    'star_id' =>  'required|exists:stars,id'
+                    'star_id' =>  'required|exists:stars,id|existsWith:planet_star,parent_id,parent_type'
 
                 ]);
                 $planet_id = $request->parent_id;
@@ -84,7 +84,7 @@ class RelationController extends Controller
             
                 if($request->child_type == 1){
                     $this->validate($request, [
-                    'comet_id' => 'required|exists:comets,id',
+                    'comet_id' => 'required|exists:comets,id|existsWith:comet_star,parent_id,parent_type',
                 ]);
                     $comet_id = $request->comet_id;
                     $star_id = $request->parent_id;
@@ -93,7 +93,7 @@ class RelationController extends Controller
 
                 }else if($request->child_type == 4){
                     $this->validate($request, [
-                    'planet_id' => 'required|exists:planets,id',
+                    'planet_id' => 'required|exists:planets,id|existsWith:planet_star,parent_id,parent_type',
                 ]);
                         $planet_id = $request->planet_id;
                         $star_id = $request->parent_id;
