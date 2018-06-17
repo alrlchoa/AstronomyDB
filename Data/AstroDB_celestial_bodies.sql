@@ -1,0 +1,56 @@
+-- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
+--
+-- Host: localhost    Database: AstroDB
+-- ------------------------------------------------------
+-- Server version	8.0.11
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `celestial_bodies`
+--
+
+DROP TABLE IF EXISTS `celestial_bodies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `celestial_bodies` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `right_ascension` int(11) NOT NULL,
+  `declination` int(11) NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `verified` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `celestial_bodies`
+--
+
+LOCK TABLES `celestial_bodies` WRITE;
+/*!40000 ALTER TABLE `celestial_bodies` DISABLE KEYS */;
+INSERT INTO `celestial_bodies` VALUES (1,'2018-06-17 13:22:40','2018-06-17 13:22:40',343,22,'Icy Comet',0),(2,'2018-06-17 13:43:42','2018-06-17 13:43:42',28,112,'Slow Comet',1),(3,'2018-06-17 13:49:34','2018-06-17 13:49:34',320,121,'Star',0),(4,'2018-06-17 13:50:46','2018-06-17 13:50:46',124,300,'Sun',1),(5,'2018-06-17 13:53:50','2018-06-17 13:53:50',44,23,'Comet No Star',0),(6,'2018-06-17 13:55:49','2018-06-17 13:55:49',359,200,'Comet From Deep Space',1),(7,'2018-06-17 13:59:54','2018-06-17 13:59:54',1,1,'Milky Way',1),(8,'2018-06-17 14:01:18','2018-06-17 14:01:18',34,82,'Boomerang Galaxy',0),(9,'2018-06-17 14:02:51','2018-06-17 14:02:51',88,29,'Deep Space Galaxy',1),(10,'2018-06-17 22:38:56','2018-06-17 22:38:56',47,89,'Le Planet',0),(11,'2018-06-17 22:40:14','2018-06-17 22:40:14',56,298,'Earth',1),(12,'2018-06-17 22:44:29','2018-06-17 22:44:29',291,187,'Superb Earth',1),(13,'2018-06-17 22:46:06','2018-06-17 22:46:06',36,10,'Jupiter',1),(14,'2018-06-17 22:48:30','2018-06-17 22:48:30',3,53,'Europa',0),(15,'2018-06-17 22:51:09','2018-06-17 22:51:09',77,88,'Moon',1),(16,'2018-06-17 22:56:27','2018-06-17 23:08:08',60,78,'Proximus Centauri',0),(17,'2018-06-17 23:27:05','2018-06-17 23:27:05',140,284,'Comet Shoemaker',1),(18,'2018-06-17 23:28:37','2018-06-17 23:28:37',284,98,'Comet West',1),(19,'2018-06-17 23:30:06','2018-06-17 23:30:06',88,44,'Barnards Star',1),(20,'2018-06-17 23:34:24','2018-06-17 23:34:24',39,22,'Planet A',1),(21,'2018-06-17 23:39:23','2018-06-17 23:39:23',60,70,'Enceladus',1),(22,'2018-06-17 23:42:55','2018-06-17 23:42:55',59,78,'Wolf Moon',0),(23,'2018-06-17 23:46:52','2018-06-17 23:46:52',70,80,'Tiger Moon',0),(24,'2018-06-17 23:50:38','2018-06-17 23:50:38',40,122,'Planet B',1),(25,'2018-06-17 23:55:14','2018-06-17 23:55:14',200,100,'Planet C',0),(26,'2018-06-17 23:57:35','2018-06-17 23:57:35',278,81,'Nuetron',1),(27,'2018-06-18 00:11:58','2018-06-18 00:11:58',120,300,'Unknown',0),(28,'2018-06-18 00:12:58','2018-06-18 00:12:58',20,20,'Not Specified',1);
+/*!40000 ALTER TABLE `celestial_bodies` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-06-17 10:14:09
