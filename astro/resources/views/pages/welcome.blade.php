@@ -9,6 +9,7 @@
               <p>If you are itching to know what thing you just found in the sky, enter the coordinates below and search it up. If you want to just explore, try the advanced searches</p>
               <div class="row"> 
                 <div class="col-lg-12">
+                    <p class="h5">(Selection and Projection Query)</p>
                     {!! Form::open(['route'=>'cb.search', 'class'=>'form-inline'])!!}
                       {!! Form::number('right_ascension',null,['class'=>'form-control','placeholder'=>'right-ascension']) !!}
                       {!! Form::number('declination',null,['class'=>'form-control','placeholder'=>'declination']) !!}
@@ -123,6 +124,7 @@
                 <hr>
                 <div class="container">
                 <p class="h4">Search a Specific User:</p>
+                <p class="h5">(Join Query)</p>
                 <div class="input-group col-md-8">
                   <div class="row">
                    {!! Form::open(['route' => 'astro.searchByUser','class'=>'form-inline'])!!}

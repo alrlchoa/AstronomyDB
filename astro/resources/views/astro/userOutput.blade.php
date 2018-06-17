@@ -12,6 +12,7 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Username</th>
+                <th>Institution</th>
             </thead>
 
         <tbody>
@@ -22,6 +23,11 @@
                     <td>{{$A->first_name}}</td>
                     <td>{{$A->last_name}}</td>
                     <td>{{$A->username}}</td>
+                    @if(is_null($A->name))
+                        <td>No Institution</td>
+                    @else
+                        <td>{{$A->name}}</td>
+                    @endif
                     <td><a href="{{route('astro.show',$A->id)}}" class="btn btn-outline-dark" role="button">View</a></td>
                 </tr>
             @endforeach

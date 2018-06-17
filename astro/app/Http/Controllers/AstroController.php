@@ -55,7 +55,10 @@ class AstroController extends Controller
             return null;
         }
         $reasearcherFellowship = ResearcherFellowship::find($id);
-        $institution = Institution::find($reasearcherFellowship->institution_id);
+        $institution = null;
+        if($reasearcherFellowship){
+            $institution = Institution::find($reasearcherFellowship->institution_id);
+        }
         $celestialbody = DB::table('celestial_bodies')->where('id', $id)  //Implement properly when pivot table discovers is present
               ->get();
         return view('astro.show')->withAstronomer($astronomer)->withInstitution($institution)->withCelestialbody($celestialbody);
@@ -110,6 +113,9 @@ class AstroController extends Controller
         $username = $request->username;
 
         $astronomer = DB::table('astronomers')->where('username', $username)
+            ->leftJoin('researcher_fellowships', 'astronomers.id', '=', 'researcher_fellowships.id')
+            ->leftJoin('institutions', 'researcher_fellowships.institution_id', '=', 'institutions.id')
+            ->select('astronomers.id as id', 'astronomers.first_name as first_name', 'astronomers.last_name as last_name', 'astronomers.username as username', 'institutions.name as name')
             ->get();
         return view('astro.userOutput')->withAstronomer($astronomer);
     }
