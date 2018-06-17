@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('pub/gross', 'PubController@gross')->name('pub.gross');
 Route::get('pub/paper', 'PubController@paper')->name('pub.paper');
 
 Route::delete('cb/{cb}/{pub}/destroy_pub_relation', ['uses' => 'CBController@destroy_pub_relation'])->name('cb.destroy_pub_relation');

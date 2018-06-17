@@ -174,8 +174,15 @@
                           {{  Form::submit('Least Cited Paper',['class'=>'btn btn-primary btn-block'])}}                  
                           {!! Form::close()!!}
                           <br/>
-                      {!! Html::linkroute('pub.paper', 'Institution Cited Most on Average', null,['class' => 'btn btn-primary btn-block']) !!}
-                      {!! Html::linkroute('pub.paper', 'Institution Cited Least on Average', null,['class' => 'btn btn-primary btn-block']) !!}
+                          {!! Form::open(['route' => 'pub.gross', 'method' => 'GET'])!!}
+                          {{ Form::hidden('minmax', 1) }}
+                          {{  Form::submit('Institution Cited Most',['class'=>'btn btn-primary btn-block'])}}                  
+                          {!! Form::close()!!}
+                          <br/>
+                          {!! Form::open(['route' => 'pub.gross', 'method' => 'GET'])!!}
+                          {{ Form::hidden('minmax', 0) }}
+                          {{  Form::submit('Institution Cited Least',['class'=>'btn btn-primary btn-block'])}}                  
+                          {!! Form::close()!!}
                       {!! Html::linkroute('pub.paper', 'Institution Cited Most', null,['class' => 'btn btn-primary btn-block']) !!}
                       {!! Html::linkroute('pub.paper', 'Institution Cited Least', null,['class' => 'btn btn-primary btn-block']) !!}                
                   </div><!-- /input-group -->
