@@ -30,17 +30,17 @@
             @endif
 
             @if (!empty($galaxy))
-                <p>Galaxy's Brightness: {{$galaxy->brightness}}</p>
-                <p>Galaxy's Redshift: {{$galaxy->redshift}}</p>
-                <p>Galaxy's Type: {{$galaxy->type}}</p>
+                <p><b>Galaxy's Brightness:</b> {{$galaxy->brightness}}</p>
+                <p><b>Galaxy's Redshift:</b> {{$galaxy->redshift}}</p>
+                <p><b>Galaxy's Type:</b> {{$galaxy->type}}</p>
             @endif
 
             @if (!empty($moon))
-                <p>Moon's Orbital Period: {{$moon->orbital_period}}</p>
-                <p>Moon's Radius: {{$moon->radius}}</p>
-                <p>Moon's Planet Id: {{$moon->planet_id}}</p>
-                <p>Planet's Orbital Period: {{$planetoid->orbital_period}}</p>
-                <p>Planet's Type: {{$planetoid->planet_type}}</p>
+                <p><b>Moon's Orbital Period:</b> {{$moon->orbital_period}}</p>
+                <p><b>Moon's Radius:</b> {{$moon->radius}}</p>
+                <p><b>Moon's Planet Id:</b> {{$moon->planet_id}}</p>
+                <p><b>Planet's Orbital Period:</b> {{$planetoid->orbital_period}}</p>
+                <p><b>Planet's Type:</b> {{$planetoid->planet_type}}</p>
             @endif
 
             @if (!empty($planet))
@@ -54,8 +54,8 @@
             @endif
 
             @if (!empty($star))
-                <p>Star's Spectral Brightness: {{$spectral->spectral_type}}</p>
-                <p>Star's Brightness: {{$spectral->brightness}}</p>
+                <p><b>Star's Spectral Brightness:</b> {{$spectral->spectral_type}}</p>
+                <p><b>Star's Brightness:</b> {{$spectral->brightness}}</p>
                 <div class="col-md-6">        
                             {!! Form::open(['route'=>['rel.relation',$cb->id], 'method' => 'GET'])!!}
                             {!! Form::submit('Add Relation',['class'=>'btn btn-secondary btn-block']) !!}
@@ -131,7 +131,7 @@
                     <p>Moon is orbiting around Star: {{$planetoid->orbital_period}}</p>
 
                 @elseif (!empty($planet))
-                    <p><b>Planet is orbiting around Star: </b>{{$planet->orbital_period}}</p>
+                    <p>Planet is orbiting around Star: {{$planet->orbital_period}}</p>
 
                 @elseif (!empty($star))
                     <p>Planets orbiting around this Star: {{$spectral->spectral_type}}</p>
