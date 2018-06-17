@@ -250,12 +250,13 @@ class PubController extends Controller
         $this->validate($request, [
             'minmax' => 'required|bet:0,1'
         ]);
-        
-        $pub = DB::table('publication_references')
-                ->join('pub_rf', 'publication_references.reference_id', '=', 'pub_rf.pub_id')
-                ->join('researcher_fellowships', 'pub_rf.rf_id','=','researcher_fellowships.id')
-                ->join('institutions', 'researcher_fellowships.institution_id','=','institutions.id')
-                ->selectRaw('institutions.name as name, count(*) as total')
+
+        $pub = DB::table('institutions')
+                ->leftjoin('researcher_fellowships', 'researcher_fellowships.institution_id','=','institutions.id')
+                ->leftjoin('pub_rf', 'pub_rf.rf_id','=','researcher_fellowships.id')
+                ->leftjoin('publication_references', 'publication_references.reference_id', '=', 'pub_rf.pub_id')
+                ->leftjoin('publications','publications.id', '=', 'publication_references.reference_id')
+                ->selectRaw('institutions.name as name, count(publication_references.reference_id) as total')
                 ->groupBy('institutions.name')
                 ->get();
         
@@ -281,19 +282,23 @@ class PubController extends Controller
             'minmax' => 'required|bet:0,1'
         ]);
         
-        $pub = DB::select('SELECT institutions.name, AVG(total) as average
+        $pub = DB::select('SELECT institutions.name, IFNULL(AVG(total), 0) as average
                             FROM institutions
-                            JOIN ( SELECT sub.rf_id as rf_id, researcher_fellowships.institution_id as insti_id, sub.total as total
+                            LEFT JOIN ( SELECT researcher_fellowships.id as rf_id, researcher_fellowships.institution_id as insti_id, sub.total as total
                                     FROM researcher_fellowships
-                                    JOIN( SELECT pub_rf.rf_id as rf_id, count(*) as total
-                                        FROM publication_references
-                                        JOIN(
+                                    LEFT JOIN( SELECT pub_rf.rf_id as rf_id, count(publication_references.reference_id) as total
+                                        FROM publications
+                                        LEFT JOIN(
+                                            publication_references
+                                        ) 
+                                        ON publications.id = publication_references.reference_id
+                                        LEFT JOIN(
                                             pub_rf
                                         )
                                         ON pub_rf.pub_id = publication_references.reference_id
                                         GROUP BY(pub_rf.rf_id)
                                     ) sub
-                                    ON sub.rf_id = researcher_fellowships.id
+                                    ON researcher_fellowships.id = sub.rf_id
                             )dre
                             ON institutions.id = dre.insti_id
                             GROUP BY(institutions.name)');
