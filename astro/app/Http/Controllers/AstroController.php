@@ -59,8 +59,12 @@ class AstroController extends Controller
         if($reasearcherFellowship){
             $institution = Institution::find($reasearcherFellowship->institution_id);
         }
-        $celestialbody = DB::table('celestial_bodies')->where('id', $id)  //Implement properly when pivot table discovers is present
-              ->get();
+        $celestialbodyID = DB::table('discoveries')->where('discoverer_id', $id)  //Implement properly when pivot table discovers is present
+              ->pluck('cb_id')->toArray();
+
+        $celestialbody = DB::table('celestial_bodies')->whereIn('id', $celestialbodyID)  //Implement properly when pivot table discovers is present
+        ->get();
+
         return view('astro.show')->withAstronomer($astronomer)->withInstitution($institution)->withCelestialbody($celestialbody);
     }
 
