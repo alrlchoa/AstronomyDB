@@ -52,7 +52,7 @@ class GalaxiesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-			'brightness' => 'min:0'
+			'brightness' => 'bet:0,999999'
 		]);
         $requestData = $request->all();
         
@@ -100,7 +100,7 @@ class GalaxiesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-			'brightness' => 'min:0'
+			'brightness' => 'bet:0,999999'
 		]);
         $requestData = $request->all();
         

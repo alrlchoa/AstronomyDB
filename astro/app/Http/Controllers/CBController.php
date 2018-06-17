@@ -52,12 +52,12 @@ class CBController extends Controller
         }
         $this->validate($request, [
             'astronomer_username' => 'required',
-            'declination' => 'required|between:0,360',
-            'right_ascension' => 'required|between:0,360|uniqueRaD:declination',
+            'declination' => 'required|bet:0,360',
+            'right_ascension' => 'required|bet:0,360|uniqueRaD:declination',
             'name' => 'max:40',
             'date' => 'required|before_or_equal:now',
             'location' => 'required|max:40',
-            'mid' => 'min:0'
+            'mid' => 'bet:0,999999'
         ]);
 
         $createdInstrument = false;
@@ -110,7 +110,7 @@ class CBController extends Controller
 
             case 1:
                 $this->validate($request, [
-                    'comet_speed' => 'required|min:0'
+                    'comet_speed' => 'required|bet:0,999999'
                 ]);
                 $cb->save();
                 $comet = new Comet;
@@ -121,7 +121,7 @@ class CBController extends Controller
 
             case 2:
                 $this->validate($request, [
-                    'galaxy_brightness' => 'min:0'
+                    'galaxy_brightness' => 'bet:0,999999'
                 ]);
                 $cb->save();
                 $galaxy = new Galaxy;
@@ -134,8 +134,8 @@ class CBController extends Controller
 
             case 3:
                 $this->validate($request, [
-                    'moon_period' => 'min:0',
-			        'moon_radius' => 'min:0',
+                    'moon_period' => 'bet:0,999999',
+			        'moon_radius' => 'bet:0,999999',
 			        'moon_plid' => 'required|exists:planets,id'
                 ]);
                 $cb->save();
@@ -149,7 +149,7 @@ class CBController extends Controller
 
             case 4:
                 $this->validate($request, [
-                    'planet_period' => 'min:0',
+                    'planet_period' => 'bet:0,999999',
                 ]);
                 $cb->save();
                 $planet = new Planet;
@@ -172,7 +172,7 @@ class CBController extends Controller
             
             default:
                 $this->validate($request, [
-                    'cbtype' => 'between:0,6'
+                    'cbtype' => 'bet:0,6'
                 ]);
         }
 
@@ -236,7 +236,7 @@ class CBController extends Controller
      */
     public function searchByThreshold(Request $request){
         $this->validate($request, [
-            'amount' => 'required|min:0']);
+            'amount' => 'required|bet:0,999999']);
 
         $threshold = $request->input('amount');
 
@@ -459,8 +459,8 @@ class CBController extends Controller
         }
 
         $this->validate($request, [
-            'declination' => 'required|between:0,360',
-            'right_ascension' => 'required|between:0,360|uniqueRaDUp:declination,id',
+            'declination' => 'required|bet:0,360',
+            'right_ascension' => 'required|bet:0,360|uniqueRaDUp:declination,id',
             'name' => 'max:40',
         ]);
         $cb = CelestialBody::find($id);
@@ -476,7 +476,7 @@ class CBController extends Controller
 
             case 1:
                 $this->validate($request, [
-                    'comet_speed' => 'required|min:0'
+                    'comet_speed' => 'required|bet:0,999999'
                 ]);
                 $cb->save();
                 $comet = Comet::find($cb->id);
@@ -486,7 +486,7 @@ class CBController extends Controller
 
             case 2:
                 $this->validate($request, [
-                    'galaxy_brightness' => 'min:0'
+                    'galaxy_brightness' => 'bet:0,999999'
                 ]);
                 $cb->save();
                 $galaxy = Galaxy::find($cb->id);
@@ -498,8 +498,8 @@ class CBController extends Controller
 
             case 3:
                 $this->validate($request, [
-                    'moon_period' => 'min:0',
-			        'moon_radius' => 'min:0',
+                    'moon_period' => 'bet:0,999999',
+			        'moon_radius' => 'bet:0,999999',
 			        'moon_plid' => 'required|exists:planets,id'
                 ]);
                 $cb->save();
@@ -512,7 +512,7 @@ class CBController extends Controller
 
             case 4:
                 $this->validate($request, [
-                    'planet_period' => 'min:0',
+                    'planet_period' => 'bet:0,999999',
                 ]);
                 $cb->save();
                 $planet = Planet::find($cb->id);
@@ -533,7 +533,7 @@ class CBController extends Controller
             
             default:
                 $this->validate($request, [
-                    'cbtype' => 'between:0,6'
+                    'cbtype' => 'bet:0,6'
                 ]);
         }
         Session::flash('success', 'Celestial Body was updated correctly.');

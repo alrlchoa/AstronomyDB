@@ -50,7 +50,7 @@ class CometsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-			'velocity' => 'min:0'
+			'velocity' => 'bet:0,999999'
 		]);
         $requestData = $request->all();
         
@@ -98,7 +98,7 @@ class CometsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-			'velocity' => 'min:0'
+			'velocity' => 'bet:0,999999'
 		]);
         $requestData = $request->all();
         

@@ -52,7 +52,7 @@ class InstrumentsController extends Controller
     {
         $this->validate($request, [
 			'location' => 'required|max:40',
-			'mid' => 'min:0|uniqueMidLoc:location'
+			'mid' => 'bet:0,999999|uniqueMidLoc:location'
 		]);
         $requestData = $request->all();
         
@@ -101,7 +101,7 @@ class InstrumentsController extends Controller
     {
         $this->validate($request, [
 			'location' => 'required|max:40',
-			'mid' => 'min:0|uniqueMidLoc:location'
+			'mid' => 'bet:0,999999|uniqueMidLoc:location'
 		]);
         $requestData = $request->all();
         

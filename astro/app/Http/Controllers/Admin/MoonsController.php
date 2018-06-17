@@ -52,9 +52,9 @@ class MoonsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-			'orbital_period' => 'min:0',
-			'radius' => 'min:0',
-			'planet_id' => 'required'
+			'orbital_period' => 'bet:0,999999',
+			'radius' => 'bet:0,999999',
+			'planet_id' => 'required|bet:0,999999'
 		]);
         $requestData = $request->all();
         
@@ -102,9 +102,9 @@ class MoonsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-			'orbital_period' => 'min:0',
-			'radius' => 'min:0',
-			'planet_id' => 'required'
+			'orbital_period' => 'bet:0,999999',
+			'radius' => 'bet:0,999999',
+			'planet_id' => 'required|bet:0,999999'
 		]);
         $requestData = $request->all();
         

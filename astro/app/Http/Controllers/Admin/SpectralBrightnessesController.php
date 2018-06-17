@@ -51,7 +51,7 @@ class SpectralBrightnessesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-			'brightness' => 'required|unique:spectral_brightnesses|min:0'
+			'brightness' => 'required|unique:spectral_brightnesses|bet:0,999999'
 		]);
         $requestData = $request->all();
         
@@ -99,7 +99,7 @@ class SpectralBrightnessesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-			'brightness' => 'required|unique:spectral_brightnesses|min:0'
+			'brightness' => 'required|unique:spectral_brightnesses|bet:0,999999'
 		]);
         $requestData = $request->all();
         

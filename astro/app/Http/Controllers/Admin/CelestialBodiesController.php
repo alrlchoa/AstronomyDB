@@ -53,8 +53,8 @@ class CelestialBodiesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'right_ascension' => 'required|min:0|max:360|uniqueRaD:declination',
-            'declination' => 'required|min:0|max:360',
+            'right_ascension' => 'required|bet:0,360|uniqueRaD:declination',
+            'declination' => 'required|bet:0,360',
 			'name' => 'max:40'
 		]);
         $requestData = $request->all();
@@ -103,8 +103,8 @@ class CelestialBodiesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-			'right_ascension' => 'required|min:0|max:360|uniqueRaD:declination',
-			'declination' => 'required|min:0|max:360',
+			'right_ascension' => 'required|bet:0,360|uniqueRaD:declination',
+			'declination' => 'required|bet:0,360',
 			'name' => 'max:40'
 		]);
         $requestData = $request->all();
