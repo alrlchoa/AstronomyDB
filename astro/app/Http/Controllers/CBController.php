@@ -510,6 +510,10 @@ class CBController extends Controller
                 ]);
                 $cb->save();
                 $comet = Comet::find($cb->id);
+                if(!$comet){
+                    $comet = new Comet;
+                    $comet->id = $cb->id;
+                }
                 $comet->speed = $request->comet_speed;
                 $comet->save();
                 break;
@@ -520,6 +524,10 @@ class CBController extends Controller
                 ]);
                 $cb->save();
                 $galaxy = Galaxy::find($cb->id);
+                if(!$galaxy){
+                    $galaxy = new Galaxy;
+                    $galaxy->id = $cb->id;
+                }
                 $galaxy->brightness = $request->galaxy_brightness;
                 $galaxy->redshift = $request->galaxy_redshift;
                 $galaxy->type = $request->galaxy_type;
@@ -534,6 +542,10 @@ class CBController extends Controller
                 ]);
                 $cb->save();
                 $moon = Moon::find($cb->id);
+                if(!$moon){
+                    $moon = new Moon;
+                    $moon->id = $cb->id;
+                }
                 $moon->orbital_period = $request->moon_period;
                 $moon->radius = $request->moon_radius;
                 $moon->planet_id = $request->moon_plid;
@@ -546,6 +558,10 @@ class CBController extends Controller
                 ]);
                 $cb->save();
                 $planet = Planet::find($cb->id);
+                if(!$planet){
+                    $planet = new Planet;
+                    $planet->id = $cb->id;
+                }
                 $planet->orbital_period = $request->planet_period;
                 $planet->planet_type = $request->planet_type;
                 $planet->save();
@@ -557,6 +573,10 @@ class CBController extends Controller
                 ]);
                 $cb->save();
                 $star = Star::find($cb->id);
+                if(!$star){
+                    $star = new Star;
+                    $star->id = $cb->id;
+                }
                 $star->spectral_brightness_id = $request->star_spectral;
                 $star->save();
                 break;
