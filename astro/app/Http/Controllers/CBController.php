@@ -497,41 +497,7 @@ class CBController extends Controller
         return view('cb.edit')->withCb($cb);
     }
 
-    /**
-     * Adds relation to the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function relation($id)
-    {
-        $cb = CelestialBody::find($id);
-
-        if (is_null($cb)){
-            return null;
-        }
-        $comet = Comet::find($id);
-        $galaxy = Galaxy::find($id);
-        $moon = Moon::find($id);
-        $planet = Planet::find($id);
-        $star = Star::find($id);
-
-        if (!is_null($comet)){
-            return view('cb.relation')->withCb($cb)->withComet($comet);
-        }else if (!is_null($galaxy)){
-            return view('cb.relation')->withCb($cb)->withGalaxy($galaxy);
-        }else if(!is_null($moon)){
-            $planet= Planet::find($moon->planet_id);
-            return view('cb.relation')->withCb($cb)->withMoon($moon)->withPlanetoid($planet);
-        }else if(!is_null($planet)){
-            return view('cb.relation')->withCb($cb)->withPlanet($planet);
-        }else if(!is_null($star)){
-            $spectral = SpectralBrightness::find($star->spectral_brightness_id);
-            return view('cb.relation')->withCb($cb)->withStar($star)->withSpectral($spectral);
-        }
-        return view('cb.relation')->withCb($cb);
-    }
-
+    
     /**
      * Update the specified resource in storage.
      *

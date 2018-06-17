@@ -94,7 +94,7 @@
                 </div>
                 <hr>
                 <div class="container">
-                  <p class="h4">Search by Year Range Discovered:</p>
+                  <!-- <p class="h4">Search by Year Range Discovered:</p>
                   <form class="form-inline">
                     {{Form::open()}}
                     {!!Form::input('number','amount',null,['class'=> 'form-control mb-2 mr-sm-2 mb-sm-0', 'placeholder' =>'From','min'=>'0','max'=>'2018','id'=>'inlineFormInput'])!!}
@@ -110,8 +110,8 @@
                     {{Form::submit('Search',['class'=>'btn btn-secondary'])}}
                     {{Form::close()}}
                   </form>
-                </div>
-                <hr>
+                </div> -->
+                <!-- <hr> -->
                 <div class="container">
                   <p class="h4">Search by Astronomical ID:</p>
                   <div class="input-group col-md-8">

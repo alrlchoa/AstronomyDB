@@ -17,7 +17,9 @@ Route::get('cb/{id}/create_pub_relation', ['uses' => 'CBController@create_pub_re
 Route::post('pub/searchByDOI', 'PubController@searchByDOI')->name('pub.searchByDOI');
 Route::post('astro/searchByInstitution', 'AstroController@searchByInstitution')->name('astro.searchByInstitution');
 Route::post('astro/searchByUser', 'AstroController@searchByUser')->name('astro.searchByUser');
-Route::post('cb/relation', 'CBController@relation')->name('cb.relation');
+
+Route::get('rel/{id}/relation', ['uses'=>'RelationController@relation'])->name('rel.relation');
+
 Route::post('cb/searchID', 'CBController@searchID')->name('cb.searchID');
 Route::post('cb/search', 'CBController@search')->name('cb.search');
 Route::post('cb/searchByThreshold', 'CBController@searchByThreshold')->name('cb.searchByThreshold');
@@ -53,8 +55,9 @@ Route::resource('admin/researcher-fellowships', 'Admin\\ResearcherFellowshipsCon
 
 Route::resource('cb','CBController');
 Route::resource('astro','AstroController');
-
 Route::resource('pub', 'PubController');
+Route::resource('rel','RelationController');
+
 Route::resource('admin/publications', 'Admin\\PublicationsController');
 Route::resource('admin/instru-models', 'Admin\\InstruModelsController');
 Route::resource('admin/instruments', 'Admin\\InstrumentsController');

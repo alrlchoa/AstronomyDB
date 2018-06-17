@@ -22,6 +22,11 @@
             <p><b>Discoverer:</b> {{ $discoverer->first_name }} {{ $discoverer->last_name }}</p>
             @if (!empty($comet))
                 <p>Comet's Speed: {{$comet->speed}}</p>
+                <div class="col-md-6">        
+                            {!! Form::open(['route'=>['rel.relation',$cb->id], 'method' => 'GET'])!!}
+                            {!! Form::submit('Add Relation',['class'=>'btn btn-secondary btn-block']) !!}
+                            {!! Form::close() !!}
+                        </div>
             @endif
 
             @if (!empty($galaxy))
@@ -41,11 +46,22 @@
             @if (!empty($planet))
                 <p><b>Planet's Orbital Period: </b>{{$planet->orbital_period}}</p>
                 <p><b>Planet's Type: </b>{{$planet->planet_type}}</p>
+                <div class="col-md-6">        
+                            {!! Form::open(['route'=>['rel.relation',$cb->id], 'method' => 'GET'])!!}
+                            {!! Form::submit('Add Relation',['class'=>'btn btn-secondary btn-block']) !!}
+                            {!! Form::close() !!}
+                        </div>
             @endif
 
             @if (!empty($star))
                 <p>Star's Spectral Brightness: {{$spectral->spectral_type}}</p>
                 <p>Star's Brightness: {{$spectral->brightness}}</p>
+                <div class="col-md-6">        
+                            {!! Form::open(['route'=>['rel.relation',$cb->id], 'method' => 'GET'])!!}
+                            {!! Form::submit('Add Relation',['class'=>'btn btn-secondary btn-block']) !!}
+                            {!! Form::close() !!}
+                        </div>
+
             @endif
         </div>
         <div class="col-md-4">
@@ -53,13 +69,8 @@
             @else
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             {!! Html::linkroute('cb.edit', 'Edit', [$cb->id], ['class' => 'btn btn-primary btn-block']) !!}
-                        </div>
-                        <div class="col-md-6">        
-                            {!! Form::open(['route'=>['cb.relation',$cb->id], 'method' => 'GET'])!!}
-                            {!! Form::submit('Add Relation',['class'=>'btn btn-secondary btn-block']) !!}
-                            {!! Form::close() !!}
                         </div>
                     </div>
                     <div class="row" style="margin-top: 10px;">
@@ -111,17 +122,16 @@
             <div class="container bg-light">
                 <p class="text-center h4">Relationships</p>
                 @if (!empty($comet))
-                    <p>Comet is speeding past: {{$comet->speed}}</p>
+                    <p>Comet is speeding past Star: {{$comet->speed}}</p>
 
                 @elseif (!empty($galaxy))
-                    <p>Galaxy's do not have any relationships!!!</p>
+                    <p>Galaxy's do not have any relationships</p>
 
                 @elseif (!empty($moon))
-                    <p>Moon is orbiting around: {{$planetoid->orbital_period}}</p>
+                    <p>Moon is orbiting around Star: {{$planetoid->orbital_period}}</p>
 
                 @elseif (!empty($planet))
-                    <p><b>Planet's Orbital Period: </b>{{$planet->orbital_period}}</p>
-                    <p><b>Planet's Type: </b>{{$planet->planet_type}}</p>
+                    <p><b>Planet is orbiting around Star: </b>{{$planet->orbital_period}}</p>
 
                 @elseif (!empty($star))
                     <p>Planets orbiting around this Star: {{$spectral->spectral_type}}</p>
