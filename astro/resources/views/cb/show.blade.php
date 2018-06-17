@@ -160,7 +160,8 @@
 
                 @elseif (!empty($star))
                     
-                    <p>Planets orbiting around this Star: 
+                    <p><h5>Planets orbiting around this Star: </h5>
+                        <hr>
                         @if (!($planetz->isEmpty()))
                         <p>Planet is orbiting Star: 
                             @foreach ($planetz as $P)
@@ -172,7 +173,8 @@
                         @endif
                     
                     </p>
-                    <p>Comets zooming past this star: 
+                    <p><h5>Comets zooming past this star:</h5>
+                    <hr> 
                         @if (!($cometz->isEmpty()))
                         <p>The comets zooming past this star are: 
                             @foreach ($cometz as $C)
