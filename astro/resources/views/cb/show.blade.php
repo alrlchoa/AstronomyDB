@@ -125,7 +125,7 @@
                     @if (!($starId->isEmpty()))
                         <p>Comet is zooming past Star: 
                             @foreach ($starId as $S)
-                            {{$S->star_id}},
+                            {{$S->star_id}} &nbsp;&nbsp;
                             @endforeach
                         </p>
                     @else
@@ -138,8 +138,8 @@
                 @elseif (!empty($moon))
                     @if (!($orbit->isEmpty()))
                         <p>Moon is orbiting Planet: 
-                            @foreach ($orbit as $P)
-                            {{$P->planet_id}},
+                            @foreach ($orbit as $Pl)
+                            {{$Pl->planet_id}} &nbsp;&nbsp;
                             @endforeach
                         </p>
                     @else
@@ -151,7 +151,7 @@
                     @if (!($orbitz->isEmpty()))
                         <p>Planet is orbiting Star: 
                             @foreach ($orbitz as $P)
-                            {{$P->planet_id}},
+                            {{$P->star_id}} &nbsp;&nbsp;
                             @endforeach
                         </p>
                     @else
@@ -163,9 +163,9 @@
                     <p><h5>Planets orbiting around this Star: </h5>
                         <hr>
                         @if (!($planetz->isEmpty()))
-                        <p>Planet is orbiting Star: 
+                        <p>The planets orbiting this star are: 
                             @foreach ($planetz as $P)
-                            {{$P->planet_id}},
+                            {{$P->planet_id}} &nbsp;&nbsp;
                             @endforeach
                         </p>
                         @else
@@ -178,7 +178,7 @@
                         @if (!($cometz->isEmpty()))
                         <p>The comets zooming past this star are: 
                             @foreach ($cometz as $C)
-                            {{$C->comet_id}},
+                            {{$C->comet_id}} &nbsp;&nbsp;
                             @endforeach
                         </p>
                     @else
