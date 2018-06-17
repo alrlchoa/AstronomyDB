@@ -5,6 +5,7 @@
 @section('content')
 
 <div class="row">
+    <p  class="h5">We now have <strong>{{$count}}</strong> results.</p>
     <div class="col-md-12">
         <table class="table">
             <thead>

@@ -117,7 +117,8 @@ class AstroController extends Controller
             ->leftJoin('institutions', 'researcher_fellowships.institution_id', '=', 'institutions.id')
             ->select('astronomers.id as id', 'astronomers.first_name as first_name', 'astronomers.last_name as last_name', 'astronomers.username as username', 'institutions.name as name')
             ->get();
-        return view('astro.userOutput')->withAstronomer($astronomer);
+        $count = $astronomer->count();
+        return view('astro.userOutput')->withAstronomer($astronomer)->withCount($count);
     }
 
     /**
@@ -136,13 +137,14 @@ class AstroController extends Controller
             ->pluck('id')->toArray();
         
         $institutionID = $institution[0];
-
-        $researchers = DB::table('researcher_fellowships')->where('institution_id', $institutionID)
-            ->pluck('id')->toArray();
         
-        $astronomers = DB::table('astronomers')->whereIn('id',$researchers)
+        $astronomers = DB::table('researcher_fellowships')->where('institution_id', $institutionID)
+            ->leftJoin('astronomers', 'researcher_fellowships.id', '=', 'astronomers.id')
+            ->leftJoin('institutions', 'researcher_fellowships.institution_id', '=', 'institutions.id')
+            ->select('astronomers.id as id', 'astronomers.first_name as first_name', 'astronomers.last_name as last_name', 'astronomers.username as username', 'institutions.name as name')
             ->get();
 
-        return view('astro.userOutput')->withAstronomer($astronomers);
+        $count = $astronomers->count();
+        return view('astro.userOutput')->withAstronomer($astronomers)->withCount($count);
     }
 }

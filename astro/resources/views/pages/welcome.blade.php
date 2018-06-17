@@ -44,6 +44,7 @@
                     <div class="form-check">
                       <div class="checkbox">
                         <label class="form-check-label">
+                          <p class="h5">Division Query</p>
                           {!! Form::open(['route'=>'cb.searchByType'])!!}
                           {{Form::checkbox('comet', null, null, ['class'=>'form-check-input'])}}
                           {{Form::label('comet','Comet')}}
