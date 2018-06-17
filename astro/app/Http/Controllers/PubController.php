@@ -223,4 +223,32 @@ class PubController extends Controller
 
         return view('pub.output')->withPubs($pubs);
     }
+
+    public function paper(Request $request)
+    {
+        $this->validate($request, [
+            'minmax' => 'required|bet:0,1'
+        ]);
+        $pub = DB::table('publication_references')
+                ->selectRaw('reference_id, count(*) as total')
+                ->groupBy('reference_id')
+                ->get();
+        
+        if($pub->isEmpty()){
+            return view('pub.paper')->withPub($pub)->withSkree(2);
+        }
+
+        if($request->minmax == 1){
+            $maximini = $pub->max('total');
+        }else{
+            $maximini = $pub->min('total');
+        }
+        $rID = $pub->where('reference_id',1)
+            ->pluck('reference_id')
+            ->first();
+        $doi = DB::table('publications')->where('id',$rID)
+                ->first()->doi;
+
+        return view('pub.paper')->withDoi($doi)->withCount($maximini)->withSkree($request->minmax);
+    }
 }
