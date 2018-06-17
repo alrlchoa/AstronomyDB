@@ -208,7 +208,7 @@ class PubController extends Controller
             'doi' => 'required|exists:publications,doi'
         ]);
 
-        $pubs = DB::table('publications')->where('doi',$request->name)
+        $pubs = DB::table('publications')->where('doi',$request->doi)
             ->get();
 
         return view('pub.output')->withPubs($pubs);
