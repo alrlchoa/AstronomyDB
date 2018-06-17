@@ -105,6 +105,33 @@ class PubController extends Controller
         }
     }
 
+
+    public function showReferencePage($id)
+    {
+        $pub = Publication::find($id);
+        if(!is_null($pub)){
+            $pub_ids = DB::table('publication_references')
+                ->where('referrer_id', $pub->id)
+                ->pluck('reference_id')->toArray();
+            $pubs = DB::table('publications')->whereIn('id',$pub_ids)
+                ->get();
+            return view('pub.reference')->withPub($pub)->withPubs($pubs);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Adds a new entry in the pivot table for
+     * the publication-publication relation. Adds a new
+     * publication
+     * @param Request $request
+     */
+    public function reference(Request $request)
+    {
+
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -123,7 +150,19 @@ class PubController extends Controller
         $astronomer = DB::table('astronomers')->where('username',$request->username)
             ->first()->id;
 
-        $pub->save();
+        $count = DB::table('pub_rf')
+            ->where('pub_id',$id)
+            ->where('rf_id',$astronomer)
+            ->count();
+
+        if($count > 0){
+            Session::flash('error', 'Error, this combination exists already');
+            return redirect()->route('pub.show', $pub->id);
+        }
+        else{
+            DB::table('pub_rf')
+                ->insert(['pub_id' => $id, 'rf_id' => $astronomer]);
+        }
 
         Session::flash('success', 'Author was added.');
         return redirect()->route('pub.show', $pub->id);
