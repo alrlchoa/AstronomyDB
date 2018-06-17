@@ -393,17 +393,47 @@ class CBController extends Controller
             ->first();
 
         if (!is_null($comet)){
-            return view('cb.show')->withCb($cb)->withComet($comet)->withPubs($pubs)->withDiscoverer($astronomer);
+
+            $comet_star = DB::table('comet_star')
+            ->select('star_id')
+            ->where('comet_id', '=', $comet->id)
+            ->get();
+            return view('cb.show')->withCb($cb)->withComet($comet)->withPubs($pubs)->withDiscoverer($astronomer)->withStarId($comet_star);
+        
         }else if (!is_null($galaxy)){
+
             return view('cb.show')->withCb($cb)->withGalaxy($galaxy)->withPubs($pubs)->withDiscoverer($astronomer);
+        
         }else if(!is_null($moon)){
+            
+            $moon_planet = DB::table('moons')
+            ->select('planet_id')
+            ->where('id', '=', $moon->id)
+            ->get();
             $planet= Planet::find($moon->planet_id);
-            return view('cb.show')->withCb($cb)->withMoon($moon)->withPlanetoid($planet)->withPubs($pubs)->withDiscoverer($astronomer);
+            return view('cb.show')->withCb($cb)->withMoon($moon)->withPlanetoid($planet)->withPubs($pubs)->withDiscoverer($astronomer)->withOrbit($moon_planet);
+        
         }else if(!is_null($planet)){
-            return view('cb.show')->withCb($cb)->withPlanet($planet)->withPubs($pubs)->withDiscoverer($astronomer);
+
+            $planet_star = DB::table('planet_star')
+            ->select('star_id')
+            ->where('planet_id', '=', $planet->id)
+            ->get();
+            return view('cb.show')->withCb($cb)->withPlanet($planet)->withPubs($pubs)->withDiscoverer($astronomer)->withOrbitz($planet_star);
+        
         }else if(!is_null($star)){
+            
+            $planet_star = DB::table('planet_star')
+            ->select('planet_id')
+            ->where('star_id', '=', $star->id)
+            ->get();
+            
+            $comet_star = DB::table('comet_star')
+            ->select('comet_id')
+            ->where('star_id', '=', $star->id)
+            ->get();
             $spectral = SpectralBrightness::find($star->spectral_brightness_id);
-            return view('cb.show')->withCb($cb)->withStar($star)->withSpectral($spectral)->withPubs($pubs)->withDiscoverer($astronomer);
+            return view('cb.show')->withCb($cb)->withStar($star)->withSpectral($spectral)->withPubs($pubs)->withDiscoverer($astronomer)->withCometz($comet_star)->withPlanetz($planet_star);
         }
         return view('cb.show')->withCb($cb)->withPubs($pubs)->withDiscoverer($astronomer);
     }

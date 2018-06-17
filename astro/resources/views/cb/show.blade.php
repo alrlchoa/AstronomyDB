@@ -21,7 +21,7 @@
             </p>
             <p><b>Discoverer:</b> {{ $discoverer->first_name }} {{ $discoverer->last_name }}</p>
             @if (!empty($comet))
-                <p>Comet's Speed: {{$comet->speed}}</p>
+                <p><b>Comet's Speed:</b> {{$comet->speed}}</p>
                 <div class="col-md-6">        
                             {!! Form::open(['route'=>['rel.relation',$cb->id], 'method' => 'GET'])!!}
                             {!! Form::submit('Add Relation',['class'=>'btn btn-secondary btn-block']) !!}
@@ -122,20 +122,69 @@
             <div class="container bg-light">
                 <p class="text-center h4">Relationships</p>
                 @if (!empty($comet))
-                    <p>Comet is speeding past Star: {{$comet->speed}}</p>
+                    @if (!($starId->isEmpty()))
+                        <p>Comet is zooming past Star: 
+                            @foreach ($starId as $S)
+                            {{$S->star_id}} &nbsp;
+                            @endforeach
+                        </p>
+                    @else
+                        <p>Comet is not zooming past a star</p>
+                    @endif
 
                 @elseif (!empty($galaxy))
                     <p>Galaxy's do not have any relationships</p>
 
                 @elseif (!empty($moon))
-                    <p>Moon is orbiting around Star: {{$planetoid->orbital_period}}</p>
+                    @if (!($orbit->isEmpty()))
+                        <p>Moon is orbiting Planet: 
+                            @foreach ($orbit as $Pl)
+                            {{$Pl->planet_id}} &nbsp;
+                            @endforeach
+                        </p>
+                    @else
+                        <p>Moon is not orbiting a planet</p>
+                    @endif
 
                 @elseif (!empty($planet))
-                    <p>Planet is orbiting around Star: {{$planet->orbital_period}}</p>
+                    
+                    @if (!($orbitz->isEmpty()))
+                        <p>Planet is orbiting Star: 
+                            @foreach ($orbitz as $P)
+                            {{$P->star_id}} &nbsp;
+                            @endforeach
+                        </p>
+                    @else
+                        <p>Planet is not orbiting a star</p>
+                    @endif
 
                 @elseif (!empty($star))
-                    <p>Planets orbiting around this Star: {{$spectral->spectral_type}}</p>
-                    <p>Comets zooming past this Star: {{$spectral->brightness}}</p>
+                    
+                    <p><h5>Planets orbiting around this Star: </h5>
+                        <hr>
+                        @if (!($planetz->isEmpty()))
+                        <p>The planets orbiting this star are: 
+                            @foreach ($planetz as $P)
+                            {{$P->planet_id}} &nbsp;
+                            @endforeach
+                        </p>
+                        @else
+                        <p>No planets are orbiting aroung this star</p>
+                        @endif
+                    
+                    </p>
+                    <p><h5>Comets zooming past this star:</h5>
+                    <hr> 
+                        @if (!($cometz->isEmpty()))
+                        <p>The comets zooming past this star are: 
+                            @foreach ($cometz as $C)
+                            {{$C->comet_id}} &nbsp;
+                            @endforeach
+                        </p>
+                    @else
+                        <p>There are no comets zooming past this star</p>
+                    @endif
+                    </p>
                 
                 @else
                     <strong>This Celestial body has not been classified yet!</strong>
