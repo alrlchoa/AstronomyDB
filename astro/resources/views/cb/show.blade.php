@@ -125,7 +125,7 @@
                     @if (!($starId->isEmpty()))
                         <p>Comet is zooming past Star: 
                             @foreach ($starId as $S)
-                            {{$S->star_id}} &nbsp;&nbsp;
+                            {{$S->star_id}} &nbsp;
                             @endforeach
                         </p>
                     @else
@@ -139,7 +139,7 @@
                     @if (!($orbit->isEmpty()))
                         <p>Moon is orbiting Planet: 
                             @foreach ($orbit as $Pl)
-                            {{$Pl->planet_id}} &nbsp;&nbsp;
+                            {{$Pl->planet_id}} &nbsp;
                             @endforeach
                         </p>
                     @else
@@ -151,7 +151,7 @@
                     @if (!($orbitz->isEmpty()))
                         <p>Planet is orbiting Star: 
                             @foreach ($orbitz as $P)
-                            {{$P->star_id}} &nbsp;&nbsp;
+                            {{$P->star_id}} &nbsp;
                             @endforeach
                         </p>
                     @else
@@ -165,7 +165,7 @@
                         @if (!($planetz->isEmpty()))
                         <p>The planets orbiting this star are: 
                             @foreach ($planetz as $P)
-                            {{$P->planet_id}} &nbsp;&nbsp;
+                            {{$P->planet_id}} &nbsp;
                             @endforeach
                         </p>
                         @else
@@ -178,7 +178,7 @@
                         @if (!($cometz->isEmpty()))
                         <p>The comets zooming past this star are: 
                             @foreach ($cometz as $C)
-                            {{$C->comet_id}} &nbsp;&nbsp;
+                            {{$C->comet_id}} &nbsp;
                             @endforeach
                         </p>
                     @else
