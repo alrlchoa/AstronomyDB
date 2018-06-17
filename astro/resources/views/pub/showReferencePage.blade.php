@@ -5,6 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-8">
+            {!! Form::open(['route' => 'pub.reference', 'files' => true, 'method' => 'POST']) !!}
             <h1>Add a Reference to Publication {{ $pub->id }}</h1>
             <hr>
 
@@ -20,7 +21,7 @@
                 @endforeach
 
             </p>
-            {!! Form::open(['route' => 'pub.reference', 'files' => true, 'method' => 'POST']) !!}
+
 
                 {{ Form::hidden("referrer_id", $pub->id) }}
 
