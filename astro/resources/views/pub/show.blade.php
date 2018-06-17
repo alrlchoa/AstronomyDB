@@ -41,7 +41,7 @@
                                 {!! Html::linkroute('pub.author', 'Add Author', [$pub->id], ['class' => 'btn btn-primary btn-block']) !!}
                             </div>
                             <div class="col-md-12"style="margin-top: 10px;">
-                                {!! Html::linkRoute('pub.showReferencePage', 'Add Reference', array($pub->id), array('class' =>'btn btn-danger btn-block')) !!}
+                                {!! Html::linkRoute('pub.showReferencePage', 'Add Reference', array($pub->id), array('class' =>'btn btn-primary btn-block')) !!}
                             </div>
                         </div>
 

@@ -29,6 +29,10 @@ Route::get('pub/{id}/author', ['uses' => 'PubController@author'])->name('pub.aut
 Route::post('pub/{id}/updateAuthor', ['uses' => 'PubController@updateAuthor'])->name('pub.updateAuthor');
 
 Route::post('pub/relation', 'PubController@relation')->name('pub.relation');
+
+Route::get('pub/{id}/showReferencePage', ['uses' => 'PubController@showReferencePage'])->name('pub.showReferencePage');
+Route::post('pub/{id}/reference', ['uses' => 'PubController@reference'])->name('pub.reference');
+
 Route::get('pub/{id}/reference', 'PubController@showReferencePage')->name('pub.showReferencePage');
 Route::post('pub/reference', 'PubController@reference')->name('pub.reference');
 
