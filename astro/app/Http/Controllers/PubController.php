@@ -115,7 +115,7 @@ class PubController extends Controller
                 ->pluck('reference_id')->toArray();
             $pubs = DB::table('publications')->whereIn('id',$pub_ids)
                 ->get();
-            return view('pub.reference')->withPub($pub)->withPubs($pubs);
+            return view('pub.showReferencePage')->withPub($pub)->withPubs($pubs);
         } else {
             return null;
         }
@@ -126,20 +126,33 @@ class PubController extends Controller
      * the publication-publication relation. Adds a new
      * publication
      * @param Request $request
+     * @return some view
      */
     public function reference(Request $request)
     {
         $this->validate($request, [
             'referrer_id' => 'required|exists:publications,id',
-            'doi' => 'required|min:0|unique:Publications,doi',
+            'doi' => 'required|min:0|exists:publications,doi',
         ]);
 
-        $pubs = DB::table('publications')->where('doi',$request->name)
-            ->get();
+        $reference_id = DB::table('publications')->where('doi',$request->doi)
+            ->first()->id;
 
-//        DB::table('publication_references')
-//            ->insert(['referer_id' => , 'rf_id' => $astronomer]);
+        $count = DB::table('publication_references')
+            ->where('referrer_id',$request->referrer_id)
+            ->where('reference_id',$reference_id)
+            ->count();
 
+        if($count > 0){
+            Session::flash('error', 'Error, this reference already exists');
+            return redirect()->route('pub.show', $request->referrer_id);
+        }
+        else{
+            DB::table('publication_references')
+                ->insert(['referrer_id' => $request->referrer_id, 'reference_id' => $reference_id]);
+        }
+        Session::flash('success', 'Reference was added.');
+        return redirect()->route('pub.show', $request->referrer_id);
     }
 
     /**
