@@ -148,9 +148,9 @@
 
                 @elseif (!empty($planet))
                     
-                    @if (!($orbits->isEmpty()))
+                    @if (!($orbitz->isEmpty()))
                         <p>Planet is orbiting Star: 
-                            @foreach ($orbits as $P)
+                            @foreach ($orbitz as $P)
                             {{$P->planet_id}},
                             @endforeach
                         </p>
@@ -161,9 +161,9 @@
                 @elseif (!empty($star))
                     
                     <p>Planets orbiting around this Star: 
-                        @if (!($planets->isEmpty()))
+                        @if (!($planetz->isEmpty()))
                         <p>Planet is orbiting Star: 
-                            @foreach ($planets as $P)
+                            @foreach ($planetz as $P)
                             {{$P->planet_id}},
                             @endforeach
                         </p>
@@ -173,9 +173,9 @@
                     
                     </p>
                     <p>Comets zooming past this star: 
-                        @if (!($comets->isEmpty()))
+                        @if (!($cometz->isEmpty()))
                         <p>The comets zooming past this star are: 
-                            @foreach ($comets as $C)
+                            @foreach ($cometz as $C)
                             {{$C->comet_id}},
                             @endforeach
                         </p>

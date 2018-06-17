@@ -419,7 +419,7 @@ class CBController extends Controller
             ->select('star_id')
             ->where('planet_id', '=', $planet->id)
             ->get();
-            return view('cb.show')->withCb($cb)->withPlanet($planet)->withPubs($pubs)->withDiscoverer($astronomer)->withOrbits($planet_star);
+            return view('cb.show')->withCb($cb)->withPlanet($planet)->withPubs($pubs)->withDiscoverer($astronomer)->withOrbitz($planet_star);
         
         }else if(!is_null($star)){
             
@@ -433,7 +433,7 @@ class CBController extends Controller
             ->where('star_id', '=', $star->id)
             ->get();
             $spectral = SpectralBrightness::find($star->spectral_brightness_id);
-            return view('cb.show')->withCb($cb)->withStar($star)->withSpectral($spectral)->withPubs($pubs)->withDiscoverer($astronomer)->withComets($comet_star)->withPlanets($planet_star);
+            return view('cb.show')->withCb($cb)->withStar($star)->withSpectral($spectral)->withPubs($pubs)->withDiscoverer($astronomer)->withCometz($comet_star)->withPlanetz($planet_star);
         }
         return view('cb.show')->withCb($cb)->withPubs($pubs)->withDiscoverer($astronomer);
     }
