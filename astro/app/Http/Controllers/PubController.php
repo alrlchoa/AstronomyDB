@@ -213,4 +213,62 @@ class PubController extends Controller
 
         return view('pub.output')->withPubs($pubs);
     }
+
+    public function paper(Request $request)
+    {
+        $this->validate($request, [
+            'minmax' => 'required|bet:0,1'
+        ]);
+        $pub = DB::table('publication_references')
+                ->selectRaw('reference_id, count(*) as total')
+                ->groupBy('reference_id')
+                ->get();
+        
+        if($pub->isEmpty()){
+            return view('pub.paper')->withPub($pub)->withSkree(2);
+        }
+
+        if($request->minmax == 1){
+            $maximini = $pub->max('total');
+        }else{
+            $maximini = $pub->min('total');
+        }
+        $rID = $pub->where('total',$maximini)
+            ->pluck('reference_id')
+            ->first();
+        $doi = DB::table('publications')->where('id',$rID)
+                ->first()->doi;
+
+        return view('pub.paper')->withDoi($doi)->withCount($maximini)->withSkree($request->minmax);
+    }
+
+    public function gross(Request $request)
+    {
+        $this->validate($request, [
+            'minmax' => 'required|bet:0,1'
+        ]);
+        
+        $pub = DB::table('publication_references')
+                ->join('pub_rf', 'publication_references.reference_id', '=', 'pub_rf.pub_id')
+                ->join('researcher_fellowships', 'pub_rf.rf_id','=','researcher_fellowships.id')
+                ->join('institutions', 'researcher_fellowships.institution_id','=','institutions.id')
+                ->selectRaw('institutions.name as name, count(*) as total')
+                ->groupBy('institutions.name')
+                ->get();
+        
+        if($pub->isEmpty()){
+            return view('pub.insti')->withPub($pub)->withSkree(2);
+        }
+
+        if($request->minmax == 1){
+            $maximini = $pub->max('total');
+        }else{
+            $maximini = $pub->min('total');
+        }
+        $rID = $pub->where('total',$maximini)
+            ->pluck('name')
+            ->first();
+
+        return view('pub.insti')->withName($rID)->withCount($maximini)->withSkree($request->minmax)->withAll($pub);
+    }
 }
