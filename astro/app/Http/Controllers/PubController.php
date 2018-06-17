@@ -281,4 +281,43 @@ class PubController extends Controller
 
         return view('pub.insti')->withName($rID)->withCount($maximini)->withSkree($request->minmax)->withAll($pub);
     }
+
+    public function ave(Request $request)
+    {
+        $this->validate($request, [
+            'minmax' => 'required|bet:0,1'
+        ]);
+        
+        $pub = DB::select('SELECT institutions.name, AVG(total) as average
+                            FROM institutions
+                            JOIN ( SELECT sub.rf_id as rf_id, researcher_fellowships.institution_id as insti_id, sub.total as total
+                                    FROM researcher_fellowships
+                                    JOIN( SELECT pub_rf.rf_id as rf_id, count(*) as total
+                                        FROM publication_references
+                                        JOIN(
+                                            pub_rf
+                                        )
+                                        ON pub_rf.pub_id = publication_references.reference_id
+                                        GROUP BY(pub_rf.rf_id)
+                                    ) sub
+                                    ON sub.rf_id = researcher_fellowships.id
+                            )dre
+                            ON institutions.id = dre.insti_id
+                            GROUP BY(institutions.name)');
+        $pub = collect($pub);
+        if($pub->isEmpty()){
+            return view('pub.insti')->withPub($pub)->withSkree(2);
+        }
+
+        if($request->minmax == 1){
+            $maximini = $pub->max('average');
+        }else{
+            $maximini = $pub->min('average');
+        }
+        $rID = $pub->where('average',$maximini)
+            ->pluck('name')
+            ->first();
+
+        return view('pub.ave')->withName($rID)->withCount($maximini)->withSkree($request->minmax)->withAll($pub);
+    }
 }

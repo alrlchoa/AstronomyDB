@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('pub/ave', 'PubController@ave')->name('pub.ave');
 Route::get('pub/gross', 'PubController@gross')->name('pub.gross');
 Route::get('pub/paper', 'PubController@paper')->name('pub.paper');
 
