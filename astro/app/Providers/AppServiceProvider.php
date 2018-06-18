@@ -83,7 +83,7 @@ class AppServiceProvider extends ServiceProvider
             return $param1 != $value;
 
 
-        }, 'Usernames are the sme.');
+        }, 'Usernames are the same.');
 
         Validator::extend('currUserIsRF', function ($attribute, $value, $parameters, $validator) {
 
