@@ -76,6 +76,15 @@ class AppServiceProvider extends ServiceProvider
             return $count > 0;
         }, 'User is not a researcher.');
 
+        Validator::extend('notsame', function ($attribute, $value, $parameters, $validator) {
+
+            $param1 = array_get($validator->getData(), $parameters[0]);
+
+            return $param1 != $value;
+
+
+        }, 'Usernames are the sme.');
+
         Validator::extend('currUserIsRF', function ($attribute, $value, $parameters, $validator) {
 
             $id = DB::table('astronomers')->where('username',$value)

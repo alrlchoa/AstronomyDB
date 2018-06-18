@@ -216,6 +216,39 @@ class PubController extends Controller
         return view('pub.output')->withPubs($pubs);
     }
 
+    /**
+     * Searches by  Authors
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function searchByAuthors(Request $request){
+
+        $this->validate($request, [
+            'username1' => 'required|userIsRF|notsame:username2',
+            'username2' => 'required|userIsRF|notsame:username1'
+        ]);
+
+        $rf1 = DB::table('astronomers')->where('username',$request->username1)
+                ->pluck('id')->first();
+        $rf2 = DB::table('astronomers')->where('username',$request->username2)
+                ->pluck('id')->first();
+
+        $pubs1 = DB::table('pub_rf')->where('rf_id',$rf1)
+                ->pluck('pub_id');
+        $pubs2 = DB::table('pub_rf')->where('rf_id',$rf2)
+                ->pluck('pub_id');
+        
+        $pubIDs = $pubs1->intersect($pubs2);
+
+        $pubIDs = $pubIDs->toArray();
+
+        $pubs = DB::table('publications')->whereIn('id',$pubIDs)
+                ->get();
+
+        return view('pub.output')->withPubs($pubs);
+    }
+
     public function paper(Request $request)
     {
         $this->validate($request, [

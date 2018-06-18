@@ -44,7 +44,6 @@
                     <div class="form-check">
                       <div class="checkbox">
                         <label class="form-check-label">
-                          <p class="h5">(Division Query)</p>
                           {!! Form::open(['route'=>'cb.searchByType'])!!}
                           {{Form::checkbox('comet', null, null, ['class'=>'form-check-input'])}}
                           {{Form::label('comet','Comet')}}
@@ -148,6 +147,20 @@
                 </div><!-- /input-group -->
                 </div>
                 <hr>
+                <div class="container">
+                  <p class="h4">Search Publication with Two Authors:</p>
+                  <p class="h5">(Division Query)</p>
+                  <div class="input-group col-md-8">
+                    <div class="row">
+                      {!! Form::open(['route' => 'pub.searchByAuthors','class'=>'form-inline'])!!}
+                      {!! Form::text('username1',null,['class'=> 'form-control', 'placeholder' =>'Username of first author'])!!}
+                      {!! Form::text('username2',null,['class'=> 'form-control', 'placeholder' =>'Username of second author'])!!}
+                      {{  Form::submit('Search',['class'=>'btn btn-secondary'])}}                  
+                      {!! Form::close()!!}
+                      </div>                  
+                  </div><!-- /input-group -->
+                  </div>
+                  <hr>
                 <div class="container">
                   <p class="h4">Search Publication:</p>
                   <div class="input-group col-md-8">
