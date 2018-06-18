@@ -19,6 +19,9 @@ class CreateCelestialBodiesTable extends Migration
             $table->integer('declination');
             $table->string('name')->nullable();
             $table->boolean('verified')->default(false);
+            // CHECK CONSTRAINTS SHOULD GO HERE (SAMPLE HERE PROVIDED). Actual Constraints are in the controller.
+            // CONSTRAINT right_limit CHECK (right_ascension >= 0 AND right_ascension <=360)
+            // CONSTRAINT decl_limit CHECK (declination >= 0 AND declination <=360)
             });
     }
 

@@ -487,7 +487,7 @@ class CBController extends Controller
         if (!$request->has('verified')) {
             $request->merge(['verified' => 0]);
         }
-
+        //CHECK CONSTRAINTS ARE HERE
         $this->validate($request, [
             'declination' => 'required|bet:0,360',
             'right_ascension' => 'required|bet:0,360|uniqueRaDUp:declination,id',
