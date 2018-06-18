@@ -317,7 +317,7 @@ class PubController extends Controller
         
         $pub = DB::select('SELECT institutions.name, IFNULL(AVG(total), 0) as average
                             FROM institutions
-                            LEFT JOIN ( SELECT researcher_fellowships.id as rf_id, researcher_fellowships.institution_id as insti_id, sub.total as total
+                            LEFT JOIN ( SELECT researcher_fellowships.id as rf_id, researcher_fellowships.institution_id as insti_id, IFNULL(sub.total,0) as total
                                     FROM researcher_fellowships
                                     LEFT JOIN( SELECT pub_rf.rf_id as rf_id, count(publication_references.reference_id) as total
                                         FROM publications
