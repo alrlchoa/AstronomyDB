@@ -39,7 +39,7 @@ CREATE TABLE `pub_rf` (
 
 LOCK TABLES `pub_rf` WRITE;
 /*!40000 ALTER TABLE `pub_rf` DISABLE KEYS */;
-INSERT INTO `pub_rf` VALUES (1,4),(1,8),(1,11),(1,12),(2,8),(3,10),(3,12),(4,12),(5,6),(5,12),(6,6),(7,6),(7,10),(8,6),(9,4),(9,6),(9,7),(9,8),(10,6);
+INSERT INTO `pub_rf` VALUES (1,4),(1,8),(1,11),(1,12),(2,8),(3,10),(3,12),(4,12),(5,6),(5,12),(6,6),(7,6),(7,10),(8,6),(9,4),(9,6),(9,7),(9,8),(9,12),(10,6);
 /*!40000 ALTER TABLE `pub_rf` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:05
+-- Dump completed on 2018-06-18 15:07:39

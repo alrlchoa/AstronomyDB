@@ -27,7 +27,7 @@ CREATE TABLE `instruments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `mid` int(10) unsigned DEFAULT NULL,
-  `location` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `instruments_mid_foreign` (`mid`),
   CONSTRAINT `instruments_mid_foreign` FOREIGN KEY (`mid`) REFERENCES `instru_models` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:09
+-- Dump completed on 2018-06-18 15:07:40

@@ -27,7 +27,7 @@ CREATE TABLE `planets` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `orbital_period` double(8,2) DEFAULT NULL,
-  `planet_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `planet_type` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `planets_id_foreign` FOREIGN KEY (`id`) REFERENCES `celestial_bodies` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:02
+-- Dump completed on 2018-06-18 15:07:39
