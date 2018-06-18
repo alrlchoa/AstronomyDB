@@ -26,10 +26,10 @@ CREATE TABLE `astronomers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `first_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `first_name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -53,7 +53,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:07
+-- Dump completed on 2018-06-18 15:07:39
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -109,7 +109,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:04
+-- Dump completed on 2018-06-18 15:07:39
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -141,7 +141,7 @@ CREATE TABLE `celestial_bodies` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `right_ascension` int(11) NOT NULL,
   `declination` int(11) NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `verified` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -166,7 +166,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:09
+-- Dump completed on 2018-06-18 15:07:40
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -222,7 +222,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:02
+-- Dump completed on 2018-06-18 15:07:38
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -277,7 +277,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:13:58
+-- Dump completed on 2018-06-18 15:07:38
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -337,7 +337,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:10
+-- Dump completed on 2018-06-18 15:07:40
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -369,7 +369,7 @@ CREATE TABLE `galaxies` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `brightness` double(8,2) DEFAULT NULL,
   `redshift` double(8,2) DEFAULT NULL,
-  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `galaxies_id_foreign` FOREIGN KEY (`id`) REFERENCES `celestial_bodies` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -394,7 +394,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:01
+-- Dump completed on 2018-06-18 15:07:38
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -424,7 +424,7 @@ CREATE TABLE `institutions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -448,7 +448,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:06
+-- Dump completed on 2018-06-18 15:07:39
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -478,7 +478,7 @@ CREATE TABLE `instru_models` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -502,7 +502,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:00
+-- Dump completed on 2018-06-18 15:07:38
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -533,7 +533,7 @@ CREATE TABLE `instruments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `mid` int(10) unsigned DEFAULT NULL,
-  `location` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `instruments_mid_foreign` (`mid`),
   CONSTRAINT `instruments_mid_foreign` FOREIGN KEY (`mid`) REFERENCES `instru_models` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
@@ -559,7 +559,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:09
+-- Dump completed on 2018-06-18 15:07:40
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -612,7 +612,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:05
+-- Dump completed on 2018-06-18 15:07:39
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -671,7 +671,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:01
+-- Dump completed on 2018-06-18 15:07:38
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -698,8 +698,8 @@ DROP TABLE IF EXISTS `password_resets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `password_resets` (
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -723,7 +723,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:00
+-- Dump completed on 2018-06-18 15:07:38
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -779,8 +779,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:03
-
+-- Dump completed on 2018-06-18 15:07:39
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -811,7 +810,7 @@ CREATE TABLE `planets` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `orbital_period` double(8,2) DEFAULT NULL,
-  `planet_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `planet_type` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `planets_id_foreign` FOREIGN KEY (`id`) REFERENCES `celestial_bodies` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -836,8 +835,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:02
-
+-- Dump completed on 2018-06-18 15:07:39
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -880,7 +878,7 @@ CREATE TABLE `pub_rf` (
 
 LOCK TABLES `pub_rf` WRITE;
 /*!40000 ALTER TABLE `pub_rf` DISABLE KEYS */;
-INSERT INTO `pub_rf` VALUES (1,4),(1,8),(1,11),(1,12),(2,8),(3,10),(3,12),(4,12),(5,6),(5,12),(6,6),(7,6),(7,10),(8,6),(9,4),(9,6),(9,7),(9,8),(10,6);
+INSERT INTO `pub_rf` VALUES (1,4),(1,8),(1,11),(1,12),(2,8),(3,10),(3,12),(4,12),(5,6),(5,12),(6,6),(7,6),(7,10),(8,6),(9,4),(9,6),(9,7),(9,8),(9,12),(10,6);
 /*!40000 ALTER TABLE `pub_rf` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -893,8 +891,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:05
-
+-- Dump completed on 2018-06-18 15:07:39
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -950,7 +947,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:11
+-- Dump completed on 2018-06-18 15:07:40
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -980,7 +977,7 @@ CREATE TABLE `publications` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `doi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `doi` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_of_publication` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1005,7 +1002,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:08
+-- Dump completed on 2018-06-18 15:07:40
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -1062,7 +1059,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:10
+-- Dump completed on 2018-06-18 15:07:40
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -1092,7 +1089,7 @@ CREATE TABLE `spectral_brightnesses` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `spectral_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `spectral_type` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `brightness` double(8,2) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1117,7 +1114,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:04
+-- Dump completed on 2018-06-18 15:07:39
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -1174,7 +1171,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:14:08
+-- Dump completed on 2018-06-18 15:07:40
 
 -- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
@@ -1202,12 +1199,12 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `fname` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lname` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fname` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lname` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -1235,4 +1232,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-17 10:13:59
+-- Dump completed on 2018-06-18 15:07:38
