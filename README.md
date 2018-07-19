@@ -1,32 +1,18 @@
 # AstronomyDB
 
-1.Install Laravel, Download Phpmyadmin(optional), Create dummy tablepop(interface ssh & laravel?)
+This project is a web app made to cater to the astronomy community. It was made to be able to track positions and characteristics of Celestial Bodies that were inputted by the community. It could also be used to edit and publish characteristics of Celestial Bodies.
 
-2.Create Roles:
-  -Admin
-  -Astronomer
-  -Researcher
-  
-3.Create GUI for Login/Register:
-  -Login is ADD
-  -Register (needs institution) is SELECT
-  
-4.Test
+This project was made in fulfillment of CPSC 304 in the University of British Columbia. The project was made using Laravel, a PHP Wed Framework that heavily empasize an MVC Framework. Information was stored and queried using a relational database, MySQL.
 
-5.CREATE CelestialBody:
-  -Check Add/Edit privileges
-  -Check Queries and relationships
- 
-6.Edit Permissions:
-  -Astronomer
-  -Researcher
+This was made by:
 
-7.Test
+Arnold Choa
 
-8.GUI:
-  -Astro Details Page
-  -Results Page
-  -Search Page
+Alex Larbi
+
+Josh MacEachern
+
+Tanraj Saran
   
  
  
